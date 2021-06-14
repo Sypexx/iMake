@@ -60,29 +60,41 @@ class _AddimgWidgetState extends State<AddimgWidget> {
         elevation: 4,
       ),
       body: SafeArea(
-        child: InkWell(
-          onTap: () async {
-            final selectedMedia = await selectMedia();
-            if (selectedMedia != null &&
-                validateFileFormat(selectedMedia.storagePath, context)) {
-              showUploadMessage(context, 'Uploading file...',
-                  showLoading: true);
-              final downloadUrl = await uploadData(
-                  selectedMedia.storagePath, selectedMedia.bytes);
-              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-              if (downloadUrl != null) {
-                setState(() => uploadedFileUrl = downloadUrl);
-                showUploadMessage(context, 'Success!');
-              } else {
-                showUploadMessage(context, 'Failed to upload media');
-              }
-            }
-          },
-          child: Image.network(
-            'https://picsum.photos/seed/540/600',
-            width: 100,
-            height: 100,
-            fit: BoxFit.cover,
+        child: Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: Color(0xFFEEEEEE),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              InkWell(
+                onTap: () async {
+                  final selectedMedia = await selectMedia();
+                  if (selectedMedia != null &&
+                      validateFileFormat(selectedMedia.storagePath, context)) {
+                    showUploadMessage(context, 'Uploading file...',
+                        showLoading: true);
+                    final downloadUrl = await uploadData(
+                        selectedMedia.storagePath, selectedMedia.bytes);
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                    if (downloadUrl != null) {
+                      setState(() => uploadedFileUrl = downloadUrl);
+                      showUploadMessage(context, 'Success!');
+                    } else {
+                      showUploadMessage(context, 'Failed to upload media');
+                    }
+                  }
+                },
+                child: Image.network(
+                  'https://picsum.photos/seed/121/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+              )
+            ],
           ),
         ),
       ),
