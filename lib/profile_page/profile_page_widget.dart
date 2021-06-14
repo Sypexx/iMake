@@ -104,43 +104,20 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           itemBuilder: (context, gridViewIndex) {
                             final gridViewPostsRecord =
                                 gridViewPostsRecordList[gridViewIndex];
-                            return StreamBuilder<List<PostsRecord>>(
-                              stream: queryPostsRecord(
-                                singleRecord: true,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                      child: CircularProgressIndicator());
-                                }
-                                List<PostsRecord> imagePostsRecordList =
-                                    snapshot.data;
-                                // Customize what your widget looks like with no query results.
-                                if (snapshot.data.isEmpty) {
-                                  // return Container();
-                                  // For now, we'll just include some dummy data.
-                                  imagePostsRecordList =
-                                      createDummyPostsRecord(count: 1);
-                                }
-                                final imagePostsRecord =
-                                    imagePostsRecordList.first;
-                                return InkWell(
-                                  onTap: () async {
-                                    await showModalBottomSheet(
-                                        context: context,
-                                        builder: (context) {
-                                          return ProfileWidget();
-                                        });
-                                  },
-                                  child: Image.network(
-                                    gridViewPostsRecord.imgUrl,
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  ),
-                                );
+                            return InkWell(
+                              onTap: () async {
+                                await showModalBottomSheet(
+                                    context: context,
+                                    builder: (context) {
+                                      return ProfileWidget();
+                                    });
                               },
+                              child: Image.network(
+                                gridViewPostsRecord.imgUrl,
+                                width: 100,
+                                height: 100,
+                                fit: BoxFit.cover,
+                              ),
                             );
                           },
                         );
