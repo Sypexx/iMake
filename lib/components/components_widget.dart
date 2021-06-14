@@ -3,7 +3,6 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ComponentsWidget extends StatefulWidget {
@@ -19,7 +18,6 @@ class ComponentsWidget extends StatefulWidget {
 }
 
 class _ComponentsWidgetState extends State<ComponentsWidget> {
-  DateTime datePicked = DateTime.now();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -47,16 +45,6 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
             centerTitle: true,
             elevation: 4,
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () async {
-              await DatePicker.showDatePicker(context, showTitleActions: true,
-                  onConfirm: (date) {
-                setState(() => datePicked = date);
-              }, currentTime: DateTime.now());
-            },
-            backgroundColor: FlutterFlowTheme.primaryColor,
-            elevation: 8,
-          ),
           body: SafeArea(
             child: Card(
               clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -65,57 +53,60 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Image.network(
-                    'https://picsum.photos/seed/789/300',
-                    width: double.infinity,
-                    height: 120,
-                    fit: BoxFit.cover,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(15, 15, 15, 25),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                componentsUsersRecord.email,
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(0, 4, 0, 0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.network(
+                      'https://picsum.photos/seed/789/300',
+                      width: double.infinity,
+                      height: 120,
+                      fit: BoxFit.cover,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(15, 15, 15, 25),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  componentsUsersRecord.email,
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                getCurrentTimestamp.toString(),
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  color: FlutterFlowTheme.secondaryColor,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                          child: Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum gravida mattis lorem, et posuere tortor rutrum vitae. Vivamus lacinia fringilla libero, at maximus quam imperdiet sed. Pellentesque egestas eget ex a consectetur.',
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Poppins',
+                                Text(
+                                  getCurrentTimestamp.toString(),
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.secondaryColor,
+                                  ),
+                                )
+                              ],
                             ),
                           ),
-                        )
-                      ],
-                    ),
-                  )
-                ],
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                            child: Text(
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum gravida mattis lorem, et posuere tortor rutrum vitae. Vivamus lacinia fringilla libero, at maximus quam imperdiet sed. Pellentesque egestas eget ex a consectetur.',
+                              style: FlutterFlowTheme.bodyText1.override(
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
