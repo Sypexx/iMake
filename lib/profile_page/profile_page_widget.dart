@@ -106,8 +106,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                 gridViewPostsRecordList[gridViewIndex];
                             return StreamBuilder<List<PostsRecord>>(
                               stream: queryPostsRecord(
-                                queryBuilder: (postsRecord) =>
-                                    postsRecord.orderBy('created_at'),
                                 singleRecord: true,
                               ),
                               builder: (context, snapshot) {
