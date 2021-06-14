@@ -42,33 +42,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      StreamBuilder<List<UsersRecord>>(
-                        stream: queryUsersRecord(
-                          singleRecord: true,
+                      Text(
+                        'Card Title',
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Poppins',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
                         ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(child: CircularProgressIndicator());
-                          }
-                          List<UsersRecord> textUsersRecordList = snapshot.data;
-                          // Customize what your widget looks like with no query results.
-                          if (snapshot.data.isEmpty) {
-                            // return Container();
-                            // For now, we'll just include some dummy data.
-                            textUsersRecordList =
-                                createDummyUsersRecord(count: 1);
-                          }
-                          final textUsersRecord = textUsersRecordList.first;
-                          return Text(
-                            textUsersRecord.email,
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Poppins',
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          );
-                        },
                       ),
                       Text(
                         getCurrentTimestamp.toString(),
