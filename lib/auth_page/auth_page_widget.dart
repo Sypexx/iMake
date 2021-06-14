@@ -126,6 +126,10 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                         controller: textController,
                         obscureText: false,
                         decoration: InputDecoration(
+                          labelText: 'asdasdsaasd',
+                          labelStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
+                          ),
                           hintText: '[Some hint text...]',
                           hintStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Poppins',
