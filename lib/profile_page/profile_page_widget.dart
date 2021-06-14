@@ -1,5 +1,7 @@
 import '../addimg/addimg_widget.dart';
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/profile_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -102,11 +104,32 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           itemBuilder: (context, gridViewIndex) {
                             final gridViewPostsRecord =
                                 gridViewPostsRecordList[gridViewIndex];
-                            return Image.network(
-                              gridViewPostsRecord.imgUrl,
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
+                            return StreamBuilder<UsersRecord>(
+                              stream:
+                                  UsersRecord.getDocument(currentUserReference),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                      child: CircularProgressIndicator());
+                                }
+                                final imageUsersRecord = snapshot.data;
+                                return InkWell(
+                                  onTap: () async {
+                                    await showModalBottomSheet(
+                                        context: context,
+                                        builder: (context) {
+                                          return ProfileWidget();
+                                        });
+                                  },
+                                  child: Image.network(
+                                    gridViewPostsRecord.imgUrl,
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  ),
+                                );
+                              },
                             );
                           },
                         );
