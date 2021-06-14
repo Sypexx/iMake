@@ -50,151 +50,113 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Stack(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
           children: [
-            Align(
-              alignment: Alignment(0, 0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        GridView(
-                          padding: EdgeInsets.zero,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                            childAspectRatio: 1,
-                          ),
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          children: [
-                            Image.network(
-                              'https://picsum.photos/seed/187/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/948/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/576/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/313/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/807/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/767/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/300/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/854/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/813/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/712/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/970/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/321/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/105/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/931/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/937/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/132/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/473/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/165/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Image.network(
-                              'https://picsum.photos/seed/433/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  )
-                ],
+            GridView(
+              padding: EdgeInsets.zero,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 50,
+                childAspectRatio: 1,
               ),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              children: [
+                Image.network(
+                  'https://picsum.photos/seed/911/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/985/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/817/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/924/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/179/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/648/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/276/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/71/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/864/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/573/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/250/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/936/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/484/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/521/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Image.network(
+                  'https://picsum.photos/seed/589/600',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                )
+              ],
             )
           ],
         ),
