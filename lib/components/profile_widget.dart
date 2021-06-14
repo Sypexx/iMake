@@ -15,75 +15,75 @@ class ProfileWidget extends StatefulWidget {
 class _ProfileWidgetState extends State<ProfileWidget> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      color: Color(0xFFF5F5F5),
-      elevation: 3,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.network(
-            'https://picsum.photos/seed/789/300',
-            width: double.infinity,
-            height: 120,
-            fit: BoxFit.cover,
+    return StreamBuilder<UsersRecord>(
+      stream: UsersRecord.getDocument(currentUserReference),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Center(child: CircularProgressIndicator());
+        }
+        final profileUsersRecord = snapshot.data;
+        return Card(
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          color: Color(0xFFF5F5F5),
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
           ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(15, 15, 15, 25),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      StreamBuilder<UsersRecord>(
-                        stream: UsersRecord.getDocument(currentUserReference),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(child: CircularProgressIndicator());
-                          }
-                          final textUsersRecord = snapshot.data;
-                          return Text(
-                            textUsersRecord.email,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.network(
+                'https://picsum.photos/seed/789/300',
+                width: double.infinity,
+                height: 120,
+                fit: BoxFit.cover,
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(15, 15, 15, 25),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            profileUsersRecord.email,
                             style: FlutterFlowTheme.bodyText1.override(
                               fontFamily: 'Poppins',
                               fontSize: 15,
                               fontWeight: FontWeight.w600,
                             ),
-                          );
-                        },
+                          ),
+                          Text(
+                            getCurrentTimestamp.toString(),
+                            style: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
+                              color: FlutterFlowTheme.secondaryColor,
+                            ),
+                          )
+                        ],
                       ),
-                      Text(
-                        getCurrentTimestamp.toString(),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                      child: Text(
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum gravida mattis lorem, et posuere tortor rutrum vitae. Vivamus lacinia fringilla libero, at maximus quam imperdiet sed. Pellentesque egestas eget ex a consectetur.',
                         style: FlutterFlowTheme.bodyText1.override(
                           fontFamily: 'Poppins',
-                          color: FlutterFlowTheme.secondaryColor,
                         ),
-                      )
-                    ],
-                  ),
+                      ),
+                    )
+                  ],
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                  child: Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum gravida mattis lorem, et posuere tortor rutrum vitae. Vivamus lacinia fringilla libero, at maximus quam imperdiet sed. Pellentesque egestas eget ex a consectetur.',
-                    style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
-      ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }
