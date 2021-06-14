@@ -32,6 +32,16 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
         elevation: 4,
       ),
       backgroundColor: Colors.white,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          print('FloatingActionButton pressed ...');
+        },
+        backgroundColor: FlutterFlowTheme.primaryColor,
+        icon: Icon(
+          Icons.add,
+        ),
+        elevation: 8,
+      ),
       body: SafeArea(
         child: Align(
           alignment: Alignment(0, 0.05),
