@@ -1,4 +1,5 @@
 import '../addimg/addimg_widget.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -50,115 +51,71 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          children: [
-            GridView(
-              padding: EdgeInsets.zero,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 50,
-                childAspectRatio: 1,
-              ),
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              children: [
-                Image.network(
-                  'https://picsum.photos/seed/911/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 1,
+          decoration: BoxDecoration(
+            color: Color(0xFFEEEEEE),
+          ),
+          child: ListView(
+            padding: EdgeInsets.zero,
+            scrollDirection: Axis.vertical,
+            children: [
+              StreamBuilder<List<PostsRecord>>(
+                stream: queryPostsRecord(
+                  queryBuilder: (postsRecord) =>
+                      postsRecord.orderBy('created_at', descending: true),
                 ),
-                Image.network(
-                  'https://picsum.photos/seed/985/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Image.network(
-                  'https://picsum.photos/seed/817/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Image.network(
-                  'https://picsum.photos/seed/924/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Image.network(
-                  'https://picsum.photos/seed/179/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Image.network(
-                  'https://picsum.photos/seed/648/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Image.network(
-                  'https://picsum.photos/seed/276/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Image.network(
-                  'https://picsum.photos/seed/71/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Image.network(
-                  'https://picsum.photos/seed/864/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Image.network(
-                  'https://picsum.photos/seed/573/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Image.network(
-                  'https://picsum.photos/seed/250/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Image.network(
-                  'https://picsum.photos/seed/936/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Image.network(
-                  'https://picsum.photos/seed/484/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Image.network(
-                  'https://picsum.photos/seed/521/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Image.network(
-                  'https://picsum.photos/seed/589/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                )
-              ],
-            )
-          ],
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  List<PostsRecord> gridViewPostsRecordList = snapshot.data;
+                  // Customize what your widget looks like with no query results.
+                  if (snapshot.data.isEmpty) {
+                    // return Container();
+                    // For now, we'll just include some dummy data.
+                    gridViewPostsRecordList = createDummyPostsRecord(count: 4);
+                  }
+                  return GridView.builder(
+                    padding: EdgeInsets.zero,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 1,
+                    ),
+                    primary: false,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: gridViewPostsRecordList.length,
+                    itemBuilder: (context, gridViewIndex) {
+                      final gridViewPostsRecord =
+                          gridViewPostsRecordList[gridViewIndex];
+                      return StreamBuilder<PostsRecord>(
+                        stream: PostsRecord.getDocument(
+                            gridViewPostsRecord.reference),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                          final imagePostsRecord = snapshot.data;
+                          return Image.network(
+                            gridViewPostsRecord.imgUrl,
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
