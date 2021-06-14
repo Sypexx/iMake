@@ -104,16 +104,29 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           itemBuilder: (context, gridViewIndex) {
                             final gridViewPostsRecord =
                                 gridViewPostsRecordList[gridViewIndex];
-                            return StreamBuilder<UsersRecord>(
-                              stream:
-                                  UsersRecord.getDocument(currentUserReference),
+                            return StreamBuilder<List<PostsRecord>>(
+                              stream: queryPostsRecord(
+                                queryBuilder: (postsRecord) =>
+                                    postsRecord.orderBy('created_at'),
+                                singleRecord: true,
+                              ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
                                   return Center(
                                       child: CircularProgressIndicator());
                                 }
-                                final imageUsersRecord = snapshot.data;
+                                List<PostsRecord> imagePostsRecordList =
+                                    snapshot.data;
+                                // Customize what your widget looks like with no query results.
+                                if (snapshot.data.isEmpty) {
+                                  // return Container();
+                                  // For now, we'll just include some dummy data.
+                                  imagePostsRecordList =
+                                      createDummyPostsRecord(count: 1);
+                                }
+                                final imagePostsRecord =
+                                    imagePostsRecordList.first;
                                 return InkWell(
                                   onTap: () async {
                                     await showModalBottomSheet(
