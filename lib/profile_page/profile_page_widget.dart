@@ -1,8 +1,4 @@
 import '../addimg/addimg_widget.dart';
-import '../auth/auth_util.dart';
-import '../backend/backend.dart';
-import '../components/components_widget.dart';
-import '../components/profile_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -54,102 +50,153 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Align(
-          alignment: Alignment(0, 0.05),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: 400,
-                  height: 520,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFEEEEEE),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 2),
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment(0, 0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
                     child: ListView(
                       padding: EdgeInsets.zero,
                       scrollDirection: Axis.vertical,
                       children: [
-                        StreamBuilder<List<PostsRecord>>(
-                          stream: queryPostsRecord(
-                            queryBuilder: (postsRecord) =>
-                                postsRecord.orderBy('created_at'),
+                        GridView(
+                          padding: EdgeInsets.zero,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
+                            childAspectRatio: 1,
                           ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(child: CircularProgressIndicator());
-                            }
-                            List<PostsRecord> gridViewPostsRecordList =
-                                snapshot.data;
-                            // Customize what your widget looks like with no query results.
-                            if (snapshot.data.isEmpty) {
-                              // return Container();
-                              // For now, we'll just include some dummy data.
-                              gridViewPostsRecordList =
-                                  createDummyPostsRecord(count: 4);
-                            }
-                            return GridView.builder(
-                              padding: EdgeInsets.zero,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                                crossAxisSpacing: 10,
-                                mainAxisSpacing: 10,
-                                childAspectRatio: 1,
-                              ),
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: gridViewPostsRecordList.length,
-                              itemBuilder: (context, gridViewIndex) {
-                                final gridViewPostsRecord =
-                                    gridViewPostsRecordList[gridViewIndex];
-                                return StreamBuilder<PostsRecord>(
-                                  stream: PostsRecord.getDocument(
-                                      gridViewPostsRecord.reference),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                          child: CircularProgressIndicator());
-                                    }
-                                    final imagePostsRecord = snapshot.data;
-                                    return InkWell(
-                                      onTap: () async {
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                ComponentsWidget(
-                                              post: imagePostsRecord.user,
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      child: Image.network(
-                                        gridViewPostsRecord.imgUrl,
-                                        width: 100,
-                                        height: 100,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                          },
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          children: [
+                            Image.network(
+                              'https://picsum.photos/seed/187/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/948/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/576/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/313/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/807/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/767/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/300/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/854/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/813/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/712/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/970/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/321/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/105/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/931/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/937/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/132/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/473/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/165/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Image.network(
+                              'https://picsum.photos/seed/433/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            )
+                          ],
                         )
                       ],
                     ),
-                  ),
-                )
-              ],
-            ),
-          ),
+                  )
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
