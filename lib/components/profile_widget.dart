@@ -42,10 +42,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      StreamBuilder<List<PostsRecord>>(
-                        stream: queryPostsRecord(
-                          queryBuilder: (postsRecord) => postsRecord
-                              .where('user', isEqualTo: currentUserReference),
+                      StreamBuilder<List<UsersRecord>>(
+                        stream: queryUsersRecord(
                           singleRecord: true,
                         ),
                         builder: (context, snapshot) {
@@ -53,17 +51,17 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           if (!snapshot.hasData) {
                             return Center(child: CircularProgressIndicator());
                           }
-                          List<PostsRecord> textPostsRecordList = snapshot.data;
+                          List<UsersRecord> textUsersRecordList = snapshot.data;
                           // Customize what your widget looks like with no query results.
                           if (snapshot.data.isEmpty) {
                             // return Container();
                             // For now, we'll just include some dummy data.
-                            textPostsRecordList =
-                                createDummyPostsRecord(count: 1);
+                            textUsersRecordList =
+                                createDummyUsersRecord(count: 1);
                           }
-                          final textPostsRecord = textPostsRecordList.first;
+                          final textUsersRecord = textUsersRecordList.first;
                           return Text(
-                            'Card Title',
+                            textUsersRecord.email,
                             style: FlutterFlowTheme.bodyText1.override(
                               fontFamily: 'Poppins',
                               fontSize: 15,
