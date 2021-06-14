@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -15,6 +16,7 @@ class AuthPageWidget extends StatefulWidget {
 
 class _AuthPageWidgetState extends State<AuthPageWidget> {
   TextEditingController emailTextController;
+  TextEditingController textController;
   TextEditingController passwordTextController;
   bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -23,6 +25,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
   void initState() {
     super.initState();
     emailTextController = TextEditingController();
+    textController = TextEditingController();
     passwordTextController = TextEditingController();
     passwordVisibility = false;
   }
@@ -50,7 +53,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                 ),
               ),
               Align(
-                alignment: Alignment(0, 0),
+                alignment: Alignment(0, 3.3),
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 80),
                   child: Column(
@@ -66,41 +69,44 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                             children: [
                               Align(
                                 alignment: Alignment(0, 0),
-                                child: TextFormField(
-                                  controller: emailTextController,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    hintText: 'Username',
-                                    hintStyle: GoogleFonts.getFont(
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(4, 0, 0, 1),
+                                  child: TextFormField(
+                                    controller: emailTextController,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      hintText: 'Username',
+                                      hintStyle: GoogleFonts.getFont(
+                                        'Lato',
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFF3C2452),
+                                          width: 2,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFF3C2452),
+                                          width: 2,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                    ),
+                                    style: GoogleFonts.getFont(
                                       'Lato',
                                       color: Colors.white,
                                       fontSize: 18,
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFF3C2452),
-                                        width: 2,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFF3C2452),
-                                        width: 2,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                  ),
-                                  style: GoogleFonts.getFont(
-                                    'Lato',
-                                    color: Colors.white,
-                                    fontSize: 18,
                                   ),
                                 ),
                               ),
@@ -114,6 +120,39 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                               )
                             ],
                           ),
+                        ),
+                      ),
+                      TextFormField(
+                        controller: textController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          hintText: '[Some hint text...]',
+                          hintStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                        ),
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Poppins',
                         ),
                       ),
                       Padding(
@@ -203,6 +242,16 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                 if (user == null) {
                                   return;
                                 }
+
+                                final role = int.parse(textController.text);
+
+                                final usersRecordData = createUsersRecordData(
+                                  role: role,
+                                );
+
+                                await UsersRecord.collection
+                                    .doc(user.uid)
+                                    .update(usersRecordData);
 
                                 await Navigator.pushAndRemoveUntil(
                                   context,
