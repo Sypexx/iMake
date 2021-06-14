@@ -1,3 +1,4 @@
+import '../addimg/addimg_widget.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -27,21 +28,28 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
             fontFamily: 'Poppins',
           ),
         ),
-        actions: [],
+        actions: [
+          IconButton(
+            onPressed: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddimgWidget(),
+                ),
+              );
+            },
+            icon: Icon(
+              Icons.add_box_outlined,
+              color: Colors.black,
+              size: 30,
+            ),
+            iconSize: 30,
+          )
+        ],
         centerTitle: true,
         elevation: 4,
       ),
       backgroundColor: Colors.white,
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          print('FloatingActionButton pressed ...');
-        },
-        backgroundColor: FlutterFlowTheme.primaryColor,
-        icon: Icon(
-          Icons.add,
-        ),
-        elevation: 8,
-      ),
       body: SafeArea(
         child: Align(
           alignment: Alignment(0, 0.05),
