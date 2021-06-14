@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ComponentsWidget extends StatefulWidget {
@@ -18,6 +19,7 @@ class ComponentsWidget extends StatefulWidget {
 }
 
 class _ComponentsWidgetState extends State<ComponentsWidget> {
+  DateTime datePicked = DateTime.now();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -44,6 +46,16 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
             actions: [],
             centerTitle: true,
             elevation: 4,
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () async {
+              await DatePicker.showDatePicker(context, showTitleActions: true,
+                  onConfirm: (date) {
+                setState(() => datePicked = date);
+              }, currentTime: DateTime.now());
+            },
+            backgroundColor: FlutterFlowTheme.primaryColor,
+            elevation: 8,
           ),
           body: SafeArea(
             child: Card(
