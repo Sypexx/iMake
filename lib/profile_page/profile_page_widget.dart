@@ -84,8 +84,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           itemBuilder: (context, gridViewIndex) {
                             final gridViewPostsRecord =
                                 gridViewPostsRecordList[gridViewIndex];
-                            return Container(
-                                width: 100, height: 100, color: Colors.green);
+                            return Image.network(
+                              'https://picsum.photos/seed/399/600',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            );
                           },
                         );
                       },
