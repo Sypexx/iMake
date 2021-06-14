@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1058846965158",
+    "project_id": "imake-b18ed",
+    "storage_bucket": "imake-b18ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058846965158:android:ce00dc0301183f9095e367",
+        "android_client_info": {
+          "package_name": "com.flutterflow.imake"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058846965158-f038bapkbpa4ia9mrvdarohn5pli2hku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYckJye3_FJeMJ7W6QiYoijJyZaWSoXXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058846965158-f038bapkbpa4ia9mrvdarohn5pli2hku.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
