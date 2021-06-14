@@ -1,5 +1,6 @@
 import '../addimg/addimg_widget.dart';
 import '../backend/backend.dart';
+import '../components/components_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -59,6 +60,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
           ),
           child: ListView(
             padding: EdgeInsets.zero,
+            primary: false,
+            shrinkWrap: true,
             scrollDirection: Axis.vertical,
             children: [
               StreamBuilder<List<PostsRecord>>(
@@ -86,7 +89,6 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                       mainAxisSpacing: 10,
                       childAspectRatio: 1,
                     ),
-                    primary: false,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     itemCount: gridViewPostsRecordList.length,
@@ -102,11 +104,23 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             return Center(child: CircularProgressIndicator());
                           }
                           final imagePostsRecord = snapshot.data;
-                          return Image.network(
-                            gridViewPostsRecord.imgUrl,
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
+                          return InkWell(
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ComponentsWidget(
+                                    post: imagePostsRecord.reference,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Image.network(
+                              gridViewPostsRecord.imgUrl,
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
                           );
                         },
                       );

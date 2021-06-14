@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -23,7 +24,7 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(widget.post),
+      stream: UsersRecord.getDocument(currentUserReference),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
