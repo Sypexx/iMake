@@ -85,7 +85,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             final gridViewPostsRecord =
                                 gridViewPostsRecordList[gridViewIndex];
                             return Image.network(
-                              'https://picsum.photos/seed/399/600',
+                              gridViewPostsRecord.imgUrl,
                               width: 100,
                               height: 100,
                               fit: BoxFit.cover,
