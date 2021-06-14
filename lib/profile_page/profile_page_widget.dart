@@ -52,22 +52,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 1,
-          decoration: BoxDecoration(
-            color: Color(0xFFEEEEEE),
-          ),
-          child: ListView(
-            padding: EdgeInsets.zero,
-            primary: false,
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            children: [
-              StreamBuilder<List<PostsRecord>>(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+              child: StreamBuilder<List<PostsRecord>>(
                 stream: queryPostsRecord(
                   queryBuilder: (postsRecord) =>
-                      postsRecord.orderBy('created_at', descending: true),
+                      postsRecord.orderBy('created_at'),
                 ),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
@@ -95,22 +87,32 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     itemBuilder: (context, gridViewIndex) {
                       final gridViewPostsRecord =
                           gridViewPostsRecordList[gridViewIndex];
-                      return StreamBuilder<PostsRecord>(
-                        stream: PostsRecord.getDocument(
-                            gridViewPostsRecord.reference),
+                      return StreamBuilder<List<PostsRecord>>(
+                        stream: queryPostsRecord(
+                          singleRecord: true,
+                        ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
                             return Center(child: CircularProgressIndicator());
                           }
-                          final imagePostsRecord = snapshot.data;
+                          List<PostsRecord> imagePostsRecordList =
+                              snapshot.data;
+                          // Customize what your widget looks like with no query results.
+                          if (snapshot.data.isEmpty) {
+                            // return Container();
+                            // For now, we'll just include some dummy data.
+                            imagePostsRecordList =
+                                createDummyPostsRecord(count: 1);
+                          }
+                          final imagePostsRecord = imagePostsRecordList.first;
                           return InkWell(
                             onTap: () async {
                               await Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => ComponentsWidget(
-                                    post: imagePostsRecord.reference,
+                                    posts: imagePostsRecord,
                                   ),
                                 ),
                               );
@@ -127,9 +129,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     },
                   );
                 },
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
