@@ -1,3 +1,4 @@
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           ),
         ),
         title: Padding(
-          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+          padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
           child: Text(
             'Якутск',
             textAlign: TextAlign.start,
@@ -47,7 +48,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
           ),
         ),
-        actions: [],
+        actions: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+            child: Icon(
+              Icons.chat_bubble,
+              color: Colors.black,
+              size: 32,
+            ),
+          )
+        ],
         centerTitle: false,
         elevation: 4,
       ),
@@ -72,32 +82,32 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 height: 500,
                 child: Stack(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 0, 50),
-                      child: PageView(
-                        controller: pageViewController1,
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          Image.network(
-                            'https://picsum.photos/seed/474/600',
+                    PageView(
+                      controller: pageViewController1,
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        Image.asset(
+                          'assets/images/IMG_4633.PNG',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                        Image.asset(
+                          'assets/images/IMG_4634.PNG',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 1, 0, 0),
+                          child: Image.asset(
+                            'assets/images/IMG_4630.PNG',
                             width: 100,
                             height: 100,
                             fit: BoxFit.cover,
                           ),
-                          Image.network(
-                            'https://picsum.photos/seed/350/600',
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          ),
-                          Image.network(
-                            'https://picsum.photos/seed/708/600',
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          )
-                        ],
-                      ),
+                        )
+                      ],
                     ),
                     Align(
                       alignment: Alignment(0, 1),
@@ -149,57 +159,51 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
             ),
-            Container(
-              width: 400,
-              height: 100,
-              decoration: BoxDecoration(
-                color: Colors.white,
-              ),
-              child: ListView(
-                padding: EdgeInsets.zero,
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Card(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    color: Color(0xFFF5F5F5),
-                    child: Image.network(
-                      'https://picsum.photos/seed/718/600',
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    color: Color(0xFFF5F5F5),
-                    child: Image.network(
-                      'https://picsum.photos/seed/31/600',
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    color: Color(0xFFF5F5F5),
-                    child: Image.network(
-                      'https://picsum.photos/seed/679/600',
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    color: Color(0xFFF5F5F5),
-                    child: Image.network(
-                      'https://picsum.photos/seed/634/600',
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    ),
-                  )
-                ],
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: StreamBuilder<List<CategoriesRecord>>(
+                  stream: queryCategoriesRecord(),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    List<CategoriesRecord> rowCategoriesRecordList =
+                        snapshot.data;
+                    // Customize what your widget looks like with no query results.
+                    if (snapshot.data.isEmpty) {
+                      // return Container();
+                      // For now, we'll just include some dummy data.
+                      rowCategoriesRecordList =
+                          createDummyCategoriesRecord(count: 4);
+                    }
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: List.generate(rowCategoriesRecordList.length,
+                            (rowIndex) {
+                          final rowCategoriesRecord =
+                              rowCategoriesRecordList[rowIndex];
+                          return Image.network(
+                            rowCategoriesRecord.imgUrl,
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          );
+                        }),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
             Container(
@@ -209,7 +213,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 color: Colors.white,
               ),
               child: Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                padding: EdgeInsets.fromLTRB(0, 20, 0, 2),
                 child: Text(
                   'Лучшее',
                   textAlign: TextAlign.start,
@@ -231,32 +235,32 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 height: 500,
                 child: Stack(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 0, 50),
-                      child: PageView(
-                        controller: pageViewController2,
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          Image.network(
-                            'https://picsum.photos/seed/474/600',
+                    PageView(
+                      controller: pageViewController2,
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        Image.asset(
+                          'assets/images/IMG_4629.PNG',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                        Image.asset(
+                          'assets/images/IMG_4632.PNG',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 1, 0, 0),
+                          child: Image.asset(
+                            'assets/images/IMG_4630.PNG',
                             width: 100,
                             height: 100,
                             fit: BoxFit.cover,
                           ),
-                          Image.network(
-                            'https://picsum.photos/seed/350/600',
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          ),
-                          Image.network(
-                            'https://picsum.photos/seed/708/600',
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          )
-                        ],
-                      ),
+                        )
+                      ],
                     ),
                     Align(
                       alignment: Alignment(0, 1),

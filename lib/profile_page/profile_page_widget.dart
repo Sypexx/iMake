@@ -24,7 +24,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Text(
-          'Киллер Фича',
+          'Работы мастеров',
           style: FlutterFlowTheme.bodyText1.override(
             fontFamily: 'Poppins',
           ),

@@ -36,9 +36,13 @@ class _MyAppState extends State<MyApp> {
       title: 'Imake',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: initialUser == null
-          ? const Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Color(0xff4b39ef)),
+          ? Center(
+              child: Builder(
+                builder: (context) => Image.asset(
+                  'assets/images/image.PNG',
+                  width: MediaQuery.of(context).size.width / 2,
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             )
           : currentUser.loggedIn
