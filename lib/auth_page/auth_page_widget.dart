@@ -127,7 +127,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(45, 0, 45, 30),
+                          padding: EdgeInsets.fromLTRB(50, 0, 50, 30),
                           child: Stack(
                             children: [
                               Align(
