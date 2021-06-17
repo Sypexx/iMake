@@ -54,6 +54,7 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
             centerTitle: true,
             elevation: 4,
           ),
+          backgroundColor: Colors.white,
           body: SafeArea(
             child: Column(
               mainAxisSize: MainAxisSize.max,
