@@ -82,7 +82,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                         child: Container(
                           width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height * 0.2,
+                          height: MediaQuery.of(context).size.height * 0.25,
                           child: Stack(
                             children: [
                               PageView.builder(
