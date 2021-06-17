@@ -31,26 +31,18 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
-            color: Color(0xFF110631),
+            color: Color(0xFF7B2E2E),
           ),
           child: Stack(
             children: [
               Align(
-                alignment: Alignment(0.06, -0.63),
-                child: Image.network(
-                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/flutterflow_assets/ff_full_logo_light.png',
-                  width: 280,
-                  height: 100,
-                  fit: BoxFit.contain,
-                ),
-              ),
-              Align(
-                alignment: Alignment(0, 0),
+                alignment: Alignment(0, -1.84),
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 80),
                   child: Column(
@@ -273,14 +265,6 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                               ),
                             )
                           ],
-                        ),
-                      ),
-                      Text(
-                        'Forgot Password?',
-                        style: GoogleFonts.getFont(
-                          'Lato',
-                          color: Color(0xFF676767),
-                          fontSize: 16,
                         ),
                       )
                     ],
