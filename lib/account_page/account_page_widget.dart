@@ -65,7 +65,7 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(50),
                         child: Image.network(
-                          currentUserPhoto,
+                          accountPageUsersRecord.avatar,
                           width: 100,
                           height: 100,
                           fit: BoxFit.cover,
