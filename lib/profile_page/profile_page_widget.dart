@@ -57,10 +57,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
           children: [
             Expanded(
               child: StreamBuilder<List<PostsRecord>>(
-                stream: queryPostsRecord(
-                  queryBuilder: (postsRecord) =>
-                      postsRecord.orderBy('created_at'),
-                ),
+                stream: queryPostsRecord(),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
@@ -87,32 +84,23 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     itemBuilder: (context, gridViewIndex) {
                       final gridViewPostsRecord =
                           gridViewPostsRecordList[gridViewIndex];
-                      return StreamBuilder<List<PostsRecord>>(
-                        stream: queryPostsRecord(
-                          singleRecord: true,
-                        ),
+                      return StreamBuilder<UsersRecord>(
+                        stream:
+                            UsersRecord.getDocument(gridViewPostsRecord.user),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
                             return Center(child: CircularProgressIndicator());
                           }
-                          List<PostsRecord> imagePostsRecordList =
-                              snapshot.data;
-                          // Customize what your widget looks like with no query results.
-                          if (snapshot.data.isEmpty) {
-                            // return Container();
-                            // For now, we'll just include some dummy data.
-                            imagePostsRecordList =
-                                createDummyPostsRecord(count: 1);
-                          }
-                          final imagePostsRecord = imagePostsRecordList.first;
+                          final imageUsersRecord = snapshot.data;
                           return InkWell(
                             onTap: () async {
                               await Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => ComponentsWidget(
-                                    posts: imagePostsRecord,
+                                    created: gridViewPostsRecord,
+                                    username: gridViewPostsRecord,
                                   ),
                                 ),
                               );

@@ -2,7 +2,6 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -218,29 +217,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 color: Colors.white,
               ),
             ),
-            FFButtonWidget(
-              onPressed: () {
-                print('Button pressed ...');
-              },
-              text: 'Button',
-              options: FFButtonOptions(
-                width: 130,
-                height: 40,
-                color: FlutterFlowTheme.primaryColor,
-                textStyle: FlutterFlowTheme.subtitle2.override(
-                  fontFamily: 'Poppins',
-                  color: Colors.white,
-                ),
-                borderSide: BorderSide(
-                  color: Colors.transparent,
-                  width: 1,
-                ),
-                borderRadius: 12,
-              ),
-            ),
             FlutterFlowDropDown(
-              initialOption: 'adwasd',
-              options: ['123', '1233', '1234'],
+              options: ['Option 1'],
               onChanged: (value) {
                 setState(() => dropDownValue = value);
               },
@@ -249,10 +227,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               textStyle: FlutterFlowTheme.bodyText1.override(
                 fontFamily: 'Poppins',
                 color: Colors.black,
-              ),
-              icon: Icon(
-                Icons.threesixty_rounded,
-                size: 15,
               ),
               fillColor: Colors.white,
               elevation: 2,

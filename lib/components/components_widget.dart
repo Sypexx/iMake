@@ -3,114 +3,191 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ComponentsWidget extends StatefulWidget {
   ComponentsWidget({
     Key key,
-    this.posts,
+    this.created,
+    this.username,
   }) : super(key: key);
 
-  final PostsRecord posts;
+  final PostsRecord created;
+  final PostsRecord username;
 
   @override
   _ComponentsWidgetState createState() => _ComponentsWidgetState();
 }
 
 class _ComponentsWidgetState extends State<ComponentsWidget> {
+  final pageViewController = PageController();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        automaticallyImplyLeading: true,
-        title: Text(
-          'Аккаунт',
-          style: FlutterFlowTheme.title1.override(
-            fontFamily: 'Poppins',
-          ),
-        ),
-        actions: [],
-        centerTitle: true,
-        elevation: 4,
-      ),
       body: SafeArea(
-        child: Card(
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          color: Color(0xFFF5F5F5),
-          elevation: 3,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(0, 4, 0, 0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Image.network(
-                  'https://picsum.photos/seed/789/300',
-                  width: double.infinity,
-                  height: 120,
-                  fit: BoxFit.cover,
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(15, 15, 15, 25),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: Stack(
+                children: [
+                  PageView(
+                    controller: pageViewController,
+                    scrollDirection: Axis.horizontal,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            StreamBuilder<UsersRecord>(
-                              stream:
-                                  UsersRecord.getDocument(widget.posts.user),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                      child: CircularProgressIndicator());
-                                }
-                                final textUsersRecord = snapshot.data;
-                                return Text(
-                                  textUsersRecord.email,
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                );
-                              },
-                            ),
-                            Text(
-                              getCurrentTimestamp.toString(),
-                              style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Poppins',
-                                color: FlutterFlowTheme.secondaryColor,
-                              ),
-                            )
-                          ],
-                        ),
+                      Image.network(
+                        'https://picsum.photos/seed/905/600',
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                        child: Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum gravida mattis lorem, et posuere tortor rutrum vitae. Vivamus lacinia fringilla libero, at maximus quam imperdiet sed. Pellentesque egestas eget ex a consectetur.',
-                          style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
+                      Image.network(
+                        'https://picsum.photos/seed/77/600',
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
+                      ),
+                      Image.network(
+                        'https://picsum.photos/seed/638/600',
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
                       )
                     ],
                   ),
-                )
-              ],
+                  Align(
+                    alignment: Alignment(0, 1),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                      child: SmoothPageIndicator(
+                        controller: pageViewController,
+                        count: 3,
+                        axisDirection: Axis.horizontal,
+                        onDotClicked: (i) {
+                          pageViewController.animateToPage(
+                            i,
+                            duration: Duration(milliseconds: 500),
+                            curve: Curves.ease,
+                          );
+                        },
+                        effect: SlideEffect(
+                          spacing: 8,
+                          radius: 16,
+                          dotWidth: 12,
+                          dotHeight: 12,
+                          dotColor: Color(0xFF9E9E9E),
+                          activeDotColor: Colors.white,
+                          paintStyle: PaintingStyle.fill,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.15,
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: StreamBuilder<UsersRecord>(
+                stream: UsersRecord.getDocument(widget.username.user),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  final columnUsersRecord = snapshot.data;
+                  return Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        columnUsersRecord.email,
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                      Text(
+                        widget.created.createdAt.toString(),
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Poppins',
+                        ),
+                      )
+                    ],
+                  );
+                },
+              ),
+            ),
+            Expanded(
+              child: DefaultTabController(
+                length: 4,
+                initialIndex: 0,
+                child: Column(
+                  children: [
+                    TabBar(
+                      labelColor: Colors.black,
+                      unselectedLabelColor: Color(0xFFA6A6A6),
+                      indicatorColor: Colors.black,
+                      tabs: [
+                        Tab(
+                          text: 'Услуги',
+                        ),
+                        Tab(
+                          text: 'Акции',
+                        ),
+                        Tab(
+                          text: 'Мастера',
+                        ),
+                        Tab(
+                          text: 'Отзывы',
+                        )
+                      ],
+                    ),
+                    Expanded(
+                      child: TabBarView(
+                        children: [
+                          Text(
+                            'Tab View 1',
+                            style: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
+                              fontSize: 32,
+                            ),
+                          ),
+                          Text(
+                            'Tab View 2',
+                            style: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
+                              fontSize: 32,
+                            ),
+                          ),
+                          Text(
+                            'Tab View 3',
+                            style: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
+                              fontSize: 32,
+                            ),
+                          ),
+                          Text(
+                            'Tab View 4',
+                            style: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
+                              fontSize: 32,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
