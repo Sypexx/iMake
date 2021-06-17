@@ -198,7 +198,8 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                           ),
                         ),
                         FlutterFlowDropDown(
-                          options: ['Option 1'],
+                          initialOption: 'asdsadsaasd',
+                          options: ['1', '2', '3'],
                           onChanged: (value) {
                             setState(() => dropDownValue = value);
                           },
