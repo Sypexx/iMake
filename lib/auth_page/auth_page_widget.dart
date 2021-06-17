@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../components/choserol_widget.dart';
 import '../components/profile_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -202,7 +203,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                               await showModalBottomSheet(
                                   context: context,
                                   builder: (context) {
-                                    return ProfileWidget();
+                                    return ChoserolWidget();
                                   });
                             },
                             text: 'Выберите роль',
