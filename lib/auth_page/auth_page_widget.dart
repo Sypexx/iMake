@@ -1,5 +1,4 @@
 import '../auth/auth_util.dart';
-import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -220,7 +219,8 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 FlutterFlowDropDown(
-                                  options: ['Option 1'],
+                                  initialOption: 'asdasd',
+                                  options: ['Option 1', 'Op2'],
                                   onChanged: (value) {
                                     setState(() => dropDownValue = value);
                                   },
@@ -230,6 +230,10 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                       FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Poppins',
                                     color: Colors.black,
+                                  ),
+                                  icon: Icon(
+                                    Icons.seventeen_mp,
+                                    size: 15,
                                   ),
                                   fillColor: Colors.white,
                                   elevation: 2,
