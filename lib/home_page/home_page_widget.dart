@@ -73,9 +73,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   color: Colors.white,
                 ),
                 child: StreamBuilder<List<AdRecord>>(
-                  stream: queryAdRecord(
-                    queryBuilder: (adRecord) => adRecord.orderBy('id'),
-                  ),
+                  stream: queryAdRecord(),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
