@@ -107,17 +107,9 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
                   return Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(
-                        columnUsersRecord.email,
-                        style: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
-                        ),
-                      ),
-                      Text(
-                        widget.created.createdAt.toString(),
-                        style: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
-                        ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [],
                       )
                     ],
                   );
