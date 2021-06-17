@@ -1,4 +1,3 @@
-import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -25,48 +24,30 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            StreamBuilder<List<UsersRecord>>(
-              stream: queryUsersRecord(
-                singleRecord: true,
+            Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                color: Color(0xFFEEEEEE),
               ),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                }
-                List<UsersRecord> dropDownUsersRecordList = snapshot.data;
-                // Customize what your widget looks like with no query results.
-                if (snapshot.data.isEmpty) {
-                  // return Container();
-                  // For now, we'll just include some dummy data.
-                  dropDownUsersRecordList = createDummyUsersRecord(count: 1);
-                }
-                final dropDownUsersRecord = dropDownUsersRecordList.first;
-                return FlutterFlowDropDown(
-                  initialOption: 'asdasd',
-                  options: ['Option 1', '22', '33', '44', '55'],
-                  onChanged: (value) {
-                    setState(() => dropDownValue = value);
-                  },
-                  width: 250,
-                  height: 40,
-                  textStyle: FlutterFlowTheme.title1.override(
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
-                  ),
-                  icon: Icon(
-                    Icons.three_k,
-                    size: 15,
-                  ),
-                  fillColor: Colors.white,
-                  elevation: 3,
-                  borderColor: Colors.transparent,
-                  borderWidth: 1,
-                  borderRadius: 1,
-                  margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
-                );
-              },
+              child: FlutterFlowDropDown(
+                options: ['Option 1'],
+                onChanged: (value) {
+                  setState(() => dropDownValue = value);
+                },
+                width: 130,
+                height: 40,
+                textStyle: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Colors.black,
+                ),
+                fillColor: Colors.white,
+                elevation: 2,
+                borderColor: Colors.transparent,
+                borderWidth: 0,
+                borderRadius: 0,
+                margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
+              ),
             ),
             Image.network(
               'https://picsum.photos/seed/730/600',
