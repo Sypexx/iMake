@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -16,7 +15,6 @@ class AuthPageWidget extends StatefulWidget {
 }
 
 class _AuthPageWidgetState extends State<AuthPageWidget> {
-  String dropDownValue;
   TextEditingController emailTextController;
   TextEditingController passwordTextController;
   bool passwordVisibility;
@@ -202,25 +200,11 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                             children: [
                               Align(
                                 alignment: Alignment(0, 0),
-                                child: FlutterFlowDropDown(
-                                  options: ['Клиент'],
-                                  onChanged: (value) {
-                                    setState(() => dropDownValue = value);
-                                  },
-                                  width: double.infinity,
-                                  height: 40,
-                                  textStyle:
-                                      FlutterFlowTheme.bodyText1.override(
+                                child: Text(
+                                  'Hello Worldasdsadsda',
+                                  style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                    fontSize: 18,
                                   ),
-                                  fillColor: Colors.transparent,
-                                  elevation: 2,
-                                  borderColor: Colors.transparent,
-                                  borderWidth: 0,
-                                  borderRadius: 0,
-                                  margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
                                 ),
                               )
                             ],
@@ -242,16 +226,6 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                   if (user == null) {
                                     return;
                                   }
-
-                                  final role = dropDownValue;
-
-                                  final usersRecordData = createUsersRecordData(
-                                    role: role,
-                                  );
-
-                                  await UsersRecord.collection
-                                      .doc(user.uid)
-                                      .update(usersRecordData);
 
                                   await Navigator.pushAndRemoveUntil(
                                     context,
