@@ -19,11 +19,15 @@ abstract class CategoriesRecord
   String get imgUrl;
 
   @nullable
+  String get text;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
-  static void _initializeBuilder(CategoriesRecordBuilder builder) =>
-      builder..imgUrl = '';
+  static void _initializeBuilder(CategoriesRecordBuilder builder) => builder
+    ..imgUrl = ''
+    ..text = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('categories');
@@ -39,12 +43,18 @@ abstract class CategoriesRecord
 
 Map<String, dynamic> createCategoriesRecordData({
   String imgUrl,
+  String text,
 }) =>
-    serializers.toFirestore(CategoriesRecord.serializer,
-        CategoriesRecord((c) => c..imgUrl = imgUrl));
+    serializers.toFirestore(
+        CategoriesRecord.serializer,
+        CategoriesRecord((c) => c
+          ..imgUrl = imgUrl
+          ..text = text));
 
 CategoriesRecord get dummyCategoriesRecord {
-  final builder = CategoriesRecordBuilder()..imgUrl = dummyImagePath;
+  final builder = CategoriesRecordBuilder()
+    ..imgUrl = dummyImagePath
+    ..text = dummyString;
   return builder.build();
 }
 

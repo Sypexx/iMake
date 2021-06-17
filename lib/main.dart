@@ -6,7 +6,6 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'home_page/home_page_widget.dart';
 import 'insta/insta_widget.dart';
 import 'account_page/account_page_widget.dart';
-import 'search_page/search_page_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -78,7 +77,6 @@ class _NavBarPageState extends State<NavBarPage> {
       'HomePage': HomePageWidget(),
       'Insta': InstaWidget(),
       'AccountPage': AccountPageWidget(),
-      'SearchPage': SearchPageWidget(),
     };
     return Scaffold(
       body: tabs[_currentPage],
@@ -104,14 +102,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24,
             ),
             label: 'Profile',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-              color: Color(0xFF9E9E9E),
-              size: 24,
-            ),
-            label: 'Search',
           )
         ],
         backgroundColor: Colors.white,

@@ -1,7 +1,7 @@
-import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SearchPageWidget extends StatefulWidget {
@@ -12,61 +12,56 @@ class SearchPageWidget extends StatefulWidget {
 }
 
 class _SearchPageWidgetState extends State<SearchPageWidget> {
-  String dropDownValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        title: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Container(
-              width: 100,
-              height: 100,
-              decoration: BoxDecoration(
-                color: Color(0xFFEEEEEE),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+              child: Text(
+                'Якутск',
+                textAlign: TextAlign.start,
+                style: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
-              child: ListView(
-                padding: EdgeInsets.zero,
-                scrollDirection: Axis.vertical,
-                children: [
-                  Card(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    color: Color(0xFFF5F5F5),
-                    child: FlutterFlowDropDown(
-                      options: ['Option 1'],
-                      onChanged: (value) {
-                        setState(() => dropDownValue = value);
-                      },
-                      width: 130,
-                      height: 40,
-                      textStyle: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Poppins',
-                        color: Colors.black,
-                      ),
-                      fillColor: Colors.white,
-                      elevation: 2,
-                      borderColor: Colors.transparent,
-                      borderWidth: 0,
-                      borderRadius: 0,
-                      margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Image.network(
-              'https://picsum.photos/seed/730/600',
-              width: 100,
-              height: 100,
-              fit: BoxFit.cover,
             )
           ],
         ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+            child: IconButton(
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SearchPageWidget(),
+                  ),
+                );
+              },
+              icon: FaIcon(
+                FontAwesomeIcons.search,
+                color: Colors.black,
+                size: 24,
+              ),
+              iconSize: 24,
+            ),
+          )
+        ],
+        centerTitle: false,
+        elevation: 4,
       ),
     );
   }
