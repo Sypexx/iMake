@@ -126,22 +126,6 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                                child: Text(
-                                  currentUserDisplayName,
-                                  style: FlutterFlowTheme.title1.override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
                                 padding: EdgeInsets.fromLTRB(0, 4, 0, 0),
                                 child: Text(
                                   currentUserEmail,

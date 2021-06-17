@@ -7,8 +7,6 @@ import 'package:latlong/latlong.dart';
 import 'users_record.dart';
 import 'posts_record.dart';
 import 'categories_record.dart';
-import 'chats_record.dart';
-import 'chat_messages_record.dart';
 import 'ad_record.dart';
 
 part 'serializers.g.dart';
@@ -19,8 +17,6 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   UsersRecord,
   PostsRecord,
   CategoriesRecord,
-  ChatsRecord,
-  ChatMessagesRecord,
   AdRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
