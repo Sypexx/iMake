@@ -1,4 +1,5 @@
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,8 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  final pageViewController1 = PageController();
-  final pageViewController2 = PageController();
+  String dropDownValue;
+  final pageViewController = PageController();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -83,7 +84,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 child: Stack(
                   children: [
                     PageView(
-                      controller: pageViewController1,
+                      controller: pageViewController,
                       scrollDirection: Axis.horizontal,
                       children: [
                         Image.asset(
@@ -114,11 +115,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                         child: SmoothPageIndicator(
-                          controller: pageViewController1,
+                          controller: pageViewController,
                           count: 3,
                           axisDirection: Axis.horizontal,
                           onDotClicked: (i) {
-                            pageViewController1.animateToPage(
+                            pageViewController.animateToPage(
                               i,
                               duration: Duration(milliseconds: 500),
                               curve: Curves.ease,
@@ -215,87 +216,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               decoration: BoxDecoration(
                 color: Colors.white,
               ),
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 2),
-                child: Text(
-                  'Лучшее',
-                  textAlign: TextAlign.start,
-                  style: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Poppins',
-                    fontSize: 24,
-                  ),
-                ),
-              ),
             ),
-            Container(
-              width: 400,
-              height: 200,
-              decoration: BoxDecoration(
-                color: Colors.white,
+            FlutterFlowDropDown(
+              options: ['Option 1'],
+              onChanged: (value) {
+                setState(() => dropDownValue = value);
+              },
+              width: 130,
+              height: 40,
+              textStyle: FlutterFlowTheme.bodyText1.override(
+                fontFamily: 'Poppins',
+                color: Colors.black,
               ),
-              child: Container(
-                width: double.infinity,
-                height: 500,
-                child: Stack(
-                  children: [
-                    PageView(
-                      controller: pageViewController2,
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        Image.asset(
-                          'assets/images/IMG_4629.PNG',
-                          width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
-                        ),
-                        Image.asset(
-                          'assets/images/IMG_4632.PNG',
-                          width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 1, 0, 0),
-                          child: Image.asset(
-                            'assets/images/IMG_4630.PNG',
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          ),
-                        )
-                      ],
-                    ),
-                    Align(
-                      alignment: Alignment(0, 1),
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                        child: SmoothPageIndicator(
-                          controller: pageViewController2,
-                          count: 3,
-                          axisDirection: Axis.horizontal,
-                          onDotClicked: (i) {
-                            pageViewController2.animateToPage(
-                              i,
-                              duration: Duration(milliseconds: 500),
-                              curve: Curves.ease,
-                            );
-                          },
-                          effect: ExpandingDotsEffect(
-                            expansionFactor: 2,
-                            spacing: 8,
-                            radius: 16,
-                            dotWidth: 16,
-                            dotHeight: 16,
-                            dotColor: Color(0xFF9E9E9E),
-                            activeDotColor: Color(0xFF3F51B5),
-                            paintStyle: PaintingStyle.fill,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              fillColor: Colors.white,
+              elevation: 2,
+              borderColor: Colors.transparent,
+              borderWidth: 0,
+              borderRadius: 0,
+              margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
             )
           ],
         ),
