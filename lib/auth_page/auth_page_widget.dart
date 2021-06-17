@@ -1,5 +1,4 @@
 import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -15,7 +14,6 @@ class AuthPageWidget extends StatefulWidget {
 }
 
 class _AuthPageWidgetState extends State<AuthPageWidget> {
-  String dropDownValue;
   TextEditingController emailTextController;
   TextEditingController passwordTextController;
   bool passwordVisibility;
@@ -191,56 +189,6 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     color: Colors.white,
                                     size: 24,
                                   ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
-                          child: Text(
-                            'Выберите роль',
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Poppins',
-                              color: Colors.white,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
-                          child: Container(
-                            width: 200,
-                            height: 125,
-                            decoration: BoxDecoration(
-                              color: Color(0x00EEEEEE),
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                FlutterFlowDropDown(
-                                  initialOption: 'asdasd',
-                                  options: ['Option 1', 'Op2'],
-                                  onChanged: (value) {
-                                    setState(() => dropDownValue = value);
-                                  },
-                                  width: 130,
-                                  height: 40,
-                                  textStyle:
-                                      FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.black,
-                                  ),
-                                  icon: Icon(
-                                    Icons.seventeen_mp,
-                                    size: 15,
-                                  ),
-                                  fillColor: Colors.white,
-                                  elevation: 2,
-                                  borderColor: Colors.transparent,
-                                  borderWidth: 0,
-                                  borderRadius: 0,
-                                  margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
                                 )
                               ],
                             ),

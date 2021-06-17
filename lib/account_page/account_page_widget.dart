@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../auth_page/auth_page_widget.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
+import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -17,6 +18,7 @@ class AccountPageWidget extends StatefulWidget {
 }
 
 class _AccountPageWidgetState extends State<AccountPageWidget> {
+  String dropDownValue;
   String uploadedFileUrl = '';
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -375,6 +377,24 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                                 ),
                                 borderRadius: 8,
                               ),
+                            ),
+                            FlutterFlowDropDown(
+                              options: ['Option 1'],
+                              onChanged: (value) {
+                                setState(() => dropDownValue = value);
+                              },
+                              width: 130,
+                              height: 40,
+                              textStyle: FlutterFlowTheme.bodyText1.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.black,
+                              ),
+                              fillColor: Colors.white,
+                              elevation: 2,
+                              borderColor: Colors.transparent,
+                              borderWidth: 0,
+                              borderRadius: 0,
+                              margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
                             )
                           ],
                         ),
