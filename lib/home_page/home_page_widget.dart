@@ -202,7 +202,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
+                                  padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                                   child: Image.network(
                                     rowCategoriesRecord.imgUrl,
                                     width: 100,
