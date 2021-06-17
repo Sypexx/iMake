@@ -6,14 +6,14 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ProfilePageWidget extends StatefulWidget {
-  ProfilePageWidget({Key key}) : super(key: key);
+class InstaWidget extends StatefulWidget {
+  InstaWidget({Key key}) : super(key: key);
 
   @override
-  _ProfilePageWidgetState createState() => _ProfilePageWidgetState();
+  _InstaWidgetState createState() => _InstaWidgetState();
 }
 
-class _ProfilePageWidgetState extends State<ProfilePageWidget> {
+class _InstaWidgetState extends State<InstaWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override

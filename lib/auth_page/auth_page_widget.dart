@@ -42,7 +42,16 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: Alignment(0, -1.84),
+                alignment: Alignment(0.31, -0.43),
+                child: Image.asset(
+                  'assets/images/photo_2021-06-18_01-47-06.jpg',
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 1,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Align(
+                alignment: Alignment(0, -0.37),
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 80),
                   child: Column(
@@ -62,46 +71,57 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                   controller: emailTextController,
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    hintText: 'Username',
+                                    hintText: 'Почта',
                                     hintStyle: GoogleFonts.getFont(
                                       'Lato',
-                                      color: Colors.white,
-                                      fontSize: 18,
+                                      color: Color(0xFFBDBDBD),
+                                      fontSize: 16,
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
+                                    enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF3C2452),
+                                        color: Color(0x00FFFFFF),
                                         width: 2,
                                       ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20),
                                       ),
                                     ),
-                                    focusedBorder: UnderlineInputBorder(
+                                    focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF3C2452),
+                                        color: Color(0x00FFFFFF),
                                         width: 2,
                                       ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20),
                                       ),
                                     ),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10, 0, 0, 0),
                                   ),
                                   style: GoogleFonts.getFont(
                                     'Lato',
-                                    color: Colors.white,
-                                    fontSize: 18,
+                                    color: Color(0xFFBDBDBD),
+                                    fontSize: 16,
                                   ),
                                 ),
                               ),
                               Align(
                                 alignment: Alignment(0.95, 0.5),
-                                child: Icon(
-                                  Icons.person,
-                                  color: Colors.white,
-                                  size: 24,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                                  child: Icon(
+                                    Icons.person,
+                                    color: Color(0xFFBDBDBD),
+                                    size: 24,
+                                  ),
                                 ),
                               )
                             ],
@@ -121,32 +141,40 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                   controller: passwordTextController,
                                   obscureText: !passwordVisibility,
                                   decoration: InputDecoration(
-                                    hintText: 'Password',
+                                    hintText: 'Пароль',
                                     hintStyle: GoogleFonts.getFont(
                                       'Lato',
-                                      color: Colors.white,
-                                      fontSize: 18,
+                                      color: Color(0xFFBDBDBD),
+                                      fontSize: 16,
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
+                                    enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF3C2452),
+                                        color: Color(0x00FFFFFF),
                                         width: 2,
                                       ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20),
                                       ),
                                     ),
-                                    focusedBorder: UnderlineInputBorder(
+                                    focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF3C2452),
+                                        color: Color(0x00FFFFFF),
                                         width: 2,
                                       ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20),
                                       ),
                                     ),
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10, 0, 1, 0),
                                     suffixIcon: InkWell(
                                       onTap: () => setState(
                                         () => passwordVisibility =
@@ -162,17 +190,20 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                   ),
                                   style: GoogleFonts.getFont(
                                     'Lato',
-                                    color: Colors.white,
-                                    fontSize: 18,
+                                    color: Color(0xFFBDBDBD),
+                                    fontSize: 16,
                                   ),
                                 ),
                               ),
                               Align(
                                 alignment: Alignment(0.95, 0.5),
-                                child: Icon(
-                                  Icons.lock_open,
-                                  color: Colors.white,
-                                  size: 24,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                                  child: Icon(
+                                    Icons.lock_open,
+                                    color: Color(0xFFBDBDBD),
+                                    size: 24,
+                                  ),
                                 ),
                               )
                             ],
@@ -205,11 +236,11 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                   (r) => false,
                                 );
                               },
-                              text: 'Sign up',
+                              text: 'Регистарция',
                               options: FFButtonOptions(
                                 width: 125,
                                 height: 40,
-                                color: Color(0x00FFFFFF),
+                                color: Color(0xFFBDBDBD),
                                 textStyle: GoogleFonts.getFont(
                                   'Lato',
                                   color: Colors.white,
@@ -217,10 +248,10 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                   fontSize: 15,
                                 ),
                                 borderSide: BorderSide(
-                                  color: Color(0xFF553BBA),
+                                  color: Color(0xFFBDBDBD),
                                   width: 2,
                                 ),
-                                borderRadius: 0,
+                                borderRadius: 20,
                               ),
                             ),
                             Padding(
@@ -245,11 +276,11 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     (r) => false,
                                   );
                                 },
-                                text: 'Sign in',
+                                text: 'Авторизация',
                                 options: FFButtonOptions(
                                   width: 125,
                                   height: 40,
-                                  color: Color(0x00FFFFFF),
+                                  color: Color(0xFFBDBDBD),
                                   textStyle: GoogleFonts.getFont(
                                     'Lato',
                                     color: Colors.white,
@@ -257,10 +288,10 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     fontSize: 15,
                                   ),
                                   borderSide: BorderSide(
-                                    color: Color(0xFF553BBA),
+                                    color: Color(0xFFBDBDBD),
                                     width: 2,
                                   ),
-                                  borderRadius: 0,
+                                  borderRadius: 20,
                                 ),
                               ),
                             )
