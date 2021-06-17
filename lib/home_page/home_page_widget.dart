@@ -102,12 +102,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             itemBuilder: (context, pageViewIndex) {
                               final pageViewAdRecord =
                                   pageViewAdRecordList[pageViewIndex];
-                              return Card(
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color: Color(0xFFF5F5F5),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
+                              return ClipRRect(
+                                borderRadius: BorderRadius.circular(40),
                                 child: Image.network(
                                   pageViewAdRecord.imgUrl,
                                   width: 100,
