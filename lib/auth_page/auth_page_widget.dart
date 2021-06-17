@@ -105,7 +105,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.normal,
                               ),
-                              keyboardType: TextInputType.number,
+                              keyboardType: TextInputType.phone,
                             ),
                           ),
                         ),
@@ -221,7 +221,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          final user = await createAccountWithEmail(
+                          final user = await signInWithEmail(
                             context,
                             emailTextController.text,
                             passwordTextController.text,
