@@ -193,11 +193,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             (rowIndex) {
                           final rowCategoriesRecord =
                               rowCategoriesRecordList[rowIndex];
-                          return Image.network(
-                            rowCategoriesRecord.imgUrl,
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
+                          return Padding(
+                            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                            child: Image.network(
+                              rowCategoriesRecord.imgUrl,
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
                           );
                         }),
                       ),

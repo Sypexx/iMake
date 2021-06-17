@@ -1,11 +1,11 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AuthPageWidget extends StatefulWidget {
@@ -16,8 +16,8 @@ class AuthPageWidget extends StatefulWidget {
 }
 
 class _AuthPageWidgetState extends State<AuthPageWidget> {
+  String dropDownValue;
   TextEditingController emailTextController;
-  TextEditingController textController;
   TextEditingController passwordTextController;
   bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -26,7 +26,6 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
   void initState() {
     super.initState();
     emailTextController = TextEditingController();
-    textController = TextEditingController();
     passwordTextController = TextEditingController();
     passwordVisibility = false;
   }
@@ -127,67 +126,6 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(60, 0, 60, 30),
-                          child: Stack(
-                            children: [
-                              Align(
-                                alignment: Alignment(29.31, 10.11),
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(4, 0, 4, 3),
-                                  child: TextFormField(
-                                    controller: textController,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      hintText: 'Роль',
-                                      hintStyle: GoogleFonts.getFont(
-                                        'Lato',
-                                        color: Colors.white,
-                                        fontSize: 18,
-                                      ),
-                                      enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFF3C2452),
-                                          width: 2,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFF3C2452),
-                                          width: 2,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
-                                      ),
-                                    ),
-                                    style: GoogleFonts.getFont(
-                                      'Lato',
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment(0.94, 1.7),
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.solidCheckSquare,
-                                    color: Colors.white,
-                                    size: 24,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
                           child: Container(
                             width: 285,
@@ -259,6 +197,37 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                           ),
                         ),
                         Padding(
+                          padding: EdgeInsets.fromLTRB(60, 0, 60, 30),
+                          child: Stack(
+                            children: [
+                              Align(
+                                alignment: Alignment(0, 0),
+                                child: FlutterFlowDropDown(
+                                  initialOption: 'Клиент',
+                                  options: ['Клиент', 'Мастер', 'Директор'],
+                                  onChanged: (value) {
+                                    setState(() => dropDownValue = value);
+                                  },
+                                  width: double.infinity,
+                                  height: 40,
+                                  textStyle:
+                                      FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  ),
+                                  fillColor: Colors.transparent,
+                                  elevation: 2,
+                                  borderColor: Colors.transparent,
+                                  borderWidth: 0,
+                                  borderRadius: 0,
+                                  margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -275,7 +244,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     return;
                                   }
 
-                                  final role = int.parse(textController.text);
+                                  final role = dropDownValue;
 
                                   final usersRecordData = createUsersRecordData(
                                     role: role,
