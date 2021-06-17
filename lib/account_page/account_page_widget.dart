@@ -1,11 +1,9 @@
 import '../auth/auth_util.dart';
 import '../auth_page/auth_page_widget.dart';
 import '../backend/backend.dart';
-import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/upload_media.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,7 +15,6 @@ class AccountPageWidget extends StatefulWidget {
 }
 
 class _AccountPageWidgetState extends State<AccountPageWidget> {
-  String uploadedFileUrl = '';
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -79,41 +76,12 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                                   children: [
                                     Align(
                                       alignment: Alignment(0, 0),
-                                      child: InkWell(
-                                        onTap: () async {
-                                          final selectedMedia =
-                                              await selectMedia();
-                                          if (selectedMedia != null &&
-                                              validateFileFormat(
-                                                  selectedMedia.storagePath,
-                                                  context)) {
-                                            showUploadMessage(
-                                                context, 'Uploading file...',
-                                                showLoading: true);
-                                            final downloadUrl =
-                                                await uploadData(
-                                                    selectedMedia.storagePath,
-                                                    selectedMedia.bytes);
-                                            ScaffoldMessenger.of(context)
-                                                .hideCurrentSnackBar();
-                                            if (downloadUrl != null) {
-                                              setState(() => uploadedFileUrl =
-                                                  downloadUrl);
-                                              showUploadMessage(
-                                                  context, 'Success!');
-                                            } else {
-                                              showUploadMessage(context,
-                                                  'Failed to upload media');
-                                            }
-                                          }
-                                        },
-                                        child: Image.asset(
-                                          'assets/images/2.png',
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          height: 150,
-                                          fit: BoxFit.cover,
-                                        ),
+                                      child: Image.asset(
+                                        'assets/images/2.png',
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height: 150,
+                                        fit: BoxFit.cover,
                                       ),
                                     )
                                   ],
