@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -16,7 +15,6 @@ class AuthPageWidget extends StatefulWidget {
 }
 
 class _AuthPageWidgetState extends State<AuthPageWidget> {
-  String dropDownValue;
   TextEditingController emailTextController;
   TextEditingController passwordTextController;
   bool passwordVisibility;
@@ -197,24 +195,11 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                             ),
                           ),
                         ),
-                        FlutterFlowDropDown(
-                          initialOption: 'asdsadsaasd',
-                          options: ['1', '2', '3'],
-                          onChanged: (value) {
-                            setState(() => dropDownValue = value);
-                          },
-                          width: 130,
-                          height: 40,
-                          textStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: Colors.black,
-                          ),
-                          fillColor: Colors.white,
-                          elevation: 2,
-                          borderColor: Colors.transparent,
-                          borderWidth: 0,
-                          borderRadius: 0,
-                          margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
+                        Image.network(
+                          'https://picsum.photos/seed/549/600',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
                         ),
                         Padding(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
