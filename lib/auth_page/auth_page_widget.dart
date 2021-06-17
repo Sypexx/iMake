@@ -203,8 +203,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                               Align(
                                 alignment: Alignment(0, 0),
                                 child: FlutterFlowDropDown(
-                                  initialOption: 'Клиент',
-                                  options: ['Клиент', 'Мастер', 'Директор'],
+                                  options: ['Клиент'],
                                   onChanged: (value) {
                                     setState(() => dropDownValue = value);
                                   },
