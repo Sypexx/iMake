@@ -1,6 +1,7 @@
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -94,8 +95,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       pageViewAdRecordList[pageViewIndex];
                                   return ClipRRect(
                                     borderRadius: BorderRadius.circular(20),
-                                    child: Image.network(
-                                      pageViewAdRecord.imgUrl,
+                                    child: CachedNetworkImage(
+                                      imageUrl: pageViewAdRecord.imgUrl,
                                       width: 100,
                                       height: 100,
                                       fit: BoxFit.cover,
