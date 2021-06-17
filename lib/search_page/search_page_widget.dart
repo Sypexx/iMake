@@ -30,23 +30,33 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
               decoration: BoxDecoration(
                 color: Color(0xFFEEEEEE),
               ),
-              child: FlutterFlowDropDown(
-                options: ['Option 1'],
-                onChanged: (value) {
-                  setState(() => dropDownValue = value);
-                },
-                width: 130,
-                height: 40,
-                textStyle: FlutterFlowTheme.bodyText1.override(
-                  fontFamily: 'Poppins',
-                  color: Colors.black,
-                ),
-                fillColor: Colors.white,
-                elevation: 2,
-                borderColor: Colors.transparent,
-                borderWidth: 0,
-                borderRadius: 0,
-                margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
+              child: ListView(
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.vertical,
+                children: [
+                  Card(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    color: Color(0xFFF5F5F5),
+                    child: FlutterFlowDropDown(
+                      options: ['Option 1'],
+                      onChanged: (value) {
+                        setState(() => dropDownValue = value);
+                      },
+                      width: 130,
+                      height: 40,
+                      textStyle: FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Poppins',
+                        color: Colors.black,
+                      ),
+                      fillColor: Colors.white,
+                      elevation: 2,
+                      borderColor: Colors.transparent,
+                      borderWidth: 0,
+                      borderRadius: 0,
+                      margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
+                    ),
+                  )
+                ],
               ),
             ),
             Image.network(
