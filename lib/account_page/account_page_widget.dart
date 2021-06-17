@@ -65,7 +65,7 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(50),
                         child: Image.network(
-                          'https://picsum.photos/seed/728/600',
+                          currentUserPhoto,
                           width: 100,
                           height: 100,
                           fit: BoxFit.cover,
@@ -118,7 +118,7 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                             onPressed: () {
                               print('Button pressed ...');
                             },
-                            text: rowUsersRecord.role,
+                            text: 'Редактировать',
                             options: FFButtonOptions(
                               width: 130,
                               height: 40,
