@@ -47,19 +47,20 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
             child: Stack(
               children: [
                 Align(
-                  alignment: Alignment(0, 1.74),
+                  alignment: Alignment(0, -5.62),
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(0, 0, 0, 80),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
+                          padding: EdgeInsets.fromLTRB(0, 1, 0, 40),
                           child: Image.asset(
                             'assets/images/image.PNG',
-                            width: 250,
-                            height: 250,
+                            width: 150,
+                            height: 150,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -196,34 +197,23 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
-                          child: Container(
-                            width: 285,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: Color(0x00EEEEEE),
-                            ),
-                            child: FlutterFlowDropDown(
-                              options: ['Option 1'],
-                              onChanged: (value) {
-                                setState(() => dropDownValue = value);
-                              },
-                              width: 130,
-                              height: 40,
-                              textStyle: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
-                                fontSize: 18,
-                              ),
-                              fillColor: Color(0x00FFFFFF),
-                              elevation: 2,
-                              borderColor: Colors.transparent,
-                              borderWidth: 0,
-                              borderRadius: 0,
-                              margin: EdgeInsets.fromLTRB(0, 4, 8, 0),
-                            ),
+                        FlutterFlowDropDown(
+                          options: ['Option 1'],
+                          onChanged: (value) {
+                            setState(() => dropDownValue = value);
+                          },
+                          width: 130,
+                          height: 40,
+                          textStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
+                            color: Colors.black,
                           ),
+                          fillColor: Colors.white,
+                          elevation: 2,
+                          borderColor: Colors.transparent,
+                          borderWidth: 0,
+                          borderRadius: 0,
+                          margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
                         ),
                         Padding(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
