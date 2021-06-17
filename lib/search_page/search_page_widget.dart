@@ -42,6 +42,12 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
               borderWidth: 0,
               borderRadius: 0,
               margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
+            ),
+            Image.network(
+              'https://picsum.photos/seed/730/600',
+              width: 100,
+              height: 100,
+              fit: BoxFit.cover,
             )
           ],
         ),
