@@ -1,6 +1,6 @@
 import '../auth/auth_util.dart';
-import '../components/choserol_widget.dart';
-import '../components/profile_widget.dart';
+import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -16,6 +16,7 @@ class AuthPageWidget extends StatefulWidget {
 }
 
 class _AuthPageWidgetState extends State<AuthPageWidget> {
+  String dropDownValue;
   TextEditingController emailTextController;
   TextEditingController passwordTextController;
   bool passwordVisibility;
@@ -198,30 +199,46 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                         ),
                         Padding(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              await showModalBottomSheet(
-                                  context: context,
-                                  builder: (context) {
-                                    return ChoserolWidget();
-                                  });
-                            },
-                            text: 'Выберите роль',
-                            options: FFButtonOptions(
-                              width: 285,
-                              height: 40,
-                              color: Color(0x00FFFFFF),
-                              textStyle: GoogleFonts.getFont(
-                                'Lato',
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                              ),
-                              borderSide: BorderSide(
-                                color: Color(0xFF553BBA),
-                                width: 2,
-                              ),
-                              borderRadius: 0,
+                          child: Text(
+                            'Выберите роль',
+                            style: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                          child: Container(
+                            width: 200,
+                            height: 125,
+                            decoration: BoxDecoration(
+                              color: Color(0x00EEEEEE),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                FlutterFlowDropDown(
+                                  options: ['Option 1'],
+                                  onChanged: (value) {
+                                    setState(() => dropDownValue = value);
+                                  },
+                                  width: 130,
+                                  height: 40,
+                                  textStyle:
+                                      FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.black,
+                                  ),
+                                  fillColor: Colors.white,
+                                  elevation: 2,
+                                  borderColor: Colors.transparent,
+                                  borderWidth: 0,
+                                  borderRadius: 0,
+                                  margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
+                                )
+                              ],
                             ),
                           ),
                         ),
