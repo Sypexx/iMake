@@ -107,48 +107,6 @@ class _AddimgWidgetState extends State<AddimgWidget> {
                   ),
                 )
               ],
-            ),
-            Expanded(
-              child: StreamBuilder<List<PostsRecord>>(
-                stream: queryPostsRecord(
-                  queryBuilder: (postsRecord) => postsRecord.where('user',
-                      isEqualTo: currentUserReference),
-                ),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(child: CircularProgressIndicator());
-                  }
-                  List<PostsRecord> gridViewPostsRecordList = snapshot.data;
-                  // Customize what your widget looks like with no query results.
-                  if (snapshot.data.isEmpty) {
-                    // return Container();
-                    // For now, we'll just include some dummy data.
-                    gridViewPostsRecordList = createDummyPostsRecord(count: 4);
-                  }
-                  return GridView.builder(
-                    padding: EdgeInsets.zero,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      childAspectRatio: 1,
-                    ),
-                    scrollDirection: Axis.vertical,
-                    itemCount: gridViewPostsRecordList.length,
-                    itemBuilder: (context, gridViewIndex) {
-                      final gridViewPostsRecord =
-                          gridViewPostsRecordList[gridViewIndex];
-                      return Image.network(
-                        gridViewPostsRecord.imgUrl,
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.cover,
-                      );
-                    },
-                  );
-                },
-              ),
             )
           ],
         ),
