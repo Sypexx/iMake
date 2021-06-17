@@ -62,14 +62,35 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        child: Image.network(
-                          accountPageUsersRecord.avatar,
-                          width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
+                      StreamBuilder<List<UsersRecord>>(
+                        stream: queryUsersRecord(
+                          singleRecord: true,
                         ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                          List<UsersRecord> imageUsersRecordList =
+                              snapshot.data;
+                          // Customize what your widget looks like with no query results.
+                          if (snapshot.data.isEmpty) {
+                            // return Container();
+                            // For now, we'll just include some dummy data.
+                            imageUsersRecordList =
+                                createDummyUsersRecord(count: 1);
+                          }
+                          final imageUsersRecord = imageUsersRecordList.first;
+                          return ClipRRect(
+                            borderRadius: BorderRadius.circular(50),
+                            child: Image.network(
+                              imageUsersRecord.avatar,
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                          );
+                        },
                       )
                     ],
                   ),
