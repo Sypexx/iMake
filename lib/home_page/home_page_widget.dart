@@ -90,11 +90,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               itemBuilder: (context, pageViewIndex) {
                                 final pageViewAdRecord =
                                     pageViewAdRecordList[pageViewIndex];
-                                return Image.network(
-                                  pageViewAdRecord.imgUrl,
-                                  width: 100,
-                                  height: 100,
-                                  fit: BoxFit.cover,
+                                return Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(40),
+                                    child: Image.network(
+                                      pageViewAdRecord.imgUrl,
+                                      width: 100,
+                                      height: 100,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 );
                               },
                             ),
