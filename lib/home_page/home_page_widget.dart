@@ -163,52 +163,47 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       createDummyCategoriesRecord(count: 4);
                 }
                 return Padding(
-                  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: List.generate(rowCategoriesRecordList.length,
                           (rowIndex) {
                         final rowCategoriesRecord =
                             rowCategoriesRecordList[rowIndex];
-                        return Padding(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(0, 0, 1, 0),
-                                child: Container(
-                                  width: 95,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFEEEEEE),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Padding(
-                                    padding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                    child: Image.network(
-                                      rowCategoriesRecord.imgUrl,
-                                      width: 100,
-                                      height: 100,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
+                        return Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              width: 95,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEEE),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                child: Image.network(
+                                  rowCategoriesRecord.imgUrl,
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                child: Text(
-                                  rowCategoriesRecord.text,
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                  ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                              child: Text(
+                                rowCategoriesRecord.text,
+                                style: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
+                              ),
+                            )
+                          ],
                         );
                       }),
                     ),
