@@ -71,51 +71,57 @@ class _InstaWidgetState extends State<InstaWidget> {
                     // For now, we'll just include some dummy data.
                     gridViewPostsRecordList = createDummyPostsRecord(count: 4);
                   }
-                  return GridView.builder(
-                    padding: EdgeInsets.zero,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      childAspectRatio: 1,
-                    ),
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: gridViewPostsRecordList.length,
-                    itemBuilder: (context, gridViewIndex) {
-                      final gridViewPostsRecord =
-                          gridViewPostsRecordList[gridViewIndex];
-                      return StreamBuilder<UsersRecord>(
-                        stream:
-                            UsersRecord.getDocument(gridViewPostsRecord.user),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(child: CircularProgressIndicator());
-                          }
-                          final imageUsersRecord = snapshot.data;
-                          return InkWell(
-                            onTap: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ComponentsWidget(
-                                    created: gridViewPostsRecord,
-                                    username: gridViewPostsRecord,
-                                  ),
+                  return Padding(
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: GridView.builder(
+                      padding: EdgeInsets.zero,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        childAspectRatio: 1,
+                      ),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: gridViewPostsRecordList.length,
+                      itemBuilder: (context, gridViewIndex) {
+                        final gridViewPostsRecord =
+                            gridViewPostsRecordList[gridViewIndex];
+                        return StreamBuilder<UsersRecord>(
+                          stream:
+                              UsersRecord.getDocument(gridViewPostsRecord.user),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(child: CircularProgressIndicator());
+                            }
+                            final imageUsersRecord = snapshot.data;
+                            return Padding(
+                              padding: EdgeInsets.fromLTRB(0, 4, 0, 0),
+                              child: InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ComponentsWidget(
+                                        created: gridViewPostsRecord,
+                                        username: gridViewPostsRecord,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Image.network(
+                                  gridViewPostsRecord.imgUrl,
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.cover,
                                 ),
-                              );
-                            },
-                            child: Image.network(
-                              gridViewPostsRecord.imgUrl,
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                          );
-                        },
-                      );
-                    },
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
                   );
                 },
               ),

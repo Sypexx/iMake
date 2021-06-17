@@ -56,107 +56,120 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 270,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      child: Column(
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.network(
+                          'https://picsum.photos/seed/728/600',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        currentUserEmail,
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Poppins',
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                StreamBuilder<List<UsersRecord>>(
+                  stream: queryUsersRecord(
+                    queryBuilder: (usersRecord) =>
+                        usersRecord.where('role', isEqualTo: '2'),
+                    singleRecord: true,
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    List<UsersRecord> rowUsersRecordList = snapshot.data;
+                    // Customize what your widget looks like with no query results.
+                    if (snapshot.data.isEmpty) {
+                      // return Container();
+                      // For now, we'll just include some dummy data.
+                      rowUsersRecordList = createDummyUsersRecord(count: 1);
+                    }
+                    final rowUsersRecord = rowUsersRecordList.first;
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      child: Row(
                         mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Stack(
-                                  children: [
-                                    Align(
-                                      alignment: Alignment(0, 0),
-                                      child: Padding(
-                                        padding:
-                                            EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                          child: Image.network(
-                                            currentUserPhoto,
-                                            width: 100,
-                                            height: 100,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(0, 4, 0, 0),
-                                child: Text(
-                                  currentUserEmail,
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.secondaryColor,
-                                  ),
-                                ),
-                              )
-                            ],
+                          FFButtonWidget(
+                            onPressed: () {
+                              print('Button pressed ...');
+                            },
+                            text: rowUsersRecord.role,
+                            options: FFButtonOptions(
+                              width: 130,
+                              height: 40,
+                              color: FlutterFlowTheme.primaryColor,
+                              textStyle: FlutterFlowTheme.subtitle2.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                              ),
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: 12,
+                            ),
                           )
                         ],
                       ),
-                    )
-                  ],
+                    );
+                  },
                 ),
-                Expanded(
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.vertical,
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            FFButtonWidget(
-                              onPressed: () async {
-                                await signOut();
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => AuthPageWidget(),
-                                  ),
-                                  (r) => false,
-                                );
-                              },
-                              text: 'Выйти',
-                              options: FFButtonOptions(
-                                width: 90,
-                                height: 40,
-                                color: Colors.white,
-                                textStyle: FlutterFlowTheme.bodyText2.override(
-                                  fontFamily: 'Poppins',
-                                  color: FlutterFlowTheme.primaryColor,
-                                ),
-                                elevation: 3,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1,
-                                ),
-                                borderRadius: 8,
-                              ),
-                            )
-                          ],
+                      FFButtonWidget(
+                        onPressed: () async {
+                          await signOut();
+                          await Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AuthPageWidget(),
+                            ),
+                            (r) => false,
+                          );
+                        },
+                        text: 'Выйти',
+                        options: FFButtonOptions(
+                          width: 130,
+                          height: 40,
+                          color: FlutterFlowTheme.primaryColor,
+                          textStyle: FlutterFlowTheme.subtitle2.override(
+                            fontFamily: 'Poppins',
+                            color: Colors.white,
+                          ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: 12,
                         ),
                       )
                     ],
