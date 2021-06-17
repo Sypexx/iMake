@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -15,6 +16,7 @@ class AuthPageWidget extends StatefulWidget {
 }
 
 class _AuthPageWidgetState extends State<AuthPageWidget> {
+  String dropDownValue;
   TextEditingController emailTextController;
   TextEditingController passwordTextController;
   bool passwordVisibility;
@@ -196,18 +198,23 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                         ),
                         Padding(
                           padding: EdgeInsets.fromLTRB(60, 0, 60, 30),
-                          child: Stack(
-                            children: [
-                              Align(
-                                alignment: Alignment(0, 0),
-                                child: Text(
-                                  'Hello Worldasdsadsda',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                  ),
-                                ),
-                              )
-                            ],
+                          child: FlutterFlowDropDown(
+                            options: ['Option 1'],
+                            onChanged: (value) {
+                              setState(() => dropDownValue = value);
+                            },
+                            width: double.infinity,
+                            height: 40,
+                            textStyle: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
+                              color: Colors.black,
+                            ),
+                            fillColor: Colors.white,
+                            elevation: 2,
+                            borderColor: Colors.transparent,
+                            borderWidth: 0,
+                            borderRadius: 0,
+                            margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
                           ),
                         ),
                         Padding(
