@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/chooserole_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -45,7 +46,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
             child: Stack(
               children: [
                 Align(
-                  alignment: Alignment(0, -5.62),
+                  alignment: Alignment(0, 2.96),
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(0, 0, 0, 80),
                     child: Column(
@@ -195,11 +196,34 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                             ),
                           ),
                         ),
-                        Image.network(
-                          'https://picsum.photos/seed/549/600',
-                          width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              await showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) {
+                                    return ChooseroleWidget();
+                                  });
+                            },
+                            text: 'Выберите роль',
+                            options: FFButtonOptions(
+                              width: 285,
+                              height: 40,
+                              color: Color(0x00FFFFFF),
+                              textStyle: GoogleFonts.getFont(
+                                'Lato',
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                              borderSide: BorderSide(
+                                color: Color(0xFF553BBA),
+                                width: 2,
+                              ),
+                              borderRadius: 0,
+                            ),
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
