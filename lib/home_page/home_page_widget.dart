@@ -1,5 +1,4 @@
 import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,6 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  String dropDownValue;
   final pageViewController = PageController();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -74,55 +72,76 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                 ),
-                child: Container(
-                  width: double.infinity,
-                  height: 500,
-                  child: Stack(
-                    children: [
-                      PageView(
-                        controller: pageViewController,
-                        scrollDirection: Axis.horizontal,
+                child: StreamBuilder<List<AdRecord>>(
+                  stream: queryAdRecord(
+                    queryBuilder: (adRecord) => adRecord.orderBy('id'),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    List<AdRecord> pageViewAdRecordList = snapshot.data;
+                    // Customize what your widget looks like with no query results.
+                    if (snapshot.data.isEmpty) {
+                      // return Container();
+                      // For now, we'll just include some dummy data.
+                      pageViewAdRecordList = createDummyAdRecord(count: 4);
+                    }
+                    return Container(
+                      width: double.infinity,
+                      height: 500,
+                      child: Stack(
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(40),
-                            child: Image.network(
-                              'https://picsum.photos/seed/356/600',
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment(0, 1),
-                        child: Padding(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                          child: SmoothPageIndicator(
+                          PageView.builder(
                             controller: pageViewController,
-                            count: 1,
-                            axisDirection: Axis.horizontal,
-                            onDotClicked: (i) {
-                              pageViewController.animateToPage(
-                                i,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.ease,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: pageViewAdRecordList.length,
+                            itemBuilder: (context, pageViewIndex) {
+                              final pageViewAdRecord =
+                                  pageViewAdRecordList[pageViewIndex];
+                              return ClipRRect(
+                                borderRadius: BorderRadius.circular(40),
+                                child: Image.network(
+                                  pageViewAdRecord.imgUrl,
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                ),
                               );
                             },
-                            effect: SlideEffect(
-                              spacing: 8,
-                              radius: 16,
-                              dotWidth: 12,
-                              dotHeight: 12,
-                              dotColor: Color(0xFF878787),
-                              activeDotColor: Colors.white,
-                              paintStyle: PaintingStyle.fill,
+                          ),
+                          Align(
+                            alignment: Alignment(0, 1),
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                              child: SmoothPageIndicator(
+                                controller: pageViewController,
+                                count: pageViewAdRecordList.length,
+                                axisDirection: Axis.horizontal,
+                                onDotClicked: (i) {
+                                  pageViewController.animateToPage(
+                                    i,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.ease,
+                                  );
+                                },
+                                effect: SlideEffect(
+                                  spacing: 8,
+                                  radius: 16,
+                                  dotWidth: 12,
+                                  dotHeight: 12,
+                                  dotColor: Color(0xFF878787),
+                                  activeDotColor: Colors.white,
+                                  paintStyle: PaintingStyle.fill,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ),
               Container(
@@ -198,31 +217,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 height: 50,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                ),
-              ),
-              FlutterFlowDropDown(
-                options: ['Option 1'],
-                onChanged: (value) {
-                  setState(() => dropDownValue = value);
-                },
-                width: 130,
-                height: 40,
-                textStyle: FlutterFlowTheme.bodyText1.override(
-                  fontFamily: 'Poppins',
-                  color: Colors.black,
-                ),
-                fillColor: Colors.white,
-                elevation: 2,
-                borderColor: Colors.transparent,
-                borderWidth: 0,
-                borderRadius: 0,
-                margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
-              ),
-              Card(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                color: Color(0xFFF5F5F5),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
                 ),
               )
             ],
