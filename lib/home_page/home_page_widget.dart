@@ -64,68 +64,77 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
-                  child: Container(
-                    width: double.infinity,
-                    height: 500,
-                    child: Stack(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 50),
-                          child: PageView(
-                            controller: pageViewController,
-                            scrollDirection: Axis.horizontal,
+                  child: StreamBuilder<List<AdRecord>>(
+                    stream: queryAdRecord(),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(child: CircularProgressIndicator());
+                      }
+                      List<AdRecord> pageViewAdRecordList = snapshot.data;
+                      // Customize what your widget looks like with no query results.
+                      if (snapshot.data.isEmpty) {
+                        // return Container();
+                        // For now, we'll just include some dummy data.
+                        pageViewAdRecordList = createDummyAdRecord(count: 4);
+                      }
+                      return Padding(
+                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          child: Stack(
                             children: [
-                              Image.network(
-                                'https://picsum.photos/seed/477/600',
-                                width: 100,
-                                height: 100,
-                                fit: BoxFit.cover,
+                              PageView.builder(
+                                controller: pageViewController,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: pageViewAdRecordList.length,
+                                itemBuilder: (context, pageViewIndex) {
+                                  final pageViewAdRecord =
+                                      pageViewAdRecordList[pageViewIndex];
+                                  return ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image.network(
+                                      pageViewAdRecord.imgUrl,
+                                      width: 100,
+                                      height: 100,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  );
+                                },
                               ),
-                              Image.network(
-                                'https://picsum.photos/seed/25/600',
-                                width: 100,
-                                height: 100,
-                                fit: BoxFit.cover,
+                              Align(
+                                alignment: Alignment(0, 1),
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                                  child: SmoothPageIndicator(
+                                    controller: pageViewController,
+                                    count: pageViewAdRecordList.length,
+                                    axisDirection: Axis.horizontal,
+                                    onDotClicked: (i) {
+                                      pageViewController.animateToPage(
+                                        i,
+                                        duration: Duration(milliseconds: 500),
+                                        curve: Curves.ease,
+                                      );
+                                    },
+                                    effect: SlideEffect(
+                                      spacing: 8,
+                                      radius: 16,
+                                      dotWidth: 12,
+                                      dotHeight: 12,
+                                      dotColor: Color(0xFF9E9E9E),
+                                      activeDotColor: Colors.white,
+                                      paintStyle: PaintingStyle.fill,
+                                    ),
+                                  ),
+                                ),
                               ),
-                              Image.network(
-                                'https://picsum.photos/seed/501/600',
-                                width: 100,
-                                height: 100,
-                                fit: BoxFit.cover,
-                              )
                             ],
                           ),
                         ),
-                        Align(
-                          alignment: Alignment(0, 1),
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                            child: SmoothPageIndicator(
-                              controller: pageViewController,
-                              count: 3,
-                              axisDirection: Axis.horizontal,
-                              onDotClicked: (i) {
-                                pageViewController.animateToPage(
-                                  i,
-                                  duration: Duration(milliseconds: 500),
-                                  curve: Curves.ease,
-                                );
-                              },
-                              effect: ExpandingDotsEffect(
-                                expansionFactor: 2,
-                                spacing: 8,
-                                radius: 16,
-                                dotWidth: 16,
-                                dotHeight: 16,
-                                dotColor: Color(0xFF9E9E9E),
-                                activeDotColor: Color(0xFF3F51B5),
-                                paintStyle: PaintingStyle.fill,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
                 )
               ],
