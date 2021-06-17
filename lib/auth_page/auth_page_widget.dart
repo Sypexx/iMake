@@ -197,24 +197,32 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(60, 0, 60, 30),
-                          child: FlutterFlowDropDown(
-                            options: ['Option 1'],
-                            onChanged: (value) {
-                              setState(() => dropDownValue = value);
-                            },
-                            width: double.infinity,
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                          child: Container(
+                            width: 285,
                             height: 40,
-                            textStyle: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
+                            decoration: BoxDecoration(
+                              color: Color(0x00EEEEEE),
                             ),
-                            fillColor: Colors.white,
-                            elevation: 2,
-                            borderColor: Colors.transparent,
-                            borderWidth: 0,
-                            borderRadius: 0,
-                            margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
+                            child: FlutterFlowDropDown(
+                              options: ['Option 1'],
+                              onChanged: (value) {
+                                setState(() => dropDownValue = value);
+                              },
+                              width: 130,
+                              height: 40,
+                              textStyle: FlutterFlowTheme.bodyText1.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                              fillColor: Color(0x00FFFFFF),
+                              elevation: 2,
+                              borderColor: Colors.transparent,
+                              borderWidth: 0,
+                              borderRadius: 0,
+                              margin: EdgeInsets.fromLTRB(0, 4, 8, 0),
+                            ),
                           ),
                         ),
                         Padding(
