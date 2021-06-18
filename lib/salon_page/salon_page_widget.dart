@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class ComponentsWidget extends StatefulWidget {
-  ComponentsWidget({
+class SalonPageWidget extends StatefulWidget {
+  SalonPageWidget({
     Key key,
     this.created,
     this.username,
@@ -16,10 +16,10 @@ class ComponentsWidget extends StatefulWidget {
   final PostsRecord username;
 
   @override
-  _ComponentsWidgetState createState() => _ComponentsWidgetState();
+  _SalonPageWidgetState createState() => _SalonPageWidgetState();
 }
 
-class _ComponentsWidgetState extends State<ComponentsWidget> {
+class _SalonPageWidgetState extends State<SalonPageWidget> {
   final pageViewController = PageController();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
