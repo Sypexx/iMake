@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_collection/built_collection.dart';
@@ -36,6 +38,11 @@ abstract class AdRecord implements Built<AdRecord, AdRecordBuilder> {
 
   AdRecord._();
   factory AdRecord([void Function(AdRecordBuilder) updates]) = _$AdRecord;
+
+  static AdRecord getDocumentFromData(
+          Map<String, dynamic> data, DocumentReference reference) =>
+      serializers.deserializeWith(
+          serializer, {...data, kDocumentReferenceField: reference});
 }
 
 Map<String, dynamic> createAdRecordData({
