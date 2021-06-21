@@ -132,6 +132,12 @@ class _EditsalonWidgetState extends State<EditsalonWidget> {
                     fontFamily: 'Poppins',
                   ),
                 ),
+              ),
+              Image.network(
+                'https://picsum.photos/seed/811/600',
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
               )
             ],
           ),
