@@ -27,5 +27,17 @@ service cloud.firestore {
     match /ad/{id} {
       allow read, write: if true;
     }
+
+    // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
+    // security rules for this collection before publishing your app.
+    match /salons/{id} {
+      allow read, write: if true;
+    }
+
+    // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
+    // security rules for this collection before publishing your app.
+    match /salon_images/{id} {
+      allow read, write: if true;
+    }
   }
 }

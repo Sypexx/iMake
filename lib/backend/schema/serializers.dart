@@ -8,6 +8,8 @@ import 'users_record.dart';
 import 'posts_record.dart';
 import 'categories_record.dart';
 import 'ad_record.dart';
+import 'salons_record.dart';
+import 'salon_images_record.dart';
 
 part 'serializers.g.dart';
 
@@ -18,6 +20,8 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   PostsRecord,
   CategoriesRecord,
   AdRecord,
+  SalonsRecord,
+  SalonImagesRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

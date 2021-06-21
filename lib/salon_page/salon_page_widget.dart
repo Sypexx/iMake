@@ -2,6 +2,7 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../makezapis/makezapis_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -121,8 +122,13 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                         ),
                       ),
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MakezapisWidget(),
+                            ),
+                          );
                         },
                         text: 'Записаться',
                         options: FFButtonOptions(
@@ -147,11 +153,12 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
             ),
             Expanded(
               child: DefaultTabController(
-                length: 4,
+                length: 5,
                 initialIndex: 0,
                 child: Column(
                   children: [
                     TabBar(
+                      isScrollable: true,
                       labelColor: Colors.black,
                       unselectedLabelColor: Color(0xFFA6A6A6),
                       indicatorColor: Colors.black,
@@ -167,6 +174,9 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                         ),
                         Tab(
                           text: 'Отзывы',
+                        ),
+                        Tab(
+                          text: 'Работы',
                         )
                       ],
                     ),
@@ -196,6 +206,13 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                           ),
                           Text(
                             'Tab View 4',
+                            style: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
+                              fontSize: 32,
+                            ),
+                          ),
+                          Text(
+                            'Tab View 5',
                             style: FlutterFlowTheme.bodyText1.override(
                               fontFamily: 'Poppins',
                               fontSize: 32,

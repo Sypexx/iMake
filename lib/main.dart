@@ -4,8 +4,8 @@ import 'auth/firebase_user_provider.dart';
 import 'package:imake/auth_page/auth_page_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'home_page/home_page_widget.dart';
-import 'account_page/account_page_widget.dart';
 import 'insta/insta_widget.dart';
+import 'account_page/account_page_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -75,8 +75,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': HomePageWidget(),
-      'AccountPage': AccountPageWidget(),
       'Insta': InstaWidget(),
+      'AccountPage': AccountPageWidget(),
     };
     return Scaffold(
       body: tabs[_currentPage],
@@ -91,23 +91,23 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.account_box,
-              size: 24,
-            ),
-            label: 'Profile',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.photo,
               size: 24,
             ),
             label: 'PhotoPage',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.account_box,
+              size: 24,
+            ),
+            label: 'Profile',
           )
         ],
         backgroundColor: Colors.white,
         currentIndex: tabs.keys.toList().indexOf(_currentPage),
-        selectedItemColor: FlutterFlowTheme.primaryColor,
-        unselectedItemColor: Color(0x8A000000),
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Color(0xFF4D4D4D),
         onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
         showSelectedLabels: false,
         showUnselectedLabels: false,
