@@ -3,6 +3,7 @@ import '../auth_page/auth_page_widget.dart';
 import '../backend/backend.dart';
 import '../crmpage/crmpage_widget.dart';
 import '../editclient/editclient_widget.dart';
+import '../editsalon/editsalon_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -134,8 +135,13 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                       Padding(
                         padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
                         child: FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => EditsalonWidget(),
+                              ),
+                            );
                           },
                           text: 'Редактировать салон',
                           options: FFButtonOptions(
