@@ -42,9 +42,11 @@ class _EditclientWidgetState extends State<EditclientWidget> {
             backgroundColor: Colors.white,
             automaticallyImplyLeading: false,
             title: Text(
-              'EDIT PROFILE',
+              'Редактировать профиль',
               style: FlutterFlowTheme.bodyText1.override(
                 fontFamily: 'Poppins',
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
               ),
             ),
             actions: [

@@ -17,6 +17,52 @@ class _MakezapisWidgetState extends State<MakezapisWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Записаться',
+          style: FlutterFlowTheme.bodyText1.override(
+            fontFamily: 'Poppins',
+            fontSize: 24,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              print('IconButton pressed ...');
+            },
+            icon: Icon(
+              Icons.check_circle,
+              color: Colors.black,
+              size: 30,
+            ),
+            iconSize: 30,
+          )
+        ],
+        centerTitle: true,
+        elevation: 4,
+      ),
+      body: SafeArea(
+        child: Align(
+          alignment: Alignment(0, 0),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                child: Text(
+                  'Выберите удобное для вас время',
+                  style: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Poppins',
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

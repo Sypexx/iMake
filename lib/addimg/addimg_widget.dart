@@ -27,9 +27,11 @@ class _AddimgWidgetState extends State<AddimgWidget> {
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Text(
-          'ADD IMG',
+          'Загрузить выполненную работу',
           style: FlutterFlowTheme.bodyText1.override(
             fontFamily: 'Poppins',
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
           ),
         ),
         actions: [

@@ -1,3 +1,4 @@
+import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class SearchPageWidget extends StatefulWidget {
 }
 
 class _SearchPageWidgetState extends State<SearchPageWidget> {
+  String dropDownValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -20,6 +22,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
       key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Colors.black),
         automaticallyImplyLeading: false,
         title: Row(
           mainAxisSize: MainAxisSize.max,
@@ -62,6 +65,27 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
         ],
         centerTitle: false,
         elevation: 4,
+      ),
+      body: SafeArea(
+        child: FlutterFlowDropDown(
+          initialOption: 'lolxd',
+          options: ['Option 1', 'Option 2', 'Option 3'],
+          onChanged: (value) {
+            setState(() => dropDownValue = value);
+          },
+          width: 130,
+          height: 40,
+          textStyle: FlutterFlowTheme.bodyText1.override(
+            fontFamily: 'Poppins',
+            color: Colors.black,
+          ),
+          fillColor: Colors.white,
+          elevation: 2,
+          borderColor: Colors.transparent,
+          borderWidth: 0,
+          borderRadius: 0,
+          margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
+        ),
       ),
     );
   }
