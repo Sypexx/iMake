@@ -17,6 +17,21 @@ class _CrmpageWidgetState extends State<CrmpageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Статистика салона',
+          style: FlutterFlowTheme.bodyText1.override(
+            fontFamily: 'Poppins',
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        actions: [],
+        centerTitle: true,
+        elevation: 4,
+      ),
     );
   }
 }

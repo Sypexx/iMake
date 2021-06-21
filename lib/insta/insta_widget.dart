@@ -27,7 +27,8 @@ class _InstaWidgetState extends State<InstaWidget> {
           'Работы мастеров',
           style: FlutterFlowTheme.bodyText1.override(
             fontFamily: 'Poppins',
-            fontSize: 18,
+            fontSize: 24,
+            fontWeight: FontWeight.w600,
           ),
         ),
         actions: [

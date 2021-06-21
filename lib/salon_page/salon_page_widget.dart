@@ -1,6 +1,7 @@
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -117,6 +118,26 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                         widget.created.createdAt.toString(),
                         style: FlutterFlowTheme.bodyText1.override(
                           fontFamily: 'Poppins',
+                        ),
+                      ),
+                      FFButtonWidget(
+                        onPressed: () {
+                          print('Button pressed ...');
+                        },
+                        text: 'Записаться',
+                        options: FFButtonOptions(
+                          width: 130,
+                          height: 30,
+                          color: Color(0xFF68CF32),
+                          textStyle: FlutterFlowTheme.subtitle2.override(
+                            fontFamily: 'Poppins',
+                            color: Colors.white,
+                          ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: 12,
                         ),
                       )
                     ],

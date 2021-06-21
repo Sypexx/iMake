@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../auth_page/auth_page_widget.dart';
+import '../crmpage/crmpage_widget.dart';
 import '../editclient/editclient_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -122,6 +123,43 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                         print('Button pressed ...');
                       },
                       text: 'Редактировать салон',
+                      options: FFButtonOptions(
+                        width: 180,
+                        height: 40,
+                        color: FlutterFlowTheme.primaryColor,
+                        textStyle: FlutterFlowTheme.subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                        ),
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1,
+                        ),
+                        borderRadius: 12,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CrmpageWidget(),
+                          ),
+                        );
+                      },
+                      text: 'Статистика салона',
                       options: FFButtonOptions(
                         width: 180,
                         height: 40,
