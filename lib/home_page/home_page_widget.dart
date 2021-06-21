@@ -16,8 +16,7 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  final pageViewController1 = PageController();
-  final pageViewController2 = PageController();
+  final pageViewController = PageController();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -101,7 +100,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               child: Stack(
                                 children: [
                                   PageView.builder(
-                                    controller: pageViewController1,
+                                    controller: pageViewController,
                                     scrollDirection: Axis.horizontal,
                                     itemCount: pageViewAdRecordList.length,
                                     itemBuilder: (context, pageViewIndex) {
@@ -123,11 +122,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     child: Padding(
                                       padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                                       child: SmoothPageIndicator(
-                                        controller: pageViewController1,
+                                        controller: pageViewController,
                                         count: pageViewAdRecordList.length,
                                         axisDirection: Axis.horizontal,
                                         onDotClicked: (i) {
-                                          pageViewController1.animateToPage(
+                                          pageViewController.animateToPage(
                                             i,
                                             duration:
                                                 Duration(milliseconds: 500),
@@ -246,112 +245,103 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ),
                   ),
                 ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Expanded(
-                          child: StreamBuilder<List<SalonsRecord>>(
-                            stream: querySalonsRecord(),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                    child: CircularProgressIndicator());
-                              }
-                              List<SalonsRecord> pageViewSalonsRecordList =
-                                  snapshot.data;
-                              // Customize what your widget looks like with no query results.
-                              if (snapshot.data.isEmpty) {
-                                // return Container();
-                                // For now, we'll just include some dummy data.
-                                pageViewSalonsRecordList =
-                                    createDummySalonsRecord(count: 4);
-                              }
-                              return Padding(
-                                padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.25,
-                                  child: Stack(
-                                    children: [
-                                      PageView.builder(
-                                        controller: pageViewController2,
-                                        scrollDirection: Axis.horizontal,
-                                        itemCount:
-                                            pageViewSalonsRecordList.length,
-                                        itemBuilder: (context, pageViewIndex) {
-                                          final pageViewSalonsRecord =
-                                              pageViewSalonsRecordList[
-                                                  pageViewIndex];
-                                          return ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            child: Image.network(
-                                              pageViewSalonsRecord.frontImage,
-                                              width: 100,
-                                              height: 100,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                      Align(
-                                        alignment: Alignment(0, 1),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsets.fromLTRB(0, 0, 0, 10),
-                                          child: SmoothPageIndicator(
-                                            controller: pageViewController2,
-                                            count:
-                                                pageViewSalonsRecordList.length,
-                                            axisDirection: Axis.horizontal,
-                                            onDotClicked: (i) {
-                                              pageViewController2.animateToPage(
-                                                i,
-                                                duration:
-                                                    Duration(milliseconds: 500),
-                                                curve: Curves.ease,
-                                              );
-                                            },
-                                            effect: SlideEffect(
-                                              spacing: 8,
-                                              radius: 16,
-                                              dotWidth: 12,
-                                              dotHeight: 12,
-                                              dotColor: Color(0xFF9E9E9E),
-                                              activeDotColor: Colors.white,
-                                              paintStyle: PaintingStyle.fill,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        child: Container(
+                          width: 250,
+                          height: 125,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFEEEEEE),
+                            image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: Image.asset(
+                                'assets/images/Bam 1.jpg',
+                              ).image,
+                            ),
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                        )
-                      ],
-                    ),
-                    Text(
-                      'Hello World',
-                      style: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Poppins',
+                        ),
                       ),
-                    ),
-                    Text(
-                      'Hello World',
-                      style: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Poppins',
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        child: Container(
+                          width: 250,
+                          height: 125,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFEEEEEE),
+                            image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: Image.asset(
+                                'assets/images/Dessange 1.jpg',
+                              ).image,
+                            ),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        child: Text(
+                          'Салон красоты Bam',
+                          style: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ),
-                    )
-                  ],
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(129, 0, 0, 0),
+                        child: Text(
+                          'Салон красоты Dessange',
+                          style: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                        child: Text(
+                          'ул. Пояркова 21',
+                          style: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(173, 0, 0, 0),
+                        child: Text(
+                          'ул. Ленина 18/2',
+                          style: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
