@@ -217,8 +217,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           EdgeInsets.fromLTRB(10, 10, 10, 10),
                                       child: Image.network(
                                         rowCategoriesRecord.imgUrl,
-                                        width: 100,
-                                        height: 100,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                1,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
