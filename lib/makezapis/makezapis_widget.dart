@@ -87,10 +87,14 @@ class _MakezapisWidgetState extends State<MakezapisWidget> {
                   color: Color(0xFFEEEEEE),
                 ),
               ),
-              Expanded(
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  scrollDirection: Axis.vertical,
+              Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Color(0xFFEEEEEE),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
                   children: [
                     FlutterFlowDropDown(
                       options: ['Option 1'],
