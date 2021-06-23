@@ -141,9 +141,11 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                           FFButtonWidget(
                             onPressed: () async {
                               final role = 'Мастер';
+                              final salon = columnUsersRecord.salon;
 
                               final usersRecordData = createUsersRecordData(
                                 role: role,
+                                salon: salon,
                               );
 
                               await columnUsersRecord.reference
