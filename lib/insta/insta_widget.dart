@@ -2,7 +2,7 @@ import '../addimg/addimg_widget.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../salon_page/salon_page_widget.dart';
+import '../insta_page/insta_page_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -99,11 +99,24 @@ class _InstaWidgetState extends State<InstaWidget> {
                             final imageSalonsRecord = snapshot.data;
                             return Padding(
                               padding: EdgeInsets.fromLTRB(0, 4, 0, 0),
-                              child: Image.network(
-                                gridViewPostsRecord.imgUrl,
-                                width: 100,
-                                height: 100,
-                                fit: BoxFit.cover,
+                              child: InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => InstaPageWidget(
+                                        idInsta: gridViewPostsRecord,
+                                        currentimg: imageSalonsRecord,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Image.network(
+                                  gridViewPostsRecord.imgUrl,
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             );
                           },
