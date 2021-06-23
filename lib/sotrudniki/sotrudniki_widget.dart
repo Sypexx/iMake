@@ -58,17 +58,6 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
               IconButton(
                 onPressed: () async {
                   Navigator.pop(context);
-                  final frontImage = uploadedFileUrl;
-                  final salonName = textController1.text;
-                  final salonStreet = textController2.text;
-
-                  final salonsRecordData = createSalonsRecordData(
-                    frontImage: frontImage,
-                    salonName: salonName,
-                    salonStreet: salonStreet,
-                  );
-
-                  await widget.salon.update(salonsRecordData);
                 },
                 icon: Icon(
                   Icons.check_circle,
@@ -281,19 +270,19 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Image.network(
-                                  gridViewUsersRecordList.photoUrl,
+                                  gridViewUsersRecord.photoUrl,
                                   width: 100,
                                   height: 100,
                                   fit: BoxFit.cover,
                                 ),
                                 Text(
-                                  gridViewUsersRecordList.displayName,
+                                  gridViewUsersRecord.displayName,
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Poppins',
                                   ),
                                 ),
                                 Text(
-                                  gridViewUsersRecordList.role,
+                                  gridViewUsersRecord.role,
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Poppins',
                                   ),
