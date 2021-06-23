@@ -17,11 +17,11 @@ abstract class SalonImagesRecord
       _$salonImagesRecordSerializer;
 
   @nullable
-  @BuiltValueField(wireName: 'img_url')
-  String get imgUrl;
+  DocumentReference get salon;
 
   @nullable
-  DocumentReference get salon;
+  @BuiltValueField(wireName: 'img_url')
+  String get imgUrl;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -48,14 +48,14 @@ abstract class SalonImagesRecord
 }
 
 Map<String, dynamic> createSalonImagesRecordData({
-  String imgUrl,
   DocumentReference salon,
+  String imgUrl,
 }) =>
     serializers.toFirestore(
         SalonImagesRecord.serializer,
         SalonImagesRecord((s) => s
-          ..imgUrl = imgUrl
-          ..salon = salon));
+          ..salon = salon
+          ..imgUrl = imgUrl));
 
 SalonImagesRecord get dummySalonImagesRecord {
   final builder = SalonImagesRecordBuilder()..imgUrl = dummyImagePath;
