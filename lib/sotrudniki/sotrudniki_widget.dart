@@ -149,7 +149,7 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                                 salon: salon,
                               );
 
-                              await sotrudnikiSalonsRecord.user
+                              await buttonUsersRecord.reference
                                   .update(usersRecordData);
                             },
                             text: 'Добавить',
