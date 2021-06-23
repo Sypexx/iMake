@@ -241,7 +241,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   },
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(10, 20, 0, 0),
+                  padding: EdgeInsets.fromLTRB(10, 20, 0, 10),
                   child: Text(
                     'Салоны',
                     style: FlutterFlowTheme.bodyText1.override(
