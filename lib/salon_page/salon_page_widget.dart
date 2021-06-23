@@ -40,52 +40,77 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  child: Stack(
-                    children: [
-                      PageView(
-                        controller: pageViewController,
-                        scrollDirection: Axis.horizontal,
+                StreamBuilder<List<SalonImagesRecord>>(
+                  stream: querySalonImagesRecord(
+                    queryBuilder: (salonImagesRecord) =>
+                        salonImagesRecord.where('salon',
+                            isEqualTo: salonPageSalonsRecord.reference),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    List<SalonImagesRecord> pageViewSalonImagesRecordList =
+                        snapshot.data;
+                    // Customize what your widget looks like with no query results.
+                    if (snapshot.data.isEmpty) {
+                      // return Container();
+                      // For now, we'll just include some dummy data.
+                      pageViewSalonImagesRecordList =
+                          createDummySalonImagesRecord(count: 4);
+                    }
+                    return Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      child: Stack(
                         children: [
-                          Image.asset(
-                            'assets/images/Bam 3.jpg',
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          )
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment(0, 1),
-                        child: Padding(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                          child: SmoothPageIndicator(
+                          PageView.builder(
                             controller: pageViewController,
-                            count: 1,
-                            axisDirection: Axis.horizontal,
-                            onDotClicked: (i) {
-                              pageViewController.animateToPage(
-                                i,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.ease,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: pageViewSalonImagesRecordList.length,
+                            itemBuilder: (context, pageViewIndex) {
+                              final pageViewSalonImagesRecord =
+                                  pageViewSalonImagesRecordList[pageViewIndex];
+                              return Image.asset(
+                                'assets/images/Bam 3.jpg',
+                                width: 100,
+                                height: 100,
+                                fit: BoxFit.cover,
                               );
                             },
-                            effect: SlideEffect(
-                              spacing: 8,
-                              radius: 16,
-                              dotWidth: 12,
-                              dotHeight: 12,
-                              dotColor: Color(0xFF9E9E9E),
-                              activeDotColor: Colors.white,
-                              paintStyle: PaintingStyle.fill,
+                          ),
+                          Align(
+                            alignment: Alignment(0, 1),
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                              child: SmoothPageIndicator(
+                                controller: pageViewController,
+                                count: pageViewSalonImagesRecordList.length,
+                                axisDirection: Axis.horizontal,
+                                onDotClicked: (i) {
+                                  pageViewController.animateToPage(
+                                    i,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.ease,
+                                  );
+                                },
+                                effect: SlideEffect(
+                                  spacing: 8,
+                                  radius: 16,
+                                  dotWidth: 12,
+                                  dotHeight: 12,
+                                  dotColor: Color(0xFF9E9E9E),
+                                  activeDotColor: Colors.white,
+                                  paintStyle: PaintingStyle.fill,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
