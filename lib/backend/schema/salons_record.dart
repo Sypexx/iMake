@@ -28,6 +28,9 @@ abstract class SalonsRecord
   String get salonStreet;
 
   @nullable
+  DocumentReference get user;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -57,13 +60,15 @@ Map<String, dynamic> createSalonsRecordData({
   String frontImage,
   String salonName,
   String salonStreet,
+  DocumentReference user,
 }) =>
     serializers.toFirestore(
         SalonsRecord.serializer,
         SalonsRecord((s) => s
           ..frontImage = frontImage
           ..salonName = salonName
-          ..salonStreet = salonStreet));
+          ..salonStreet = salonStreet
+          ..user = user));
 
 SalonsRecord get dummySalonsRecord {
   final builder = SalonsRecordBuilder()

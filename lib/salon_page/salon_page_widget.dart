@@ -98,47 +98,37 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
               decoration: BoxDecoration(
                 color: Colors.white,
               ),
-              child: StreamBuilder<UsersRecord>(
-                stream: UsersRecord.getDocument(widget.username.user),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(child: CircularProgressIndicator());
-                  }
-                  final columnUsersRecord = snapshot.data;
-                  return Column(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    child: Text(
+                      'Салон красоты Bam',
+                      style: FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  Row(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                         child: Text(
-                          'Салон красоты Bam',
+                          'ул. Пояркова 21',
                           style: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Poppins',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
                           ),
                         ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                            child: Text(
-                              'ул. Пояркова 21',
-                              style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Poppins',
-                              ),
-                            ),
-                          )
-                        ],
                       )
                     ],
-                  );
-                },
+                  )
+                ],
               ),
             ),
             Expanded(
