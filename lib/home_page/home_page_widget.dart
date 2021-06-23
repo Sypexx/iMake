@@ -293,8 +293,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       await Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              SalonPageWidget(),
+                                          builder: (context) => SalonPageWidget(
+                                            idsalon: rowSalonsRecord.reference,
+                                          ),
                                         ),
                                       );
                                     },
