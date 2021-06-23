@@ -1,4 +1,3 @@
-import '../components/asdasdas_widget.dart';
 import '../flutter_flow/flutter_flow_radio_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -78,8 +77,7 @@ class _MakezapisWidgetState extends State<MakezapisWidget> {
                 toggleable: false,
                 horizontalAlignment: WrapAlignment.start,
                 verticalAlignment: WrapCrossAlignment.start,
-              ),
-              AsdasdasWidget()
+              )
             ],
           ),
         ),

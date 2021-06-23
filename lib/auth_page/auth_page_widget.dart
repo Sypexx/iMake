@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -42,13 +43,30 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: Alignment(0, 0.35),
+                alignment: Alignment(0, 3.94),
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 80),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 0, 0, 250),
+                        child: Stack(
+                          alignment: Alignment(0, 0),
+                          children: [
+                            Align(
+                              alignment: Alignment(0, 0),
+                              child: Image.asset(
+                                'assets/images/IMG_3916.PNG',
+                                width: 250,
+                                height: 250,
+                                fit: BoxFit.cover,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                       Padding(
                         padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
                         child: Container(
@@ -195,6 +213,21 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                 if (user == null) {
                                   return;
                                 }
+
+                                final displayName = 'Имя';
+                                final photoUrl =
+                                    'https://firebasestorage.googleapis.com/v0/b/imake-b18ed.appspot.com/o/Profile%20avatars%2Favatar1.png?alt=media&token=15a3c1a3-fa40-4dcc-88bf-3544b4f3563e';
+                                final role = 'Клиент';
+
+                                final usersRecordData = createUsersRecordData(
+                                  displayName: displayName,
+                                  photoUrl: photoUrl,
+                                  role: role,
+                                );
+
+                                await UsersRecord.collection
+                                    .doc(user.uid)
+                                    .update(usersRecordData);
 
                                 await Navigator.pushAndRemoveUntil(
                                   context,
