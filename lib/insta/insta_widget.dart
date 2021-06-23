@@ -105,8 +105,8 @@ class _InstaWidgetState extends State<InstaWidget> {
                                     context: context,
                                     builder: (alertDialogContext) {
                                       return AlertDialog(
-                                        title: Text('asdasd'),
-                                        content: Text('asdasd'),
+                                        title: Text('asd'),
+                                        content: Text('asd'),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
@@ -118,13 +118,9 @@ class _InstaWidgetState extends State<InstaWidget> {
                                               Navigator.pop(alertDialogContext);
                                               await Navigator.push(
                                                 context,
-                                                PageTransition(
-                                                  type: PageTransitionType.fade,
-                                                  duration: Duration(
-                                                      milliseconds: 300),
-                                                  reverseDuration: Duration(
-                                                      milliseconds: 300),
-                                                  child: SalonPageWidget(),
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      SalonPageWidget(),
                                                 ),
                                               );
                                               ;
