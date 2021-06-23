@@ -99,45 +99,11 @@ class _InstaWidgetState extends State<InstaWidget> {
                             final imageSalonsRecord = snapshot.data;
                             return Padding(
                               padding: EdgeInsets.fromLTRB(0, 4, 0, 0),
-                              child: InkWell(
-                                onTap: () async {
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return AlertDialog(
-                                        title: Text('asd'),
-                                        content: Text('asd'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('Cancel'),
-                                          ),
-                                          TextButton(
-                                            onPressed: () async {
-                                              Navigator.pop(alertDialogContext);
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      SalonPageWidget(),
-                                                ),
-                                              );
-                                              ;
-                                            },
-                                            child: Text('Confirm'),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-                                },
-                                child: Image.network(
-                                  gridViewPostsRecord.imgUrl,
-                                  width: 100,
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
+                              child: Image.network(
+                                gridViewPostsRecord.imgUrl,
+                                width: 100,
+                                height: 100,
+                                fit: BoxFit.cover,
                               ),
                             );
                           },
