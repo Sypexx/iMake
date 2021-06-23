@@ -1,4 +1,4 @@
-import '../flutter_flow/flutter_flow_drop_down_template.dart';
+import '../components/asdasdas_widget.dart';
 import '../flutter_flow/flutter_flow_radio_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -13,7 +13,6 @@ class MakezapisWidget extends StatefulWidget {
 }
 
 class _MakezapisWidgetState extends State<MakezapisWidget> {
-  String dropDownValue;
   String radioButtonValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -80,43 +79,7 @@ class _MakezapisWidgetState extends State<MakezapisWidget> {
                 horizontalAlignment: WrapAlignment.start,
                 verticalAlignment: WrapCrossAlignment.start,
               ),
-              Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  color: Color(0xFFEEEEEE),
-                ),
-              ),
-              Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  color: Color(0xFFEEEEEE),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    FlutterFlowDropDown(
-                      options: ['Option 1'],
-                      onChanged: (value) {
-                        setState(() => dropDownValue = value);
-                      },
-                      width: 130,
-                      height: 40,
-                      textStyle: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Poppins',
-                        color: Colors.black,
-                      ),
-                      fillColor: Colors.white,
-                      elevation: 2,
-                      borderColor: Colors.transparent,
-                      borderWidth: 0,
-                      borderRadius: 0,
-                      margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
-                    )
-                  ],
-                ),
-              )
+              AsdasdasWidget()
             ],
           ),
         ),
