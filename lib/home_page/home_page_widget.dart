@@ -110,8 +110,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         borderRadius: BorderRadius.circular(20),
                                         child: Image.network(
                                           pageViewAdRecord.imgUrl,
-                                          width: 100,
-                                          height: 100,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              1,
                                           fit: BoxFit.cover,
                                         ),
                                       );
@@ -199,8 +203,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 Padding(
                                   padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
                                   child: Container(
-                                    width: 95,
-                                    height: 80,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.25,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.1,
                                     decoration: BoxDecoration(
                                       color: Color(0xFFEEEEEE),
                                       borderRadius: BorderRadius.circular(20),
@@ -245,103 +251,71 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ),
                   ),
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Container(
-                          width: 250,
-                          height: 125,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFEEEEEE),
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: Image.asset(
-                                'assets/images/Bam 1.jpg',
-                              ).image,
-                            ),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
+                StreamBuilder<List<SalonsRecord>>(
+                  stream: querySalonsRecord(),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    List<SalonsRecord> rowSalonsRecordList = snapshot.data;
+                    // Customize what your widget looks like with no query results.
+                    if (snapshot.data.isEmpty) {
+                      // return Container();
+                      // For now, we'll just include some dummy data.
+                      rowSalonsRecordList = createDummySalonsRecord(count: 4);
+                    }
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: List.generate(rowSalonsRecordList.length,
+                            (rowIndex) {
+                          final rowSalonsRecord = rowSalonsRecordList[rowIndex];
+                          return Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.network(
+                                    rowSalonsRecord.frontImage,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.6,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.15,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+                                child: Text(
+                                  rowSalonsRecord.salonName,
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
+                                child: Text(
+                                  rowSalonsRecord.salonStreet,
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                              )
+                            ],
+                          );
+                        }),
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Container(
-                          width: 250,
-                          height: 125,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFEEEEEE),
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: Image.asset(
-                                'assets/images/Dessange 1.jpg',
-                              ).image,
-                            ),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                        child: Text(
-                          'Салон красоты Bam',
-                          style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(129, 0, 0, 0),
-                        child: Text(
-                          'Салон красоты Dessange',
-                          style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                        child: Text(
-                          'ул. Пояркова 21',
-                          style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(173, 0, 0, 0),
-                        child: Text(
-                          'ул. Ленина 18/2',
-                          style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
+                    );
+                  },
                 )
               ],
             ),

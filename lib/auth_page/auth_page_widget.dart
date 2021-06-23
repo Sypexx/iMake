@@ -37,19 +37,10 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
-            color: Color(0xFF7B2E2E),
+            color: Colors.white,
           ),
           child: Stack(
             children: [
-              Align(
-                alignment: Alignment(0.31, -0.43),
-                child: Image.asset(
-                  'assets/images/photo_2021-06-18_01-47-06.jpg',
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 1,
-                  fit: BoxFit.cover,
-                ),
-              ),
               Align(
                 alignment: Alignment(0, -0.37),
                 child: Padding(
@@ -79,7 +70,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0x00FFFFFF),
+                                        color: Color(0xFFBDBDBD),
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.only(
@@ -91,7 +82,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0x00FFFFFF),
+                                        color: Color(0xFFBDBDBD),
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.only(
@@ -149,7 +140,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0x00FFFFFF),
+                                        color: Color(0xFFBDBDBD),
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.only(
@@ -161,7 +152,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0x00FFFFFF),
+                                        color: Color(0xFFBDBDBD),
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.only(
