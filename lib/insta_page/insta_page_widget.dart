@@ -10,11 +10,9 @@ class InstaPageWidget extends StatefulWidget {
   InstaPageWidget({
     Key key,
     this.idInsta,
-    this.currentimg,
   }) : super(key: key);
 
   final DocumentReference idInsta;
-  final PostsRecord currentimg;
 
   @override
   _InstaPageWidgetState createState() => _InstaPageWidgetState();
@@ -61,25 +59,14 @@ class _InstaPageWidgetState extends State<InstaPageWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        StreamBuilder<PostsRecord>(
-                          stream: PostsRecord.getDocument(
-                              widget.currentimg.reference),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(child: CircularProgressIndicator());
-                            }
-                            final imagePostsRecord = snapshot.data;
-                            return ClipRRect(
-                              borderRadius: BorderRadius.circular(50),
-                              child: Image.network(
-                                imagePostsRecord.imgUrl,
-                                width: 70,
-                                height: 70,
-                                fit: BoxFit.cover,
-                              ),
-                            );
-                          },
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.network(
+                            instaPageUsersRecord.photoUrl,
+                            width: 70,
+                            height: 70,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                         Column(
                           mainAxisSize: MainAxisSize.max,
