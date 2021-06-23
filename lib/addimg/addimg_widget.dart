@@ -38,13 +38,9 @@ class _AddimgWidgetState extends State<AddimgWidget> {
           IconButton(
             onPressed: () async {
               Navigator.pop(context);
-              final imgUrl = uploadedFileUrl;
-              final user = currentUserReference;
               final createdAt = getCurrentTimestamp;
 
               final postsRecordData = createPostsRecordData(
-                imgUrl: imgUrl,
-                user: user,
                 createdAt: createdAt,
               );
 

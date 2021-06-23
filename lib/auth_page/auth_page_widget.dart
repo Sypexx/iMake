@@ -103,17 +103,6 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     fontSize: 16,
                                   ),
                                 ),
-                              ),
-                              Align(
-                                alignment: Alignment(0.95, 0.5),
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                                  child: Icon(
-                                    Icons.person,
-                                    color: Color(0xFFBDBDBD),
-                                    size: 24,
-                                  ),
-                                ),
                               )
                             ],
                           ),
@@ -183,17 +172,6 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     'Lato',
                                     color: Color(0xFFBDBDBD),
                                     fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment(0.95, 0.5),
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                                  child: Icon(
-                                    Icons.lock_open,
-                                    color: Color(0xFFBDBDBD),
-                                    size: 24,
                                   ),
                                 ),
                               )

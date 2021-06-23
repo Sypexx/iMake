@@ -19,11 +19,11 @@ abstract class PostsRecord implements Built<PostsRecord, PostsRecordBuilder> {
   String get imgUrl;
 
   @nullable
-  DocumentReference get user;
-
-  @nullable
   @BuiltValueField(wireName: 'created_at')
   DateTime get createdAt;
+
+  @nullable
+  DocumentReference get salon;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -51,15 +51,15 @@ abstract class PostsRecord implements Built<PostsRecord, PostsRecordBuilder> {
 
 Map<String, dynamic> createPostsRecordData({
   String imgUrl,
-  DocumentReference user,
   DateTime createdAt,
+  DocumentReference salon,
 }) =>
     serializers.toFirestore(
         PostsRecord.serializer,
         PostsRecord((p) => p
           ..imgUrl = imgUrl
-          ..user = user
-          ..createdAt = createdAt));
+          ..createdAt = createdAt
+          ..salon = salon));
 
 PostsRecord get dummyPostsRecord {
   final builder = PostsRecordBuilder()

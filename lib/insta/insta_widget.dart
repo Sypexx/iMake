@@ -88,31 +88,56 @@ class _InstaWidgetState extends State<InstaWidget> {
                       itemBuilder: (context, gridViewIndex) {
                         final gridViewPostsRecord =
                             gridViewPostsRecordList[gridViewIndex];
-                        return StreamBuilder<UsersRecord>(
-                          stream:
-                              UsersRecord.getDocument(gridViewPostsRecord.user),
+                        return StreamBuilder<SalonsRecord>(
+                          stream: SalonsRecord.getDocument(
+                              gridViewPostsRecord.salon),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
                               return Center(child: CircularProgressIndicator());
                             }
-                            final imageUsersRecord = snapshot.data;
+                            final imageSalonsRecord = snapshot.data;
                             return Padding(
                               padding: EdgeInsets.fromLTRB(0, 4, 0, 0),
                               child: InkWell(
                                 onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => SalonPageWidget(
-                                        created: gridViewPostsRecord,
-                                        username: gridViewPostsRecord,
-                                      ),
-                                    ),
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('asdasd'),
+                                        content: Text('asdasd'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Cancel'),
+                                          ),
+                                          TextButton(
+                                            onPressed: () async {
+                                              Navigator.pop(alertDialogContext);
+                                              await Navigator.push(
+                                                context,
+                                                PageTransition(
+                                                  type: PageTransitionType.fade,
+                                                  duration: Duration(
+                                                      milliseconds: 300),
+                                                  reverseDuration: Duration(
+                                                      milliseconds: 300),
+                                                  child: SalonPageWidget(),
+                                                ),
+                                              );
+                                              ;
+                                            },
+                                            child: Text('Confirm'),
+                                          ),
+                                        ],
+                                      );
+                                    },
                                   );
                                 },
                                 child: Image.network(
-                                  gridViewPostsRecord.imgUrl,
+                                  imageSalonsRecord.frontImage,
                                   width: 100,
                                   height: 100,
                                   fit: BoxFit.cover,
