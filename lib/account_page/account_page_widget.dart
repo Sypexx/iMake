@@ -221,6 +221,95 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                     );
                   },
                 ),
+                StreamBuilder<List<SalonsRecord>>(
+                  stream: querySalonsRecord(
+                    queryBuilder: (salonsRecord) => salonsRecord.where('user',
+                        isEqualTo: accountPageUsersRecord.reference),
+                    singleRecord: true,
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    List<SalonsRecord> rowSalonsRecordList = snapshot.data;
+                    // Customize what your widget looks like with no query results.
+                    if (snapshot.data.isEmpty) {
+                      // return Container();
+                      // For now, we'll just include some dummy data.
+                      rowSalonsRecordList = createDummySalonsRecord(count: 1);
+                    }
+                    final rowSalonsRecord = rowSalonsRecordList.first;
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          StreamBuilder<List<SalonImagesRecord>>(
+                            stream: querySalonImagesRecord(
+                              queryBuilder: (salonImagesRecord) =>
+                                  salonImagesRecord.where('salon',
+                                      isEqualTo: rowSalonsRecord.reference),
+                              singleRecord: true,
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                    child: CircularProgressIndicator());
+                              }
+                              List<SalonImagesRecord>
+                                  buttonSalonImagesRecordList = snapshot.data;
+                              // Customize what your widget looks like with no query results.
+                              if (snapshot.data.isEmpty) {
+                                // return Container();
+                                // For now, we'll just include some dummy data.
+                                buttonSalonImagesRecordList =
+                                    createDummySalonImagesRecord(count: 1);
+                              }
+                              final buttonSalonImagesRecord =
+                                  buttonSalonImagesRecordList.first;
+                              return Padding(
+                                padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => EditsalonWidget(
+                                          salon: rowSalonsRecord.reference,
+                                          salonimages:
+                                              buttonSalonImagesRecord.reference,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  text: 'Редактировать салон',
+                                  options: FFButtonOptions(
+                                    width: 180,
+                                    height: 40,
+                                    color: Color(0x00FFFFFF),
+                                    textStyle:
+                                        FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.black,
+                                    ),
+                                    borderSide: BorderSide(
+                                      color: Color(0xFFBDBDBD),
+                                      width: 1,
+                                    ),
+                                    borderRadius: 12,
+                                  ),
+                                ),
+                              );
+                            },
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                   child: Row(
@@ -238,7 +327,7 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                               ),
                             );
                           },
-                          text: 'Администрация',
+                          text: 'Сотрудники',
                           options: FFButtonOptions(
                             width: 180,
                             height: 40,
@@ -275,7 +364,7 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                               ),
                             );
                           },
-                          text: 'Статистика салона',
+                          text: 'Статистика',
                           options: FFButtonOptions(
                             width: 180,
                             height: 40,
