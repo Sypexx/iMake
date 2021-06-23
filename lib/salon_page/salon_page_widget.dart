@@ -26,23 +26,14 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<SalonsRecord>>(
-      stream: querySalonsRecord(
-        singleRecord: true,
-      ),
+    return StreamBuilder<SalonsRecord>(
+      stream: SalonsRecord.getDocument(widget.idsalon),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Center(child: CircularProgressIndicator());
         }
-        List<SalonsRecord> salonPageSalonsRecordList = snapshot.data;
-        // Customize what your widget looks like with no query results.
-        if (snapshot.data.isEmpty) {
-          // return Container();
-          // For now, we'll just include some dummy data.
-          salonPageSalonsRecordList = createDummySalonsRecord(count: 1);
-        }
-        final salonPageSalonsRecord = salonPageSalonsRecordList.first;
+        final salonPageSalonsRecord = snapshot.data;
         return Scaffold(
           key: scaffoldKey,
           body: SafeArea(
