@@ -72,8 +72,8 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                             itemBuilder: (context, pageViewIndex) {
                               final pageViewSalonImagesRecord =
                                   pageViewSalonImagesRecordList[pageViewIndex];
-                              return Image.asset(
-                                'assets/images/Bam 3.jpg',
+                              return Image.network(
+                                pageViewSalonImagesRecord.imgUrl,
                                 width: 100,
                                 height: 100,
                                 fit: BoxFit.cover,
