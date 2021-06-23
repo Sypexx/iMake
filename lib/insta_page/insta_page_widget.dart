@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../salon_page/salon_page_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -53,81 +54,97 @@ class _InstaPageWidgetState extends State<InstaPageWidget> {
           body: SafeArea(
             child: Align(
               alignment: Alignment(0, 0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: Image.network(
-                            instaPageUsersRecord.photoUrl,
-                            width: 70,
-                            height: 70,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            StreamBuilder<List<SalonsRecord>>(
-                              stream: querySalonsRecord(
-                                singleRecord: true,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                      child: CircularProgressIndicator());
-                                }
-                                List<SalonsRecord> textSalonsRecordList =
-                                    snapshot.data;
-                                // Customize what your widget looks like with no query results.
-                                if (snapshot.data.isEmpty) {
-                                  // return Container();
-                                  // For now, we'll just include some dummy data.
-                                  textSalonsRecordList =
-                                      createDummySalonsRecord(count: 1);
-                                }
-                                final textSalonsRecord =
-                                    textSalonsRecordList.first;
-                                return Padding(
-                                  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                  child: Text(
-                                    textSalonsRecord.salonName,
-                                    style: FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 18,
+              child: StreamBuilder<PostsRecord>(
+                stream: PostsRecord.getDocument(widget.idInsta),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  final columnPostsRecord = snapshot.data;
+                  return Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      StreamBuilder<SalonsRecord>(
+                        stream:
+                            SalonsRecord.getDocument(columnPostsRecord.salon),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                          final rowSalonsRecord = snapshot.data;
+                          return Padding(
+                            padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                InkWell(
+                                  onTap: () async {
+                                    await Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => SalonPageWidget(
+                                          idsalon: rowSalonsRecord.reference,
+                                        ),
+                                      ),
+                                      (r) => false,
+                                    );
+                                  },
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(50),
+                                    child: Image.network(
+                                      instaPageUsersRecord.photoUrl,
+                                      width: 70,
+                                      height: 70,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                );
-                              },
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                              child: Text(
-                                instaPageUsersRecord.displayName,
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 18,
                                 ),
-                              ),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Image.network(
-                    widget.img,
-                    width: 400,
-                    height: 500,
-                    fit: BoxFit.cover,
-                  )
-                ],
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                      child: Text(
+                                        rowSalonsRecord.salonName,
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                      child: Text(
+                                        instaPageUsersRecord.displayName,
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                        child: Image.network(
+                          widget.img,
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height * 0.6,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    ],
+                  );
+                },
               ),
             ),
           ),
