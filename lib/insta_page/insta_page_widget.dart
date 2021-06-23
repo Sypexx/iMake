@@ -10,9 +10,11 @@ class InstaPageWidget extends StatefulWidget {
   InstaPageWidget({
     Key key,
     this.idInsta,
+    this.img,
   }) : super(key: key);
 
   final DocumentReference idInsta;
+  final String img;
 
   @override
   _InstaPageWidgetState createState() => _InstaPageWidgetState();
@@ -120,7 +122,7 @@ class _InstaPageWidgetState extends State<InstaPageWidget> {
                     ),
                   ),
                   Image.network(
-                    'https://picsum.photos/seed/160/600',
+                    widget.img,
                     width: 400,
                     height: 500,
                     fit: BoxFit.cover,
