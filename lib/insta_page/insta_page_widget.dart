@@ -84,20 +84,43 @@ class _InstaPageWidgetState extends State<InstaPageWidget> {
                         Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                              child: Text(
-                                instaPageUsersRecord.displayName,
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 18,
-                                ),
+                            StreamBuilder<List<SalonsRecord>>(
+                              stream: querySalonsRecord(
+                                singleRecord: true,
                               ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                      child: CircularProgressIndicator());
+                                }
+                                List<SalonsRecord> textSalonsRecordList =
+                                    snapshot.data;
+                                // Customize what your widget looks like with no query results.
+                                if (snapshot.data.isEmpty) {
+                                  // return Container();
+                                  // For now, we'll just include some dummy data.
+                                  textSalonsRecordList =
+                                      createDummySalonsRecord(count: 1);
+                                }
+                                final textSalonsRecord =
+                                    textSalonsRecordList.first;
+                                return Padding(
+                                  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                  child: Text(
+                                    textSalonsRecord.salonName,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                             Padding(
                               padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                               child: Text(
-                                rowRecord.displayName,
+                                instaPageUsersRecord.displayName,
                                 style: FlutterFlowTheme.bodyText1.override(
                                   fontFamily: 'Poppins',
                                   fontSize: 18,

@@ -105,7 +105,7 @@ class _InstaWidgetState extends State<InstaWidget> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => InstaPageWidget(
-                                        idInsta: gridViewPostsRecord,
+                                        idInsta: gridViewPostsRecord.reference,
                                         currentimg: imageSalonsRecord,
                                       ),
                                     ),
