@@ -76,101 +76,120 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Text(
-                        'Мастер',
-                        style: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
-                        ),
-                      ),
-                      TextFormField(
-                        controller: textController1,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          hintText: 'Почта1',
-                          hintStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1,
-                            ),
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1,
-                            ),
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
+                  StreamBuilder<List<UsersRecord>>(
+                    stream: queryUsersRecord(
+                      queryBuilder: (usersRecord) => usersRecord.where('email',
+                          isEqualTo: textController1.text),
+                      singleRecord: true,
+                    ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(child: CircularProgressIndicator());
+                      }
+                      List<UsersRecord> columnUsersRecordList = snapshot.data;
+                      // Customize what your widget looks like with no query results.
+                      if (snapshot.data.isEmpty) {
+                        // return Container();
+                        // For now, we'll just include some dummy data.
+                        columnUsersRecordList =
+                            createDummyUsersRecord(count: 1);
+                      }
+                      final columnUsersRecord = columnUsersRecordList.first;
+                      return Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'Мастер',
+                            style: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
                             ),
                           ),
-                        ),
-                        style: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
-                        ),
-                      ),
-                      StreamBuilder<List<UsersRecord>>(
-                        stream: queryUsersRecord(
-                          queryBuilder: (usersRecord) => usersRecord
-                              .where('email', isEqualTo: textController1.text),
-                          singleRecord: true,
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(child: CircularProgressIndicator());
-                          }
-                          List<UsersRecord> buttonUsersRecordList =
-                              snapshot.data;
-                          // Customize what your widget looks like with no query results.
-                          if (snapshot.data.isEmpty) {
-                            // return Container();
-                            // For now, we'll just include some dummy data.
-                            buttonUsersRecordList =
-                                createDummyUsersRecord(count: 1);
-                          }
-                          final buttonUsersRecord = buttonUsersRecordList.first;
-                          return FFButtonWidget(
-                            onPressed: () async {
-                              final role = 'Мастер';
-                              final salon = sotrudnikiSalonsRecord.reference;
-
-                              final usersRecordData = createUsersRecordData(
-                                role: role,
-                                salon: salon,
-                              );
-
-                              await buttonUsersRecord.reference
-                                  .update(usersRecordData);
-                            },
-                            text: 'Добавить',
-                            options: FFButtonOptions(
-                              width: 130,
-                              height: 40,
-                              color: Color(0xFFBDBDBD),
-                              textStyle: FlutterFlowTheme.subtitle2.override(
+                          TextFormField(
+                            controller: textController1,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              hintText: 'Почта1',
+                              hintStyle: FlutterFlowTheme.bodyText1.override(
                                 fontFamily: 'Poppins',
-                                color: Colors.white,
                               ),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(4.0),
+                                  topRight: Radius.circular(4.0),
+                                ),
                               ),
-                              borderRadius: 12,
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(4.0),
+                                  topRight: Radius.circular(4.0),
+                                ),
+                              ),
                             ),
-                          );
-                        },
-                      )
-                    ],
+                            style: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
+                            ),
+                          ),
+                          StreamBuilder<UsersRecord>(
+                            stream: UsersRecord.getDocument(
+                                columnUsersRecord.reference),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                    child: CircularProgressIndicator());
+                              }
+                              final buttonUsersRecord = snapshot.data;
+                              return FFButtonWidget(
+                                onPressed: () async {
+                                  final role = 'Мастер';
+                                  final salon =
+                                      sotrudnikiSalonsRecord.reference;
+
+                                  final usersRecordData = createUsersRecordData(
+                                    role: role,
+                                    salon: salon,
+                                  );
+
+                                  await buttonUsersRecord.reference
+                                      .update(usersRecordData);
+                                },
+                                text: 'Добавить',
+                                options: FFButtonOptions(
+                                  width: 130,
+                                  height: 40,
+                                  color: Color(0xFFBDBDBD),
+                                  textStyle:
+                                      FlutterFlowTheme.subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1,
+                                  ),
+                                  borderRadius: 12,
+                                ),
+                              );
+                            },
+                          ),
+                          Text(
+                            columnUsersRecord.email,
+                            style: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Poppins',
+                            ),
+                          )
+                        ],
+                      );
+                    },
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
