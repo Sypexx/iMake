@@ -81,14 +81,13 @@ class _InstaPageWidgetState extends State<InstaPageWidget> {
                               children: [
                                 InkWell(
                                   onTap: () async {
-                                    await Navigator.pushAndRemoveUntil(
+                                    await Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => SalonPageWidget(
                                           idsalon: rowSalonsRecord.reference,
                                         ),
                                       ),
-                                      (r) => false,
                                     );
                                   },
                                   child: ClipRRect(
