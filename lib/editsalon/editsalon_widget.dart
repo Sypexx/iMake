@@ -78,218 +78,206 @@ class _EditsalonWidgetState extends State<EditsalonWidget> {
           body: SafeArea(
             child: Align(
               alignment: Alignment(0, 0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    child: InkWell(
-                      onTap: () async {
-                        final selectedMedia = await selectMedia();
-                        if (selectedMedia != null &&
-                            validateFileFormat(
-                                selectedMedia.storagePath, context)) {
-                          showUploadMessage(context, 'Uploading file...',
-                              showLoading: true);
-                          final downloadUrl = await uploadData(
-                              selectedMedia.storagePath, selectedMedia.bytes);
-                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                          if (downloadUrl != null) {
-                            setState(() => uploadedFileUrl = downloadUrl);
-                            showUploadMessage(context, 'Success!');
-                          } else {
-                            showUploadMessage(
-                                context, 'Failed to upload media');
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      child: InkWell(
+                        onTap: () async {
+                          final selectedMedia = await selectMedia();
+                          if (selectedMedia != null &&
+                              validateFileFormat(
+                                  selectedMedia.storagePath, context)) {
+                            showUploadMessage(context, 'Uploading file...',
+                                showLoading: true);
+                            final downloadUrl = await uploadData(
+                                selectedMedia.storagePath, selectedMedia.bytes);
+                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                            if (downloadUrl != null) {
+                              setState(() => uploadedFileUrl = downloadUrl);
+                              showUploadMessage(context, 'Success!');
+                            } else {
+                              showUploadMessage(
+                                  context, 'Failed to upload media');
+                            }
                           }
-                        }
-                      },
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        child: Image.network(
-                          editsalonSalonsRecord.frontImage,
-                          width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.network(
+                            editsalonSalonsRecord.frontImage,
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                    child: TextFormField(
-                      controller: textController1,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: editsalonSalonsRecord.salonName,
-                        labelStyle: FlutterFlowTheme.bodyText1.override(
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                      child: TextFormField(
+                        controller: textController1,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: editsalonSalonsRecord.salonName,
+                          labelStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
+                          ),
+                          hintText: 'Display_name',
+                          hintStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                        ),
+                        style: FlutterFlowTheme.bodyText1.override(
                           fontFamily: 'Poppins',
                         ),
-                        hintText: 'Display_name',
-                        hintStyle: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
-                        ),
-                      ),
-                      style: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Poppins',
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                    child: TextFormField(
-                      controller: textController2,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: editsalonSalonsRecord.salonStreet,
-                        labelStyle: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
-                        ),
-                        hintText: 'Display_name',
-                        hintStyle: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0x00000000),
-                            width: 1,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(4.0),
-                            topRight: Radius.circular(4.0),
-                          ),
-                        ),
-                      ),
-                      style: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Poppins',
                       ),
                     ),
-                  ),
-                  StreamBuilder<SalonImagesRecord>(
-                    stream: SalonImagesRecord.getDocument(widget.salonimages),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(child: CircularProgressIndicator());
-                      }
-                      final containerSalonImagesRecord = snapshot.data;
-                      return Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height * 0.3,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFEEEEEE),
-                        ),
-                        child: StreamBuilder<List<SalonImagesRecord>>(
-                          stream: querySalonImagesRecord(
-                            queryBuilder: (salonImagesRecord) =>
-                                salonImagesRecord.where('salon',
-                                    isEqualTo:
-                                        containerSalonImagesRecord.salon),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                      child: TextFormField(
+                        controller: textController2,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: editsalonSalonsRecord.salonStreet,
+                          labelStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
                           ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(child: CircularProgressIndicator());
-                            }
-                            List<SalonImagesRecord>
-                                pageViewSalonImagesRecordList = snapshot.data;
-                            // Customize what your widget looks like with no query results.
-                            if (snapshot.data.isEmpty) {
-                              // return Container();
-                              // For now, we'll just include some dummy data.
-                              pageViewSalonImagesRecordList =
-                                  createDummySalonImagesRecord(count: 4);
-                            }
-                            return Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: 100,
-                              child: Stack(
-                                children: [
-                                  PageView.builder(
-                                    controller: pageViewController,
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount:
-                                        pageViewSalonImagesRecordList.length,
-                                    itemBuilder: (context, pageViewIndex) {
-                                      final pageViewSalonImagesRecord =
-                                          pageViewSalonImagesRecordList[
-                                              pageViewIndex];
-                                      return Image.network(
-                                        pageViewSalonImagesRecord.imgUrl,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height: 100,
-                                        fit: BoxFit.cover,
-                                      );
-                                    },
-                                  ),
-                                  Align(
-                                    alignment: Alignment(0, 1),
-                                    child: Padding(
-                                      padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                                      child: SmoothPageIndicator(
-                                        controller: pageViewController,
-                                        count: pageViewSalonImagesRecordList
-                                            .length,
-                                        axisDirection: Axis.horizontal,
-                                        onDotClicked: (i) {
-                                          pageViewController.animateToPage(
-                                            i,
-                                            duration:
-                                                Duration(milliseconds: 500),
-                                            curve: Curves.ease,
-                                          );
-                                        },
-                                        effect: SlideEffect(
-                                          spacing: 8,
-                                          radius: 16,
-                                          dotWidth: 12,
-                                          dotHeight: 12,
-                                          dotColor: Color(0xFF9E9E9E),
-                                          activeDotColor: Colors.white,
-                                          paintStyle: PaintingStyle.fill,
-                                        ),
+                          hintText: 'Display_name',
+                          hintStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Poppins',
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                        ),
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFEEEEEE),
+                      ),
+                      child: StreamBuilder<List<SalonImagesRecord>>(
+                        stream: querySalonImagesRecord(
+                          queryBuilder: (salonImagesRecord) => salonImagesRecord
+                              .where('salon', isEqualTo: widget.salon),
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                          List<SalonImagesRecord>
+                              pageViewSalonImagesRecordList = snapshot.data;
+                          // Customize what your widget looks like with no query results.
+                          if (snapshot.data.isEmpty) {
+                            // return Container();
+                            // For now, we'll just include some dummy data.
+                            pageViewSalonImagesRecordList =
+                                createDummySalonImagesRecord(count: 4);
+                          }
+                          return Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: 100,
+                            child: Stack(
+                              children: [
+                                PageView.builder(
+                                  controller: pageViewController,
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount:
+                                      pageViewSalonImagesRecordList.length,
+                                  itemBuilder: (context, pageViewIndex) {
+                                    final pageViewSalonImagesRecord =
+                                        pageViewSalonImagesRecordList[
+                                            pageViewIndex];
+                                    return Image.network(
+                                      pageViewSalonImagesRecord.imgUrl,
+                                      width: MediaQuery.of(context).size.width,
+                                      height: 100,
+                                      fit: BoxFit.cover,
+                                    );
+                                  },
+                                ),
+                                Align(
+                                  alignment: Alignment(0, 1),
+                                  child: Padding(
+                                    padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                                    child: SmoothPageIndicator(
+                                      controller: pageViewController,
+                                      count:
+                                          pageViewSalonImagesRecordList.length,
+                                      axisDirection: Axis.horizontal,
+                                      onDotClicked: (i) {
+                                        pageViewController.animateToPage(
+                                          i,
+                                          duration: Duration(milliseconds: 500),
+                                          curve: Curves.ease,
+                                        );
+                                      },
+                                      effect: SlideEffect(
+                                        spacing: 8,
+                                        radius: 16,
+                                        dotWidth: 12,
+                                        dotHeight: 12,
+                                        dotColor: Color(0xFF9E9E9E),
+                                        activeDotColor: Colors.white,
+                                        paintStyle: PaintingStyle.fill,
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    },
-                  )
-                ],
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
