@@ -1,3 +1,5 @@
+import '../flutter_flow/flutter_flow_drop_down_template.dart';
+import '../flutter_flow/flutter_flow_radio_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,8 @@ class MakezapisWidget extends StatefulWidget {
 }
 
 class _MakezapisWidgetState extends State<MakezapisWidget> {
+  String dropDownValue;
+  String radioButtonValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -58,6 +62,42 @@ class _MakezapisWidgetState extends State<MakezapisWidget> {
                     fontFamily: 'Poppins',
                   ),
                 ),
+              ),
+              FlutterFlowRadioButton(
+                options: ['Option 1', 'фывфыв', '', '', '', '', ''],
+                onChanged: (value) {
+                  setState(() => radioButtonValue = value);
+                },
+                optionHeight: 25,
+                textStyle: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Colors.black,
+                ),
+                buttonPosition: RadioButtonPosition.right,
+                direction: Axis.horizontal,
+                radioButtonColor: Colors.blue,
+                toggleable: false,
+                horizontalAlignment: WrapAlignment.start,
+                verticalAlignment: WrapCrossAlignment.start,
+              ),
+              FlutterFlowDropDown(
+                options: ['Option 1', '123', '123'],
+                onChanged: (value) {
+                  setState(() => dropDownValue = value);
+                },
+                width: MediaQuery.of(context).size.width * 0.15,
+                height: MediaQuery.of(context).size.height * 0.15,
+                textStyle: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Colors.black,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w300,
+                ),
+                fillColor: Colors.white,
+                elevation: 2,
+                borderColor: Colors.transparent,
+                borderWidth: 0,
+                borderRadius: 0,
               )
             ],
           ),
