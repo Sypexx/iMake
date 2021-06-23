@@ -133,7 +133,7 @@ class _InstaWidgetState extends State<InstaWidget> {
                                   );
                                 },
                                 child: Image.network(
-                                  imageSalonsRecord.frontImage,
+                                  gridViewPostsRecord.imgUrl,
                                   width: 100,
                                   height: 100,
                                   fit: BoxFit.cover,
