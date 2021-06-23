@@ -20,10 +20,6 @@ abstract class SalonsRecord
   String get frontImage;
 
   @nullable
-  @BuiltValueField(wireName: 'list_images')
-  BuiltList<String> get listImages;
-
-  @nullable
   @BuiltValueField(wireName: 'salon_name')
   String get salonName;
 
@@ -32,22 +28,13 @@ abstract class SalonsRecord
   String get salonStreet;
 
   @nullable
-  @BuiltValueField(wireName: 'salon_tag')
-  String get salonTag;
-
-  @nullable
-  DocumentReference get user;
-
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
   static void _initializeBuilder(SalonsRecordBuilder builder) => builder
     ..frontImage = ''
-    ..listImages = ListBuilder()
     ..salonName = ''
-    ..salonStreet = ''
-    ..salonTag = '';
+    ..salonStreet = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('salons');
@@ -70,26 +57,19 @@ Map<String, dynamic> createSalonsRecordData({
   String frontImage,
   String salonName,
   String salonStreet,
-  String salonTag,
-  DocumentReference user,
 }) =>
     serializers.toFirestore(
         SalonsRecord.serializer,
         SalonsRecord((s) => s
           ..frontImage = frontImage
-          ..listImages = null
           ..salonName = salonName
-          ..salonStreet = salonStreet
-          ..salonTag = salonTag
-          ..user = user));
+          ..salonStreet = salonStreet));
 
 SalonsRecord get dummySalonsRecord {
   final builder = SalonsRecordBuilder()
     ..frontImage = dummyImagePath
-    ..listImages = ListBuilder([dummyImagePath, dummyImagePath])
     ..salonName = dummyString
-    ..salonStreet = dummyString
-    ..salonTag = dummyString;
+    ..salonStreet = dummyString;
   return builder.build();
 }
 
