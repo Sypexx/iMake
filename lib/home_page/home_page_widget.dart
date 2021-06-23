@@ -278,15 +278,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: Image.network(
-                                    rowSalonsRecord.frontImage,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.6,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.15,
-                                    fit: BoxFit.cover,
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.6,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.15,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFEEEEEE),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image.network(
+                                      rowSalonsRecord.frontImage,
+                                      width: MediaQuery.of(context).size.width,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              1,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
