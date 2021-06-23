@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -63,6 +64,17 @@ class _EditsalonWidgetState extends State<EditsalonWidget> {
               IconButton(
                 onPressed: () async {
                   Navigator.pop(context);
+                  final frontImage = uploadedFileUrl;
+                  final salonName = textController1.text;
+                  final salonStreet = textController2.text;
+
+                  final salonsRecordData = createSalonsRecordData(
+                    frontImage: frontImage,
+                    salonName: salonName,
+                    salonStreet: salonStreet,
+                  );
+
+                  await widget.salon.update(salonsRecordData);
                 },
                 icon: Icon(
                   Icons.check_circle,
@@ -81,6 +93,8 @@ class _EditsalonWidgetState extends State<EditsalonWidget> {
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
                       padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
