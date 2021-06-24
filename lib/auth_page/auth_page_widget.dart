@@ -38,63 +38,35 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
               ),
               Align(
                 alignment: Alignment(-0.63, -0.09),
-                child: StreamBuilder<List<CategoriesTextRecord>>(
-                  stream: queryCategoriesTextRecord(
-                    singleRecord: true,
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFEEEEEE),
                   ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(child: CircularProgressIndicator());
-                    }
-                    List<CategoriesTextRecord>
-                        containerCategoriesTextRecordList = snapshot.data;
-                    // Customize what your widget looks like with no query results.
-                    if (snapshot.data.isEmpty) {
-                      // return Container();
-                      // For now, we'll just include some dummy data.
-                      containerCategoriesTextRecordList =
-                          createDummyCategoriesTextRecord(count: 1);
-                    }
-                    final containerCategoriesTextRecord =
-                        containerCategoriesTextRecordList.first;
-                    return Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFEEEEEE),
-                      ),
-                      child: StreamBuilder<CategoriesTextRecord>(
-                        stream: CategoriesTextRecord.getDocument(
-                            containerCategoriesTextRecord.reference),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(child: CircularProgressIndicator());
-                          }
-                          final dropDownCategoriesTextRecord = snapshot.data;
-                          return FlutterFlowDropDown(
-                            options: dropDownCategoriesTextRecord.text.toList(),
-                            onChanged: (value) {
-                              setState(() => dropDownValue = value);
-                            },
-                            width: 130,
-                            height: 40,
-                            textStyle: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
-                            ),
-                            fillColor: Colors.white,
-                            elevation: 2,
-                            borderColor: Colors.transparent,
-                            borderWidth: 0,
-                            borderRadius: 0,
-                            margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
-                          );
-                        },
-                      ),
-                    );
-                  },
+                  child: FlutterFlowDropDown(
+                    initialOption: 'aasdf',
+                    options: ['123', '1234', '12345'],
+                    onChanged: (value) {
+                      setState(() => dropDownValue = value);
+                    },
+                    width: 140,
+                    height: 50,
+                    textStyle: FlutterFlowTheme.bodyText1.override(
+                      fontFamily: 'Poppins',
+                      color: Colors.black,
+                    ),
+                    icon: Icon(
+                      Icons.three_k,
+                      color: Color(0xFFFF0000),
+                      size: 24,
+                    ),
+                    fillColor: Colors.white,
+                    elevation: 2,
+                    borderColor: Colors.transparent,
+                    borderWidth: 1,
+                    borderRadius: 1,
+                  ),
                 ),
               )
             ],
