@@ -513,6 +513,36 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                       ],
                                     ),
                                   ),
+                                  Align(
+                                    alignment: Alignment(0, 1),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        await Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                MakezapisWidget(),
+                                          ),
+                                        );
+                                      },
+                                      text: 'Записаться',
+                                      options: FFButtonOptions(
+                                        width: 340,
+                                        height: 50,
+                                        color: Color(0xFF68CF32),
+                                        textStyle:
+                                            FlutterFlowTheme.subtitle2.override(
+                                          fontFamily: 'Poppins',
+                                          color: Colors.white,
+                                        ),
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1,
+                                        ),
+                                        borderRadius: 12,
+                                      ),
+                                    ),
+                                  ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
