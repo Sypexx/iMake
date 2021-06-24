@@ -202,9 +202,9 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                               },
                               text: 'Записаться',
                               options: FFButtonOptions(
-                                width: 340,
-                                height: 50,
-                                color: Color(0xFF68CF32),
+                                width: 0,
+                                height: 0,
+                                color: Color(0x0068CF32),
                                 textStyle: FlutterFlowTheme.subtitle2.override(
                                   fontFamily: 'Poppins',
                                   color: Colors.white,
@@ -446,39 +446,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Align(
-                                        alignment: Alignment(0, 1),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            await Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    MakezapisWidget(),
-                                              ),
-                                            );
-                                          },
-                                          text: 'Записаться',
-                                          options: FFButtonOptions(
-                                            width: 340,
-                                            height: 50,
-                                            color: Color(0xFF68CF32),
-                                            textStyle: FlutterFlowTheme
-                                                .subtitle2
-                                                .override(
-                                              fontFamily: 'Poppins',
-                                              color: Colors.white,
-                                            ),
-                                            borderSide: BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1,
-                                            ),
-                                            borderRadius: 12,
-                                          ),
-                                        ),
-                                      )
-                                    ],
+                                    children: [],
                                   ),
                                   Padding(
                                     padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
@@ -511,36 +479,6 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                           ],
                                         )
                                       ],
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment(0, 1),
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                MakezapisWidget(),
-                                          ),
-                                        );
-                                      },
-                                      text: 'Записаться',
-                                      options: FFButtonOptions(
-                                        width: 340,
-                                        height: 50,
-                                        color: Color(0xFF68CF32),
-                                        textStyle:
-                                            FlutterFlowTheme.subtitle2.override(
-                                          fontFamily: 'Poppins',
-                                          color: Colors.white,
-                                        ),
-                                        borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1,
-                                        ),
-                                        borderRadius: 12,
-                                      ),
                                     ),
                                   ),
                                   Row(
@@ -601,40 +539,36 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Align(
-                      alignment: Alignment(0, 1),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => MakezapisWidget(),
-                            ),
-                          );
-                        },
-                        text: 'Записаться',
-                        options: FFButtonOptions(
-                          width: 340,
-                          height: 50,
-                          color: Color(0xFF68CF32),
-                          textStyle: FlutterFlowTheme.subtitle2.override(
-                            fontFamily: 'Poppins',
-                            color: Colors.white,
+                Align(
+                  alignment: Alignment(0, 1),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MakezapisWidget(),
                           ),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1,
-                          ),
-                          borderRadius: 12,
+                        );
+                      },
+                      text: 'Записаться',
+                      options: FFButtonOptions(
+                        width: 340,
+                        height: 50,
+                        color: Color(0xFF68CF32),
+                        textStyle: FlutterFlowTheme.subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
                         ),
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1,
+                        ),
+                        borderRadius: 12,
                       ),
-                    )
-                  ],
+                    ),
+                  ),
                 )
               ],
             ),
