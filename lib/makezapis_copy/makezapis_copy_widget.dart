@@ -6,14 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MakezapisCopyWidget extends StatefulWidget {
-  MakezapisCopyWidget({
-    Key key,
-    this.first,
-    this.second,
-  }) : super(key: key);
-
-  final String first;
-  final String second;
+  MakezapisCopyWidget({Key key}) : super(key: key);
 
   @override
   _MakezapisCopyWidgetState createState() => _MakezapisCopyWidgetState();
@@ -66,13 +59,15 @@ class _MakezapisCopyWidgetState extends State<MakezapisCopyWidget> {
                   color: Colors.white,
                 ),
                 child: SwitchListTile(
-                  value: firstValue ?? firstValue,
+                  value: firstValue ?? true,
                   onChanged: (newValue) =>
                       setState(() => firstValue = newValue),
                   title: Text(
-                    'Title',
+                    '12:00',
                     style: FlutterFlowTheme.title3.override(
                       fontFamily: 'Poppins',
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
                     ),
                   ),
                   tileColor: Color(0xFFF5F5F5),
@@ -96,13 +91,15 @@ class _MakezapisCopyWidgetState extends State<MakezapisCopyWidget> {
                   color: Colors.white,
                 ),
                 child: SwitchListTile(
-                  value: secondValue ?? secondValue,
+                  value: secondValue ?? true,
                   onChanged: (newValue) =>
                       setState(() => secondValue = newValue),
                   title: Text(
-                    'Title',
+                    'Женская стрижка',
                     style: FlutterFlowTheme.title3.override(
                       fontFamily: 'Poppins',
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
                     ),
                   ),
                   tileColor: Color(0xFFF5F5F5),

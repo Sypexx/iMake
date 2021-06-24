@@ -161,13 +161,13 @@ class _MakezapisWidgetState extends State<MakezapisWidget> {
                             context: context,
                             builder: (alertDialogContext) {
                               return AlertDialog(
-                                title: Text('Мастер'),
+                                title: Text('Выбор мастера'),
                                 content: Text('Подтвердите выбор'),
                                 actions: [
                                   TextButton(
                                     onPressed: () =>
                                         Navigator.pop(alertDialogContext),
-                                    child: Text('Cancel'),
+                                    child: Text('Отмена'),
                                   ),
                                   TextButton(
                                     onPressed: () async {
@@ -176,15 +176,12 @@ class _MakezapisWidgetState extends State<MakezapisWidget> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) =>
-                                              MakezapisCopyWidget(
-                                            first: firstValue,
-                                            second: secondValue,
-                                          ),
+                                              MakezapisCopyWidget(),
                                         ),
                                       );
                                       ;
                                     },
-                                    child: Text('Confirm'),
+                                    child: Text('Подтвердить'),
                                   ),
                                 ],
                               );
