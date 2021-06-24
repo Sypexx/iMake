@@ -51,7 +51,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 250),
+                        padding: EdgeInsets.fromLTRB(0, 0, 0, 100),
                         child: Stack(
                           alignment: Alignment(0, 0),
                           children: [
