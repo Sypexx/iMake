@@ -1,9 +1,6 @@
-import '../auth/auth_util.dart';
-import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,17 +12,16 @@ class AuthPageWidget extends StatefulWidget {
 }
 
 class _AuthPageWidgetState extends State<AuthPageWidget> {
-  TextEditingController emailTextController;
-  TextEditingController passwordTextController;
-  bool passwordVisibility;
+  String dropDownValue;
+  TextEditingController textController1;
+  TextEditingController textController2;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    emailTextController = TextEditingController();
-    passwordTextController = TextEditingController();
-    passwordVisibility = false;
+    textController1 = TextEditingController();
+    textController2 = TextEditingController();
   }
 
   @override
@@ -35,273 +31,110 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 1,
           child: Stack(
             children: [
               Align(
-                alignment: Alignment(0, 3.94),
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 80),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 100),
-                        child: Stack(
-                          alignment: Alignment(0, 0),
-                          children: [
-                            Align(
-                              alignment: Alignment(0, 0),
-                              child: Image.asset(
-                                'assets/images/IMG_3916.PNG',
-                                width: 250,
-                                height: 250,
-                                fit: BoxFit.cover,
-                              ),
-                            )
-                          ],
-                        ),
+                alignment: Alignment(0, -0.65),
+                child: Image.asset(
+                  'assets/images/IMG_3916.PNG',
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Align(
+                alignment: Alignment(0, 0.19),
+                child: TextFormField(
+                  controller: textController1,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    hintText: '[Some hint text...]',
+                    hintStyle: FlutterFlowTheme.bodyText1.override(
+                      fontFamily: 'Poppins',
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1,
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
-                        child: Container(
-                          width: 285,
-                          height: 40,
-                          child: Stack(
-                            children: [
-                              Align(
-                                alignment: Alignment(0, 0),
-                                child: TextFormField(
-                                  controller: emailTextController,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    hintText: 'Почта',
-                                    hintStyle: GoogleFonts.getFont(
-                                      'Lato',
-                                      color: Color(0xFFBDBDBD),
-                                      fontSize: 16,
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFBDBDBD),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(20),
-                                        bottomRight: Radius.circular(20),
-                                        topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20),
-                                      ),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFBDBDBD),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(20),
-                                        bottomRight: Radius.circular(20),
-                                        topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20),
-                                      ),
-                                    ),
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                    contentPadding:
-                                        EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                  ),
-                                  style: GoogleFonts.getFont(
-                                    'Lato',
-                                    color: Color(0xFFBDBDBD),
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
-                        child: Container(
-                          width: 285,
-                          height: 40,
-                          child: Stack(
-                            children: [
-                              Align(
-                                alignment: Alignment(0, 0),
-                                child: TextFormField(
-                                  controller: passwordTextController,
-                                  obscureText: !passwordVisibility,
-                                  decoration: InputDecoration(
-                                    hintText: 'Пароль',
-                                    hintStyle: GoogleFonts.getFont(
-                                      'Lato',
-                                      color: Color(0xFFBDBDBD),
-                                      fontSize: 16,
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFBDBDBD),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(20),
-                                        bottomRight: Radius.circular(20),
-                                        topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20),
-                                      ),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFBDBDBD),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(20),
-                                        bottomRight: Radius.circular(20),
-                                        topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20),
-                                      ),
-                                    ),
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                    contentPadding:
-                                        EdgeInsets.fromLTRB(10, 0, 1, 0),
-                                    suffixIcon: InkWell(
-                                      onTap: () => setState(
-                                        () => passwordVisibility =
-                                            !passwordVisibility,
-                                      ),
-                                      child: Icon(
-                                        passwordVisibility
-                                            ? Icons.visibility_outlined
-                                            : Icons.visibility_off_outlined,
-                                        size: 22,
-                                      ),
-                                    ),
-                                  ),
-                                  style: GoogleFonts.getFont(
-                                    'Lato',
-                                    color: Color(0xFFBDBDBD),
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1,
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            FFButtonWidget(
-                              onPressed: () async {
-                                final user = await createAccountWithEmail(
-                                  context,
-                                  emailTextController.text,
-                                  passwordTextController.text,
-                                );
-                                if (user == null) {
-                                  return;
-                                }
-
-                                final displayName = 'Имя';
-                                final photoUrl =
-                                    'https://firebasestorage.googleapis.com/v0/b/imake-b18ed.appspot.com/o/Profile%20avatars%2Favatar1.png?alt=media&token=15a3c1a3-fa40-4dcc-88bf-3544b4f3563e';
-                                final role = 'Клиент';
-
-                                final usersRecordData = createUsersRecordData(
-                                  displayName: displayName,
-                                  photoUrl: photoUrl,
-                                  role: role,
-                                );
-
-                                await UsersRecord.collection
-                                    .doc(user.uid)
-                                    .update(usersRecordData);
-
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        NavBarPage(initialPage: 'AccountPage'),
-                                  ),
-                                  (r) => false,
-                                );
-                              },
-                              text: 'Регистарция',
-                              options: FFButtonOptions(
-                                width: 125,
-                                height: 40,
-                                color: Color(0xFFBDBDBD),
-                                textStyle: GoogleFonts.getFont(
-                                  'Lato',
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                ),
-                                borderSide: BorderSide(
-                                  color: Color(0xFFBDBDBD),
-                                  width: 2,
-                                ),
-                                borderRadius: 20,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(35, 0, 0, 0),
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  final user = await signInWithEmail(
-                                    context,
-                                    emailTextController.text,
-                                    passwordTextController.text,
-                                  );
-                                  if (user == null) {
-                                    return;
-                                  }
-
-                                  await Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => NavBarPage(
-                                          initialPage: 'AccountPage'),
-                                    ),
-                                    (r) => false,
-                                  );
-                                },
-                                text: 'Авторизация',
-                                options: FFButtonOptions(
-                                  width: 125,
-                                  height: 40,
-                                  color: Color(0xFFBDBDBD),
-                                  textStyle: GoogleFonts.getFont(
-                                    'Lato',
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
-                                  ),
-                                  borderSide: BorderSide(
-                                    color: Color(0xFFBDBDBD),
-                                    width: 2,
-                                  ),
-                                  borderRadius: 20,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
+                      ),
+                    ),
                   ),
+                  style: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Poppins',
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment(0, -0.18),
+                child: TextFormField(
+                  controller: textController2,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    hintText: '[Some hint text...]',
+                    hintStyle: FlutterFlowTheme.bodyText1.override(
+                      fontFamily: 'Poppins',
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1,
+                      ),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
+                      ),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1,
+                      ),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0),
+                      ),
+                    ),
+                  ),
+                  style: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Poppins',
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment(0.1, 0.7),
+                child: FlutterFlowDropDown(
+                  options: ['Option 1'],
+                  onChanged: (value) {
+                    setState(() => dropDownValue = value);
+                  },
+                  width: 130,
+                  height: 40,
+                  textStyle: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Poppins',
+                    color: Colors.black,
+                  ),
+                  fillColor: Colors.white,
+                  elevation: 2,
+                  borderColor: Colors.transparent,
+                  borderWidth: 0,
+                  borderRadius: 0,
+                  margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
                 ),
               )
             ],
