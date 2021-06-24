@@ -27,31 +27,31 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<CategoriesTextRecord>>(
-      stream: queryCategoriesTextRecord(
-        singleRecord: true,
-      ),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Center(child: CircularProgressIndicator());
-        }
-        List<CategoriesTextRecord> authPageCategoriesTextRecordList =
-            snapshot.data;
-        // Customize what your widget looks like with no query results.
-        if (snapshot.data.isEmpty) {
-          // return Container();
-          // For now, we'll just include some dummy data.
-          authPageCategoriesTextRecordList =
-              createDummyCategoriesTextRecord(count: 1);
-        }
-        final authPageCategoriesTextRecord =
-            authPageCategoriesTextRecordList.first;
-        return Scaffold(
-          key: scaffoldKey,
-          backgroundColor: Colors.white,
-          body: SafeArea(
-            child: Container(
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: StreamBuilder<List<CategoriesTextRecord>>(
+          stream: queryCategoriesTextRecord(
+            singleRecord: true,
+          ),
+          builder: (context, snapshot) {
+            // Customize what your widget looks like when it's loading.
+            if (!snapshot.hasData) {
+              return Center(child: CircularProgressIndicator());
+            }
+            List<CategoriesTextRecord> stackCategoriesTextRecordList =
+                snapshot.data;
+            // Customize what your widget looks like with no query results.
+            if (snapshot.data.isEmpty) {
+              // return Container();
+              // For now, we'll just include some dummy data.
+              stackCategoriesTextRecordList =
+                  createDummyCategoriesTextRecord(count: 1);
+            }
+            final stackCategoriesTextRecord =
+                stackCategoriesTextRecordList.first;
+            return Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 1,
               child: Stack(
@@ -105,7 +105,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                     alignment: Alignment(0, -0.18),
                     child: StreamBuilder<CategoriesTextRecord>(
                       stream: CategoriesTextRecord.getDocument(
-                          authPageCategoriesTextRecord.reference),
+                          stackCategoriesTextRecord.reference),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -160,7 +160,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                         alignment: Alignment(0.1, 0.7),
                         child: StreamBuilder<CategoriesTextRecord>(
                           stream: CategoriesTextRecord.getDocument(
-                              authPageCategoriesTextRecord.reference),
+                              stackCategoriesTextRecord.reference),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -192,10 +192,10 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                   )
                 ],
               ),
-            ),
-          ),
-        );
-      },
+            );
+          },
+        ),
+      ),
     );
   }
 }
