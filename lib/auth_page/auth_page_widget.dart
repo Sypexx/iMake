@@ -1,5 +1,4 @@
 import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +12,6 @@ class AuthPageWidget extends StatefulWidget {
 }
 
 class _AuthPageWidgetState extends State<AuthPageWidget> {
-  String menu1Value;
   TextEditingController textController1;
   TextEditingController textController2;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -166,59 +164,6 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                               ),
                             );
                           },
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Align(
-                alignment: Alignment(0.09, 0.6),
-                child: StreamBuilder<List<CategoriesTextRecord>>(
-                  stream: queryCategoriesTextRecord(
-                    singleRecord: true,
-                  ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(child: CircularProgressIndicator());
-                    }
-                    List<CategoriesTextRecord>
-                        containerCategoriesTextRecordList = snapshot.data;
-                    // Customize what your widget looks like with no query results.
-                    if (snapshot.data.isEmpty) {
-                      // return Container();
-                      // For now, we'll just include some dummy data.
-                      containerCategoriesTextRecordList =
-                          createDummyCategoriesTextRecord(count: 1);
-                    }
-                    final containerCategoriesTextRecord =
-                        containerCategoriesTextRecordList.first;
-                    return Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFEEEEEE),
-                      ),
-                      child: Align(
-                        alignment: Alignment(0.1, 0.7),
-                        child: FlutterFlowDropDown(
-                          options: [''],
-                          onChanged: (value) {
-                            setState(() => menu1Value = value);
-                          },
-                          width: 130,
-                          height: 40,
-                          textStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
-                            color: Colors.black,
-                          ),
-                          fillColor: Colors.white,
-                          elevation: 2,
-                          borderColor: Colors.transparent,
-                          borderWidth: 0,
-                          borderRadius: 0,
-                          margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
                         ),
                       ),
                     );
