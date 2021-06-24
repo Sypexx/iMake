@@ -238,7 +238,7 @@ class _MakezapisCopyWidgetState extends State<MakezapisCopyWidget> {
                                   );
                                   ;
                                 },
-                                child: Text('Confirm'),
+                                child: Text('Подтвержить'),
                               ),
                             ],
                           );
