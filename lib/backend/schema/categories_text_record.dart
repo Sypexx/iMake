@@ -17,14 +17,14 @@ abstract class CategoriesTextRecord
       _$categoriesTextRecordSerializer;
 
   @nullable
-  String get text;
+  BuiltList<String> get text;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
   static void _initializeBuilder(CategoriesTextRecordBuilder builder) =>
-      builder..text = '';
+      builder..text = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('categories_text');
@@ -44,14 +44,13 @@ abstract class CategoriesTextRecord
           serializer, {...data, kDocumentReferenceField: reference});
 }
 
-Map<String, dynamic> createCategoriesTextRecordData({
-  String text,
-}) =>
+Map<String, dynamic> createCategoriesTextRecordData() =>
     serializers.toFirestore(CategoriesTextRecord.serializer,
-        CategoriesTextRecord((c) => c..text = text));
+        CategoriesTextRecord((c) => c..text = null));
 
 CategoriesTextRecord get dummyCategoriesTextRecord {
-  final builder = CategoriesTextRecordBuilder()..text = dummyString;
+  final builder = CategoriesTextRecordBuilder()
+    ..text = ListBuilder([dummyString, dummyString]);
   return builder.build();
 }
 
