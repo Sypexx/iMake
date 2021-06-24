@@ -10,6 +10,7 @@ import 'schema/categories_record.dart';
 import 'schema/ad_record.dart';
 import 'schema/salons_record.dart';
 import 'schema/salon_images_record.dart';
+import 'schema/categories_text_record.dart';
 import 'schema/serializers.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,6 +21,7 @@ export 'schema/categories_record.dart';
 export 'schema/ad_record.dart';
 export 'schema/salons_record.dart';
 export 'schema/salon_images_record.dart';
+export 'schema/categories_text_record.dart';
 
 Stream<List<UsersRecord>> queryUsersRecord(
         {Query Function(Query) queryBuilder,
@@ -61,6 +63,14 @@ Stream<List<SalonImagesRecord>> querySalonImagesRecord(
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollection(SalonImagesRecord.collection, SalonImagesRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<CategoriesTextRecord>> queryCategoriesTextRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(
+        CategoriesTextRecord.collection, CategoriesTextRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(
