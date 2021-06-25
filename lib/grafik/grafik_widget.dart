@@ -3,14 +3,14 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SearchPageWidget extends StatefulWidget {
-  SearchPageWidget({Key key}) : super(key: key);
+class GrafikWidget extends StatefulWidget {
+  GrafikWidget({Key key}) : super(key: key);
 
   @override
-  _SearchPageWidgetState createState() => _SearchPageWidgetState();
+  _GrafikWidgetState createState() => _GrafikWidgetState();
 }
 
-class _SearchPageWidgetState extends State<SearchPageWidget> {
+class _GrafikWidgetState extends State<GrafikWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -19,13 +19,13 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
       key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
         automaticallyImplyLeading: false,
         title: Text(
-          'Поиск',
+          'График',
           style: FlutterFlowTheme.bodyText1.override(
             fontFamily: 'Poppins',
-            fontSize: 18,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
           ),
         ),
         actions: [],

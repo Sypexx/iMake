@@ -3,9 +3,7 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../salon_page/salon_page_widget.dart';
-import '../search_page/search_page_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -47,20 +45,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
                 child: IconButton(
-                  onPressed: () async {
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SearchPageWidget(),
-                      ),
-                    );
+                  onPressed: () {
+                    print('IconButton pressed ...');
                   },
-                  icon: FaIcon(
-                    FontAwesomeIcons.search,
+                  icon: Icon(
+                    Icons.calendar_today,
                     color: Colors.black,
-                    size: 24,
+                    size: 30,
                   ),
-                  iconSize: 24,
+                  iconSize: 30,
                 ),
               )
             ],
@@ -247,7 +240,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(10, 20, 0, 10),
                   child: Text(
-                    'Салоны',
+                    'Новинки',
                     style: FlutterFlowTheme.bodyText1.override(
                       fontFamily: 'Poppins',
                       fontSize: 20,
@@ -347,7 +340,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(10, 20, 0, 10),
                   child: Text(
-                    'Новинки',
+                    'Популярные',
                     style: FlutterFlowTheme.bodyText1.override(
                       fontFamily: 'Poppins',
                       fontSize: 20,

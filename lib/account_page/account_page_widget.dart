@@ -7,8 +7,8 @@ import '../editsalon/editsalon_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../grafik/grafik_widget.dart';
 import '../sotrudniki/sotrudniki_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -125,71 +125,14 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                             ),
                             borderSide: BorderSide(
                               color: Color(0xFFBDBDBD),
-                              width: 1,
+                              width: 3,
                             ),
-                            borderRadius: 12,
+                            borderRadius: 15,
                           ),
                         ),
                       )
                     ],
                   ),
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FFButtonWidget(
-                      onPressed: () async {
-                        final frontImage =
-                            'https://firebasestorage.googleapis.com/v0/b/imake-b18ed.appspot.com/o/salon%2Fshop.png?alt=media&token=813a7381-1ea3-4e7c-94dc-436433d059bc';
-                        final salonName = 'Название салона';
-                        final salonStreet = 'Улица';
-                        final user = accountPageUsersRecord.reference;
-
-                        final salonsRecordData = createSalonsRecordData(
-                          frontImage: frontImage,
-                          salonName: salonName,
-                          salonStreet: salonStreet,
-                          user: user,
-                        );
-
-                        await SalonsRecord.collection
-                            .doc()
-                            .set(salonsRecordData);
-                        await showDialog(
-                          context: context,
-                          builder: (alertDialogContext) {
-                            return AlertDialog(
-                              title: Text('Создание салона'),
-                              content: Text('Салон создан успешно!'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(alertDialogContext),
-                                  child: Text('Ok'),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      },
-                      text: 'Создать салон',
-                      options: FFButtonOptions(
-                        width: 180,
-                        height: 40,
-                        color: Color(0x00FFFFFF),
-                        textStyle: FlutterFlowTheme.subtitle2.override(
-                          fontFamily: 'Poppins',
-                          color: Colors.black,
-                        ),
-                        borderSide: BorderSide(
-                          color: Color(0xFFBDBDBD),
-                          width: 1,
-                        ),
-                        borderRadius: 12,
-                      ),
-                    )
-                  ],
                 ),
                 StreamBuilder<List<SalonsRecord>>(
                   stream: querySalonsRecord(
@@ -210,70 +153,75 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                       rowSalonsRecordList = createDummySalonsRecord(count: 1);
                     }
                     final rowSalonsRecord = rowSalonsRecordList.first;
-                    return Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        StreamBuilder<List<SalonImagesRecord>>(
-                          stream: querySalonImagesRecord(
-                            queryBuilder: (salonImagesRecord) =>
-                                salonImagesRecord.where('salon',
-                                    isEqualTo: rowSalonsRecord.reference),
-                            singleRecord: true,
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(child: CircularProgressIndicator());
-                            }
-                            List<SalonImagesRecord>
-                                buttonSalonImagesRecordList = snapshot.data;
-                            // Customize what your widget looks like with no query results.
-                            if (snapshot.data.isEmpty) {
-                              // return Container();
-                              // For now, we'll just include some dummy data.
-                              buttonSalonImagesRecordList =
-                                  createDummySalonImagesRecord(count: 1);
-                            }
-                            final buttonSalonImagesRecord =
-                                buttonSalonImagesRecordList.first;
-                            return FFButtonWidget(
-                              onPressed: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => EditsalonWidget(
-                                      salon: rowSalonsRecord.reference,
-                                      salonimages:
-                                          buttonSalonImagesRecord.reference,
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          StreamBuilder<List<SalonImagesRecord>>(
+                            stream: querySalonImagesRecord(
+                              queryBuilder: (salonImagesRecord) =>
+                                  salonImagesRecord.where('salon',
+                                      isEqualTo: rowSalonsRecord.reference),
+                              singleRecord: true,
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                    child: CircularProgressIndicator());
+                              }
+                              List<SalonImagesRecord>
+                                  buttonSalonImagesRecordList = snapshot.data;
+                              // Customize what your widget looks like with no query results.
+                              if (snapshot.data.isEmpty) {
+                                // return Container();
+                                // For now, we'll just include some dummy data.
+                                buttonSalonImagesRecordList =
+                                    createDummySalonImagesRecord(count: 1);
+                              }
+                              final buttonSalonImagesRecord =
+                                  buttonSalonImagesRecordList.first;
+                              return FFButtonWidget(
+                                onPressed: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => EditsalonWidget(
+                                        salon: rowSalonsRecord.reference,
+                                        salonimages:
+                                            buttonSalonImagesRecord.reference,
+                                      ),
                                     ),
+                                  );
+                                },
+                                text: 'Редактировать салон',
+                                options: FFButtonOptions(
+                                  width: 180,
+                                  height: 40,
+                                  color: Colors.white,
+                                  textStyle:
+                                      FlutterFlowTheme.subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.black,
                                   ),
-                                );
-                              },
-                              text: 'Редактировать салон',
-                              options: FFButtonOptions(
-                                width: 180,
-                                height: 40,
-                                color: Color(0x00FFFFFF),
-                                textStyle: FlutterFlowTheme.subtitle2.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.black,
+                                  borderSide: BorderSide(
+                                    color: Color(0xFFBDBDBD),
+                                    width: 3,
+                                  ),
+                                  borderRadius: 15,
                                 ),
-                                borderSide: BorderSide(
-                                  color: Color(0xFFBDBDBD),
-                                  width: 1,
-                                ),
-                                borderRadius: 12,
-                              ),
-                            );
-                          },
-                        )
-                      ],
+                              );
+                            },
+                          )
+                        ],
+                      ),
                     );
                   },
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -316,16 +264,16 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                             options: FFButtonOptions(
                               width: 180,
                               height: 40,
-                              color: Color(0x00FFFFFF),
+                              color: Colors.white,
                               textStyle: FlutterFlowTheme.subtitle2.override(
                                 fontFamily: 'Poppins',
                                 color: Colors.black,
                               ),
                               borderSide: BorderSide(
                                 color: Color(0xFFBDBDBD),
-                                width: 1,
+                                width: 3,
                               ),
-                              borderRadius: 12,
+                              borderRadius: 15,
                             ),
                           );
                         },
@@ -334,7 +282,7 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -352,16 +300,50 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                         options: FFButtonOptions(
                           width: 180,
                           height: 40,
-                          color: Color(0x00FFFFFF),
+                          color: Colors.white,
                           textStyle: FlutterFlowTheme.subtitle2.override(
                             fontFamily: 'Poppins',
                             color: Colors.black,
                           ),
                           borderSide: BorderSide(
                             color: Color(0xFFBDBDBD),
-                            width: 1,
+                            width: 3,
                           ),
-                          borderRadius: 12,
+                          borderRadius: 15,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => GrafikWidget(),
+                            ),
+                          );
+                        },
+                        text: 'График',
+                        options: FFButtonOptions(
+                          width: 180,
+                          height: 40,
+                          color: Colors.white,
+                          textStyle: FlutterFlowTheme.subtitle2.override(
+                            fontFamily: 'Poppins',
+                            color: Colors.black,
+                          ),
+                          borderSide: BorderSide(
+                            color: Color(0xFFBDBDBD),
+                            width: 3,
+                          ),
+                          borderRadius: 15,
                         ),
                       )
                     ],
@@ -388,16 +370,16 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                         options: FFButtonOptions(
                           width: 130,
                           height: 40,
-                          color: Color(0x00FFFFFF),
+                          color: Color(0xFFBDBDBD),
                           textStyle: FlutterFlowTheme.subtitle2.override(
                             fontFamily: 'Poppins',
-                            color: Colors.black,
+                            color: Colors.white,
                           ),
                           borderSide: BorderSide(
                             color: Color(0xFFBDBDBD),
-                            width: 1,
+                            width: 3,
                           ),
-                          borderRadius: 12,
+                          borderRadius: 20,
                         ),
                       )
                     ],
