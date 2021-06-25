@@ -164,107 +164,110 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                 alignment: Alignment(0, 0),
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Align(
-                        alignment: Alignment(-0.62, 0.45),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            final user = await signInWithEmail(
-                              context,
-                              loginController.text,
-                              passwordController.text,
-                            );
-                            if (user == null) {
-                              return;
-                            }
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Align(
+                          alignment: Alignment(-0.62, 0.45),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              final user = await signInWithEmail(
+                                context,
+                                loginController.text,
+                                passwordController.text,
+                              );
+                              if (user == null) {
+                                return;
+                              }
 
-                            await Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    NavBarPage(initialPage: 'AccountPage'),
+                              await Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      NavBarPage(initialPage: 'AccountPage'),
+                                ),
+                                (r) => false,
+                              );
+                            },
+                            text: 'Войти',
+                            options: FFButtonOptions(
+                              width: 140,
+                              height: 45,
+                              color: Color(0x00BDBDBD),
+                              textStyle: FlutterFlowTheme.subtitle2.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.black,
+                                fontSize: 17,
                               ),
-                              (r) => false,
-                            );
-                          },
-                          text: 'Войти',
-                          options: FFButtonOptions(
-                            width: 140,
-                            height: 45,
-                            color: Color(0x00BDBDBD),
-                            textStyle: FlutterFlowTheme.subtitle2.override(
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
-                              fontSize: 17,
+                              borderSide: BorderSide(
+                                color: Color(0xFFBDBDBD),
+                                width: 5,
+                              ),
+                              borderRadius: 20,
                             ),
-                            borderSide: BorderSide(
-                              color: Color(0xFFBDBDBD),
-                              width: 5,
-                            ),
-                            borderRadius: 20,
                           ),
                         ),
-                      ),
-                      Align(
-                        alignment: Alignment(-0.62, 0.45),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            final user = await createAccountWithEmail(
-                              context,
-                              loginController.text,
-                              passwordController.text,
-                            );
-                            if (user == null) {
-                              return;
-                            }
+                        Align(
+                          alignment: Alignment(-0.62, 0.45),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              final user = await createAccountWithEmail(
+                                context,
+                                loginController.text,
+                                passwordController.text,
+                              );
+                              if (user == null) {
+                                return;
+                              }
 
-                            final displayName = 'Имя';
-                            final photoUrl =
-                                'https://firebasestorage.googleapis.com/v0/b/imake-b18ed.appspot.com/o/Profile%20avatars%2Favatar1.png?alt=media&token=15a3c1a3-fa40-4dcc-88bf-3544b4f3563e';
-                            final role = 'Клиент';
+                              final displayName = 'Имя';
+                              final photoUrl =
+                                  'https://firebasestorage.googleapis.com/v0/b/imake-b18ed.appspot.com/o/Profile%20avatars%2Favatar1.png?alt=media&token=15a3c1a3-fa40-4dcc-88bf-3544b4f3563e';
+                              final role = 'Клиент';
 
-                            final usersRecordData = createUsersRecordData(
-                              displayName: displayName,
-                              photoUrl: photoUrl,
-                              role: role,
-                            );
+                              final usersRecordData = createUsersRecordData(
+                                displayName: displayName,
+                                photoUrl: photoUrl,
+                                role: role,
+                              );
 
-                            await UsersRecord.collection
-                                .doc(user.uid)
-                                .update(usersRecordData);
+                              await UsersRecord.collection
+                                  .doc(user.uid)
+                                  .update(usersRecordData);
 
-                            await Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    NavBarPage(initialPage: 'AccountPage'),
+                              await Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      NavBarPage(initialPage: 'AccountPage'),
+                                ),
+                                (r) => false,
+                              );
+                            },
+                            text: 'Регистрация',
+                            options: FFButtonOptions(
+                              width: 140,
+                              height: 45,
+                              color: Color(0x00BDBDBD),
+                              textStyle: FlutterFlowTheme.subtitle2.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.black,
+                                fontSize: 17,
                               ),
-                              (r) => false,
-                            );
-                          },
-                          text: 'Регистрация',
-                          options: FFButtonOptions(
-                            width: 140,
-                            height: 45,
-                            color: Color(0x00BDBDBD),
-                            textStyle: FlutterFlowTheme.subtitle2.override(
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
-                              fontSize: 17,
+                              borderSide: BorderSide(
+                                color: Color(0xFFBDBDBD),
+                                width: 5,
+                              ),
+                              borderRadius: 20,
                             ),
-                            borderSide: BorderSide(
-                              color: Color(0xFFBDBDBD),
-                              width: 5,
-                            ),
-                            borderRadius: 20,
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               )
