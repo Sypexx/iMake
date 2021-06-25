@@ -1,9 +1,8 @@
-import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import '../search_time/search_time_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -65,15 +64,14 @@ class _DatepickWidgetState extends State<DatepickWidget> {
                         padding: EdgeInsets.fromLTRB(0, 0, 20, 2),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            final date = getCurrentTimestamp;
-
-                            final zapisRecordData = createZapisRecordData(
-                              date: date,
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SearchTimeWidget(
+                                  date: rowDateRecord,
+                                ),
+                              ),
                             );
-
-                            await ZapisRecord.collection
-                                .doc()
-                                .set(zapisRecordData);
                           },
                           text: rowDateRecord.text,
                           options: FFButtonOptions(
