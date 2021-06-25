@@ -36,7 +36,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
       body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 1,
+          height: MediaQuery.of(context).size.height * 0.75,
           child: Stack(
             children: [
               Align(
@@ -99,7 +99,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                 ),
               ),
               Align(
-                alignment: Alignment(0.01, 0.18),
+                alignment: Alignment(0.01, 0.25),
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
                   child: TextFormField(
@@ -170,7 +170,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                     child: Stack(
                       children: [
                         Align(
-                          alignment: Alignment(0, 0),
+                          alignment: Alignment(0, 0.05),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
