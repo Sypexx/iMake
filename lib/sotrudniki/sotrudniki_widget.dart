@@ -180,12 +180,6 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                                 ),
                               );
                             },
-                          ),
-                          Text(
-                            columnUsersRecord.email,
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Poppins',
-                            ),
                           )
                         ],
                       );
@@ -274,44 +268,47 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                           gridViewUsersRecordList =
                               createDummyUsersRecord(count: 4);
                         }
-                        return GridView.builder(
-                          padding: EdgeInsets.zero,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                            childAspectRatio: 1,
+                        return Padding(
+                          padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                          child: GridView.builder(
+                            padding: EdgeInsets.zero,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 10,
+                              mainAxisSpacing: 10,
+                              childAspectRatio: 1,
+                            ),
+                            scrollDirection: Axis.vertical,
+                            itemCount: gridViewUsersRecordList.length,
+                            itemBuilder: (context, gridViewIndex) {
+                              final gridViewUsersRecord =
+                                  gridViewUsersRecordList[gridViewIndex];
+                              return Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Image.network(
+                                    gridViewUsersRecord.photoUrl,
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Text(
+                                    gridViewUsersRecord.displayName,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                    ),
+                                  ),
+                                  Text(
+                                    gridViewUsersRecord.role,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                    ),
+                                  )
+                                ],
+                              );
+                            },
                           ),
-                          scrollDirection: Axis.vertical,
-                          itemCount: gridViewUsersRecordList.length,
-                          itemBuilder: (context, gridViewIndex) {
-                            final gridViewUsersRecord =
-                                gridViewUsersRecordList[gridViewIndex];
-                            return Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Image.network(
-                                  gridViewUsersRecord.photoUrl,
-                                  width: 100,
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                                Text(
-                                  gridViewUsersRecord.displayName,
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                  ),
-                                ),
-                                Text(
-                                  gridViewUsersRecord.role,
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                  ),
-                                )
-                              ],
-                            );
-                          },
                         );
                       },
                     ),
