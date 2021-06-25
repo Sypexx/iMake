@@ -202,7 +202,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                   options: FFButtonOptions(
                                     width: 140,
                                     height: 45,
-                                    color: Color(0x00BDBDBD),
+                                    color: Colors.white,
                                     textStyle:
                                         FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Poppins',
@@ -259,7 +259,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                   options: FFButtonOptions(
                                     width: 140,
                                     height: 45,
-                                    color: Color(0x00BDBDBD),
+                                    color: Colors.white,
                                     textStyle:
                                         FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Poppins',
