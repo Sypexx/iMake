@@ -51,7 +51,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     await showModalBottomSheet(
                         context: context,
                         builder: (context) {
-                          return DatepickWidget();
+                          return Container(
+                            height: MediaQuery.of(context).size.height * 0.15,
+                            child: DatepickWidget(),
+                          );
                         });
                   },
                   icon: Icon(
