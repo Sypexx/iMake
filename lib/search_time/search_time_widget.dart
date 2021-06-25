@@ -220,33 +220,19 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                       child: Padding(
                                         padding:
                                             EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            await Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SalonPageWidget(
-                                                  idsalon:
-                                                      rowSalonsRecord.reference,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            child: Image.network(
-                                              columnSalonsRecord.frontImage,
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  1,
-                                              fit: BoxFit.cover,
-                                            ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Image.network(
+                                            columnSalonsRecord.frontImage,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                1,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
@@ -333,33 +319,19 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                       child: Padding(
                                         padding:
                                             EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            await Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SalonPageWidget(
-                                                  idsalon:
-                                                      rowSalonsRecord.reference,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            child: Image.network(
-                                              columnSalonsRecord.frontImage,
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  1,
-                                              fit: BoxFit.cover,
-                                            ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Image.network(
+                                            columnSalonsRecord.frontImage,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                1,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
@@ -446,33 +418,19 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                       child: Padding(
                                         padding:
                                             EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            await Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SalonPageWidget(
-                                                  idsalon:
-                                                      rowSalonsRecord.reference,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            child: Image.network(
-                                              columnSalonsRecord.frontImage,
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  1,
-                                              fit: BoxFit.cover,
-                                            ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Image.network(
+                                            columnSalonsRecord.frontImage,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                1,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
@@ -559,33 +517,19 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                       child: Padding(
                                         padding:
                                             EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            await Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SalonPageWidget(
-                                                  idsalon:
-                                                      rowSalonsRecord.reference,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            child: Image.network(
-                                              columnSalonsRecord.frontImage,
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  1,
-                                              fit: BoxFit.cover,
-                                            ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Image.network(
+                                            columnSalonsRecord.frontImage,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                1,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
@@ -672,33 +616,19 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                       child: Padding(
                                         padding:
                                             EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            await Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SalonPageWidget(
-                                                  idsalon:
-                                                      rowSalonsRecord.reference,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            child: Image.network(
-                                              columnSalonsRecord.frontImage,
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  1,
-                                              fit: BoxFit.cover,
-                                            ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Image.network(
+                                            columnSalonsRecord.frontImage,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                1,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
