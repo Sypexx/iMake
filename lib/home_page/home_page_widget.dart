@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../salon_page/salon_page_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -15,8 +16,9 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  final pageViewController = PageController();
+  DateTime datePicked = DateTime.now();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final pageViewController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +47,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
                 child: IconButton(
-                  onPressed: () {
-                    print('IconButton pressed ...');
+                  onPressed: () async {
+                    await DatePicker.showDatePicker(context,
+                        showTitleActions: true, onConfirm: (date) {
+                      setState(() => datePicked = date);
+                    }, currentTime: DateTime.now());
                   },
                   icon: Icon(
                     Icons.calendar_today,
