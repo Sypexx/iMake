@@ -56,5 +56,17 @@ service cloud.firestore {
     match /categories_text/{id} {
       allow read, write: if true;
     }
+
+    // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
+    // security rules for this collection before publishing your app.
+    match /zapis/{id} {
+      allow read, write: if true;
+    }
+
+    // WARNING! ONLY FOR TEST MODE: Make sure you properly configure the
+    // security rules for this collection before publishing your app.
+    match /date/{id} {
+      allow read, write: if true;
+    }
   }
 }

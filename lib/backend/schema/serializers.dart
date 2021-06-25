@@ -13,6 +13,8 @@ import 'salon_images_record.dart';
 import 'categories_text_record.dart';
 import 'chats_record.dart';
 import 'chat_messages_record.dart';
+import 'zapis_record.dart';
+import 'date_record.dart';
 
 part 'serializers.g.dart';
 
@@ -28,6 +30,8 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   CategoriesTextRecord,
   ChatsRecord,
   ChatMessagesRecord,
+  ZapisRecord,
+  DateRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())
