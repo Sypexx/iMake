@@ -596,40 +596,33 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                             final columnSalonsRecord =
                                 columnSalonsRecordList[columnIndex];
                             return Padding(
-                              padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                              padding: EdgeInsets.fromLTRB(10, 10, 0, 10),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.6,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.15,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFEEEEEE),
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.4,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.1,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFEEEEEE),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                                      child: ClipRRect(
                                         borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Padding(
-                                        padding:
-                                            EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.network(
-                                            columnSalonsRecord.frontImage,
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                1,
-                                            fit: BoxFit.cover,
-                                          ),
+                                        child: Image.network(
+                                          columnSalonsRecord.frontImage,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              1,
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
                                     ),
