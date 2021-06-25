@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SearchTimeWidget extends StatefulWidget {
-  SearchTimeWidget({Key key}) : super(key: key);
+  SearchTimeWidget({
+    Key key,
+    this.date,
+  }) : super(key: key);
+
+  final DateRecord date;
 
   @override
   _SearchTimeWidgetState createState() => _SearchTimeWidgetState();
@@ -67,7 +72,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                     child: TabBarView(
                       children: [
                         Text(
-                          'Tab View 1',
+                          widget.date.text,
                           style: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Poppins',
                             fontSize: 32,
