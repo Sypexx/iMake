@@ -118,7 +118,7 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                           options: FFButtonOptions(
                             width: 130,
                             height: 40,
-                            color: Color(0x00FFFFFF),
+                            color: Colors.white,
                             textStyle: FlutterFlowTheme.subtitle2.override(
                               fontFamily: 'Poppins',
                               color: Colors.black,

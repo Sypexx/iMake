@@ -5,7 +5,6 @@ import 'package:imake/auth_page/auth_page_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'home_page/home_page_widget.dart';
 import 'insta/insta_widget.dart';
-import 'search_page/search_page_widget.dart';
 import 'messages/messages_widget.dart';
 import 'account_page/account_page_widget.dart';
 
@@ -78,7 +77,6 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'HomePage': HomePageWidget(),
       'Insta': InstaWidget(),
-      'SearchPage': SearchPageWidget(),
       'Messages': MessagesWidget(),
       'AccountPage': AccountPageWidget(),
     };
@@ -99,14 +97,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24,
             ),
             label: 'PhotoPage',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-              color: Color(0xFF9E9E9E),
-              size: 24,
-            ),
-            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(
