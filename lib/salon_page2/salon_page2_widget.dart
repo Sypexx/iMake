@@ -1,17 +1,15 @@
 import '../backend/backend.dart';
+import '../components/datepick_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
-import '../makezapis/makezapis_widget.dart';
-import '../zapis/zapis_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class SalonPageWidget extends StatefulWidget {
-  SalonPageWidget({
+class SalonPage2Widget extends StatefulWidget {
+  SalonPage2Widget({
     Key key,
     this.idsalon,
   }) : super(key: key);
@@ -19,10 +17,10 @@ class SalonPageWidget extends StatefulWidget {
   final DocumentReference idsalon;
 
   @override
-  _SalonPageWidgetState createState() => _SalonPageWidgetState();
+  _SalonPage2WidgetState createState() => _SalonPage2WidgetState();
 }
 
-class _SalonPageWidgetState extends State<SalonPageWidget> {
+class _SalonPage2WidgetState extends State<SalonPage2Widget> {
   final pageViewController = PageController();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -35,7 +33,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
         if (!snapshot.hasData) {
           return Center(child: CircularProgressIndicator());
         }
-        final salonPageSalonsRecord = snapshot.data;
+        final salonPage2SalonsRecord = snapshot.data;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: Colors.white,
@@ -47,7 +45,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                   stream: querySalonImagesRecord(
                     queryBuilder: (salonImagesRecord) =>
                         salonImagesRecord.where('salon',
-                            isEqualTo: salonPageSalonsRecord.reference),
+                            isEqualTo: salonPage2SalonsRecord.reference),
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
@@ -129,7 +127,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                       Padding(
                         padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                         child: Text(
-                          salonPageSalonsRecord.salonName,
+                          salonPage2SalonsRecord.salonName,
                           textAlign: TextAlign.start,
                           style: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Poppins',
@@ -141,7 +139,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                       Padding(
                         padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                         child: Text(
-                          salonPageSalonsRecord.salonStreet,
+                          salonPage2SalonsRecord.salonStreet,
                           style: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Poppins',
                           ),
@@ -467,37 +465,15 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                     padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        await showDialog(
-                          context: context,
-                          builder: (alertDialogContext) {
-                            return AlertDialog(
-                              title: Text('Запись'),
-                              content: Text('Вы успешно записались на прием'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(alertDialogContext),
-                                  child: Text('Отмена'),
-                                ),
-                                TextButton(
-                                  onPressed: () async {
-                                    Navigator.pop(alertDialogContext);
-                                    await Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            NavBarPage(initialPage: 'HomePage'),
-                                      ),
-                                      (r) => false,
-                                    );
-                                    ;
-                                  },
-                                  child: Text('Ок'),
-                                ),
-                              ],
-                            );
-                          },
-                        );
+                        await showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.15,
+                                child: DatepickWidget(),
+                              );
+                            });
                       },
                       text: 'Записаться',
                       options: FFButtonOptions(
