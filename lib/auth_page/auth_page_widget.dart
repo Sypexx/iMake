@@ -1,7 +1,9 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,8 +15,18 @@ class AuthPageWidget extends StatefulWidget {
 }
 
 class _AuthPageWidgetState extends State<AuthPageWidget> {
-  String dropDownValue;
+  TextEditingController loginController;
+  TextEditingController passwordController;
+  bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    loginController = TextEditingController();
+    passwordController = TextEditingController();
+    passwordVisibility = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,35 +49,222 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                 ),
               ),
               Align(
-                alignment: Alignment(-0.63, -0.09),
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFEEEEEE),
-                  ),
-                  child: FlutterFlowDropDown(
-                    initialOption: 'aasdf',
-                    options: ['123', '1234', '12345'],
-                    onChanged: (value) {
-                      setState(() => dropDownValue = value);
-                    },
-                    width: 140,
-                    height: 50,
-                    textStyle: FlutterFlowTheme.bodyText1.override(
+                alignment: Alignment(0, 0),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                  child: TextFormField(
+                    controller: loginController,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      hintText: 'Почта',
+                      hintStyle: FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Poppins',
+                        color: Colors.black,
+                        fontSize: 17,
+                        fontWeight: FontWeight.normal,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0xFFBDBDBD),
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(35),
+                          bottomRight: Radius.circular(35),
+                          topLeft: Radius.circular(35),
+                          topRight: Radius.circular(35),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0xFFBDBDBD),
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(35),
+                          bottomRight: Radius.circular(35),
+                          topLeft: Radius.circular(35),
+                          topRight: Radius.circular(35),
+                        ),
+                      ),
+                      contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                    ),
+                    style: FlutterFlowTheme.bodyText1.override(
                       fontFamily: 'Poppins',
                       color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.normal,
                     ),
-                    icon: Icon(
-                      Icons.three_k,
-                      color: Color(0xFFFF0000),
-                      size: 24,
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment(0.01, 0.18),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                  child: TextFormField(
+                    controller: passwordController,
+                    obscureText: !passwordVisibility,
+                    decoration: InputDecoration(
+                      hintText: 'Пароль (от 8 символов)',
+                      hintStyle: FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Poppins',
+                        color: Colors.black,
+                        fontSize: 17,
+                        fontWeight: FontWeight.normal,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0xFFBDBDBD),
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(35),
+                          bottomRight: Radius.circular(35),
+                          topLeft: Radius.circular(35),
+                          topRight: Radius.circular(35),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0xFFBDBDBD),
+                          width: 2,
+                        ),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(35),
+                          bottomRight: Radius.circular(35),
+                          topLeft: Radius.circular(35),
+                          topRight: Radius.circular(35),
+                        ),
+                      ),
+                      contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                      suffixIcon: InkWell(
+                        onTap: () => setState(
+                          () => passwordVisibility = !passwordVisibility,
+                        ),
+                        child: Icon(
+                          passwordVisibility
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: Color(0xFFBDBDBD),
+                          size: 22,
+                        ),
+                      ),
                     ),
-                    fillColor: Colors.white,
-                    elevation: 2,
-                    borderColor: Colors.transparent,
-                    borderWidth: 1,
-                    borderRadius: 1,
+                    style: FlutterFlowTheme.bodyText1.override(
+                      fontFamily: 'Poppins',
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment(0, 0),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Align(
+                        alignment: Alignment(-0.62, 0.45),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            final user = await signInWithEmail(
+                              context,
+                              loginController.text,
+                              passwordController.text,
+                            );
+                            if (user == null) {
+                              return;
+                            }
+
+                            await Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    NavBarPage(initialPage: 'AccountPage'),
+                              ),
+                              (r) => false,
+                            );
+                          },
+                          text: 'Войти',
+                          options: FFButtonOptions(
+                            width: 140,
+                            height: 45,
+                            color: Color(0x00BDBDBD),
+                            textStyle: FlutterFlowTheme.subtitle2.override(
+                              fontFamily: 'Poppins',
+                              color: Colors.black,
+                              fontSize: 17,
+                            ),
+                            borderSide: BorderSide(
+                              color: Color(0xFFBDBDBD),
+                              width: 5,
+                            ),
+                            borderRadius: 20,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment(-0.62, 0.45),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            final user = await createAccountWithEmail(
+                              context,
+                              loginController.text,
+                              passwordController.text,
+                            );
+                            if (user == null) {
+                              return;
+                            }
+
+                            final displayName = 'Имя';
+                            final photoUrl =
+                                'https://firebasestorage.googleapis.com/v0/b/imake-b18ed.appspot.com/o/Profile%20avatars%2Favatar1.png?alt=media&token=15a3c1a3-fa40-4dcc-88bf-3544b4f3563e';
+                            final role = 'Клиент';
+
+                            final usersRecordData = createUsersRecordData(
+                              displayName: displayName,
+                              photoUrl: photoUrl,
+                              role: role,
+                            );
+
+                            await UsersRecord.collection
+                                .doc(user.uid)
+                                .update(usersRecordData);
+
+                            await Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    NavBarPage(initialPage: 'AccountPage'),
+                              ),
+                              (r) => false,
+                            );
+                          },
+                          text: 'Регистрация',
+                          options: FFButtonOptions(
+                            width: 140,
+                            height: 45,
+                            color: Color(0x00BDBDBD),
+                            textStyle: FlutterFlowTheme.subtitle2.override(
+                              fontFamily: 'Poppins',
+                              color: Colors.black,
+                              fontSize: 17,
+                            ),
+                            borderSide: BorderSide(
+                              color: Color(0xFFBDBDBD),
+                              width: 5,
+                            ),
+                            borderRadius: 20,
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
               )
