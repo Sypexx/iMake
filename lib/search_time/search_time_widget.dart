@@ -63,8 +63,19 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                     labelColor: FlutterFlowTheme.primaryColor,
                     indicatorColor: FlutterFlowTheme.secondaryColor,
                     tabs: [
-                      Tab(
-                        text: tabBarTimeRecord.text,
+                      StreamBuilder<TimeRecord>(
+                        stream:
+                            TimeRecord.getDocument(tabBarTimeRecord.reference),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                          final tabTimeRecord = snapshot.data;
+                          return Tab(
+                            text: tabBarTimeRecord.text,
+                          );
+                        },
                       )
                     ],
                   ),
