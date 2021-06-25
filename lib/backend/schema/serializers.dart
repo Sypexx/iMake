@@ -15,6 +15,7 @@ import 'chats_record.dart';
 import 'chat_messages_record.dart';
 import 'zapis_record.dart';
 import 'date_record.dart';
+import 'time_record.dart';
 
 part 'serializers.g.dart';
 
@@ -32,6 +33,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   ChatMessagesRecord,
   ZapisRecord,
   DateRecord,
+  TimeRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())
