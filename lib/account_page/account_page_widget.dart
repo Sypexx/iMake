@@ -7,8 +7,8 @@ import '../editsalon/editsalon_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../grafik/grafik_widget.dart';
 import '../sotrudniki/sotrudniki_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -133,63 +133,6 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                       )
                     ],
                   ),
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FFButtonWidget(
-                      onPressed: () async {
-                        final frontImage =
-                            'https://firebasestorage.googleapis.com/v0/b/imake-b18ed.appspot.com/o/salon%2Fshop.png?alt=media&token=813a7381-1ea3-4e7c-94dc-436433d059bc';
-                        final salonName = 'Название салона';
-                        final salonStreet = 'Улица';
-                        final user = accountPageUsersRecord.reference;
-
-                        final salonsRecordData = createSalonsRecordData(
-                          frontImage: frontImage,
-                          salonName: salonName,
-                          salonStreet: salonStreet,
-                          user: user,
-                        );
-
-                        await SalonsRecord.collection
-                            .doc()
-                            .set(salonsRecordData);
-                        await showDialog(
-                          context: context,
-                          builder: (alertDialogContext) {
-                            return AlertDialog(
-                              title: Text('Создание салона'),
-                              content: Text('Салон создан успешно!'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(alertDialogContext),
-                                  child: Text('Ok'),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      },
-                      text: 'Создать салон',
-                      options: FFButtonOptions(
-                        width: 180,
-                        height: 40,
-                        color: Colors.white,
-                        textStyle: FlutterFlowTheme.subtitle2.override(
-                          fontFamily: 'Poppins',
-                          color: Colors.black,
-                        ),
-                        borderSide: BorderSide(
-                          color: Color(0xFFBDBDBD),
-                          width: 3,
-                        ),
-                        borderRadius: 15,
-                      ),
-                    )
-                  ],
                 ),
                 StreamBuilder<List<SalonsRecord>>(
                   stream: querySalonsRecord(
@@ -354,6 +297,40 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                           );
                         },
                         text: 'Статистика',
+                        options: FFButtonOptions(
+                          width: 180,
+                          height: 40,
+                          color: Colors.white,
+                          textStyle: FlutterFlowTheme.subtitle2.override(
+                            fontFamily: 'Poppins',
+                            color: Colors.black,
+                          ),
+                          borderSide: BorderSide(
+                            color: Color(0xFFBDBDBD),
+                            width: 3,
+                          ),
+                          borderRadius: 15,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => GrafikWidget(),
+                            ),
+                          );
+                        },
+                        text: 'График',
                         options: FFButtonOptions(
                           width: 180,
                           height: 40,

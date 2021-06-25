@@ -5,6 +5,8 @@ import 'package:imake/auth_page/auth_page_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'home_page/home_page_widget.dart';
 import 'insta/insta_widget.dart';
+import 'search_page/search_page_widget.dart';
+import 'messages/messages_widget.dart';
 import 'account_page/account_page_widget.dart';
 
 void main() async {
@@ -76,6 +78,8 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'HomePage': HomePageWidget(),
       'Insta': InstaWidget(),
+      'SearchPage': SearchPageWidget(),
+      'Messages': MessagesWidget(),
       'AccountPage': AccountPageWidget(),
     };
     return Scaffold(
@@ -98,6 +102,21 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
+              Icons.search,
+              color: Color(0xFF9E9E9E),
+              size: 24,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.chat_bubble,
+              size: 24,
+            ),
+            label: 'Chats',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
               Icons.account_box,
               size: 24,
             ),
@@ -107,7 +126,7 @@ class _NavBarPageState extends State<NavBarPage> {
         backgroundColor: Colors.white,
         currentIndex: tabs.keys.toList().indexOf(_currentPage),
         selectedItemColor: Colors.black,
-        unselectedItemColor: Color(0xFF4D4D4D),
+        unselectedItemColor: Color(0xFF707070),
         onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
         showSelectedLabels: false,
         showUnselectedLabels: false,

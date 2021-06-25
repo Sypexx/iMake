@@ -11,6 +11,8 @@ import 'schema/ad_record.dart';
 import 'schema/salons_record.dart';
 import 'schema/salon_images_record.dart';
 import 'schema/categories_text_record.dart';
+import 'schema/chats_record.dart';
+import 'schema/chat_messages_record.dart';
 import 'schema/serializers.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,6 +24,8 @@ export 'schema/ad_record.dart';
 export 'schema/salons_record.dart';
 export 'schema/salon_images_record.dart';
 export 'schema/categories_text_record.dart';
+export 'schema/chats_record.dart';
+export 'schema/chat_messages_record.dart';
 
 Stream<List<UsersRecord>> queryUsersRecord(
         {Query Function(Query) queryBuilder,
@@ -71,6 +75,21 @@ Stream<List<CategoriesTextRecord>> queryCategoriesTextRecord(
         bool singleRecord = false}) =>
     queryCollection(
         CategoriesTextRecord.collection, CategoriesTextRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<ChatsRecord>> queryChatsRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(ChatsRecord.collection, ChatsRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<ChatMessagesRecord>> queryChatMessagesRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(
+        ChatMessagesRecord.collection, ChatMessagesRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(
