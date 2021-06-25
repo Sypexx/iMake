@@ -218,7 +218,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                       padding: EdgeInsets.fromLTRB(0, 0, 0, 1),
                                       child: InkWell(
                                         onTap: () async {
-                                          await Navigator.push(
+                                          await Navigator.pushAndRemoveUntil(
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
@@ -227,6 +227,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                                     .reference,
                                               ),
                                             ),
+                                            (r) => false,
                                           );
                                         },
                                         child: ClipRRect(
@@ -326,7 +327,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                       padding: EdgeInsets.fromLTRB(0, 0, 0, 1),
                                       child: InkWell(
                                         onTap: () async {
-                                          await Navigator.push(
+                                          await Navigator.pushAndRemoveUntil(
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
@@ -335,6 +336,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                                     .reference,
                                               ),
                                             ),
+                                            (r) => false,
                                           );
                                         },
                                         child: ClipRRect(
@@ -434,7 +436,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                       padding: EdgeInsets.fromLTRB(0, 0, 0, 1),
                                       child: InkWell(
                                         onTap: () async {
-                                          await Navigator.push(
+                                          await Navigator.pushAndRemoveUntil(
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
@@ -443,6 +445,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                                     .reference,
                                               ),
                                             ),
+                                            (r) => false,
                                           );
                                         },
                                         child: ClipRRect(
@@ -542,7 +545,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                       padding: EdgeInsets.fromLTRB(0, 0, 0, 1),
                                       child: InkWell(
                                         onTap: () async {
-                                          await Navigator.push(
+                                          await Navigator.pushAndRemoveUntil(
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
@@ -551,6 +554,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                                     .reference,
                                               ),
                                             ),
+                                            (r) => false,
                                           );
                                         },
                                         child: ClipRRect(
@@ -650,7 +654,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                       padding: EdgeInsets.fromLTRB(0, 0, 0, 1),
                                       child: InkWell(
                                         onTap: () async {
-                                          await Navigator.push(
+                                          await Navigator.pushAndRemoveUntil(
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
@@ -659,6 +663,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                                     .reference,
                                               ),
                                             ),
+                                            (r) => false,
                                           );
                                         },
                                         child: ClipRRect(
