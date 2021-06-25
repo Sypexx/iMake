@@ -39,63 +39,76 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
         elevation: 4,
       ),
       body: SafeArea(
-        child: StreamBuilder<List<TimeRecord>>(
-          stream: queryTimeRecord(),
-          builder: (context, snapshot) {
-            // Customize what your widget looks like when it's loading.
-            if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
-            }
-            List<TimeRecord> tabBarTimeRecordList = snapshot.data;
-            // Customize what your widget looks like with no query results.
-            if (snapshot.data.isEmpty) {
-              // return Container();
-              // For now, we'll just include some dummy data.
-              tabBarTimeRecordList = createDummyTimeRecord(count: 4);
-            }
-            return DefaultTabController(
-              length: 1,
-              initialIndex: 0,
-              child: Column(
-                children: [
-                  TabBar(
-                    isScrollable: true,
-                    labelColor: FlutterFlowTheme.primaryColor,
-                    indicatorColor: FlutterFlowTheme.secondaryColor,
-                    tabs: [
-                      StreamBuilder<TimeRecord>(
-                        stream:
-                            TimeRecord.getDocument(tabBarTimeRecord.reference),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(child: CircularProgressIndicator());
-                          }
-                          final tabTimeRecord = snapshot.data;
-                          return Tab(
-                            text: tabBarTimeRecord.text,
-                          );
-                        },
-                      )
-                    ],
+        child: DefaultTabController(
+          length: 5,
+          initialIndex: 0,
+          child: Column(
+            children: [
+              TabBar(
+                isScrollable: true,
+                labelColor: FlutterFlowTheme.primaryColor,
+                indicatorColor: FlutterFlowTheme.secondaryColor,
+                tabs: [
+                  Tab(
+                    text: '12:00',
                   ),
-                  Expanded(
-                    child: TabBarView(
-                      children: [
-                        Text(
-                          widget.date.text,
-                          style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
-                            fontSize: 32,
-                          ),
-                        )
-                      ],
-                    ),
+                  Tab(
+                    text: '13:00',
                   ),
+                  Tab(
+                    text: '14:00',
+                  ),
+                  Tab(
+                    text: '15:00',
+                  ),
+                  Tab(
+                    text: '16:00',
+                  )
                 ],
               ),
-            );
-          },
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    Text(
+                      widget.date.text,
+                      style: FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 32,
+                      ),
+                    ),
+                    Text(
+                      'Tab View 2',
+                      style: FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 32,
+                      ),
+                    ),
+                    Text(
+                      'Tab View 3',
+                      style: FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 32,
+                      ),
+                    ),
+                    Text(
+                      'Tab View 4',
+                      style: FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 32,
+                      ),
+                    ),
+                    Text(
+                      'Tab View 5',
+                      style: FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 32,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
