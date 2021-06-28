@@ -3,8 +3,6 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
-import '../makezapis/makezapis_widget.dart';
-import '../zapis/zapis_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -58,10 +56,12 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                         snapshot.data;
                     // Customize what your widget looks like with no query results.
                     if (snapshot.data.isEmpty) {
-                      // return Container();
-                      // For now, we'll just include some dummy data.
-                      pageViewSalonImagesRecordList =
-                          createDummySalonImagesRecord(count: 4);
+                      return Container(
+                        height: 100,
+                        child: Center(
+                          child: Text('No results.'),
+                        ),
+                      );
                     }
                     return Container(
                       width: MediaQuery.of(context).size.width,
@@ -132,7 +132,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                           salonPageSalonsRecord.salonName,
                           textAlign: TextAlign.start,
                           style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Playfair Display',
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
@@ -143,7 +143,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                         child: Text(
                           salonPageSalonsRecord.salonStreet,
                           style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Playfair Display',
                           ),
                         ),
                       )
@@ -212,7 +212,8 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                                 style: FlutterFlowTheme
                                                     .bodyText1
                                                     .override(
-                                                  fontFamily: 'Poppins',
+                                                  fontFamily:
+                                                      'Playfair Display',
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -233,7 +234,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                           '2 ч. 20 мин.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       ),
@@ -244,7 +245,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                           '- 3500 руб. ',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       )
@@ -272,7 +273,8 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                                 style: FlutterFlowTheme
                                                     .bodyText1
                                                     .override(
-                                                  fontFamily: 'Poppins',
+                                                  fontFamily:
+                                                      'Playfair Display',
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -293,7 +295,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                           '50 мин.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       ),
@@ -304,7 +306,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                           '- 2000 руб.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       )
@@ -332,7 +334,8 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                                 style: FlutterFlowTheme
                                                     .bodyText1
                                                     .override(
-                                                  fontFamily: 'Poppins',
+                                                  fontFamily:
+                                                      'Playfair Display',
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -353,7 +356,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                           '2 ч. 40 мин.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       ),
@@ -364,7 +367,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                           '- 6000 руб.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       )
@@ -392,7 +395,8 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                                 style: FlutterFlowTheme
                                                     .bodyText1
                                                     .override(
-                                                  fontFamily: 'Poppins',
+                                                  fontFamily:
+                                                      'Playfair Display',
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -413,7 +417,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                           '1 ч. 40 мин.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       ),
@@ -424,7 +428,7 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                                           '- 1200 руб.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       )
@@ -436,21 +440,21 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                               Text(
                                 'Tab View 3',
                                 style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: 'Playfair Display',
                                   fontSize: 32,
                                 ),
                               ),
                               Text(
                                 'Tab View 4',
                                 style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: 'Playfair Display',
                                   fontSize: 32,
                                 ),
                               ),
                               Text(
                                 'Tab View 5',
                                 style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: 'Playfair Display',
                                   fontSize: 32,
                                 ),
                               )

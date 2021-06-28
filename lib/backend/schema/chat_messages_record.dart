@@ -1,13 +1,8 @@
 import 'dart:async';
 
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:latlong/latlong.dart';
-
-import 'schema_util.dart';
+import 'index.dart';
 import 'serializers.dart';
+import 'package:built_value/built_value.dart';
 
 part 'chat_messages_record.g.dart';
 
@@ -72,14 +67,3 @@ Map<String, dynamic> createChatMessagesRecordData({
           ..text = text
           ..image = image
           ..timestamp = timestamp));
-
-ChatMessagesRecord get dummyChatMessagesRecord {
-  final builder = ChatMessagesRecordBuilder()
-    ..text = dummyString
-    ..image = dummyImagePath
-    ..timestamp = dummyTimestamp;
-  return builder.build();
-}
-
-List<ChatMessagesRecord> createDummyChatMessagesRecord({int count}) =>
-    List.generate(count, (_) => dummyChatMessagesRecord);

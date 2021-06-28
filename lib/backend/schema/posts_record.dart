@@ -1,13 +1,8 @@
 import 'dart:async';
 
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:latlong/latlong.dart';
-
-import 'schema_util.dart';
+import 'index.dart';
 import 'serializers.dart';
+import 'package:built_value/built_value.dart';
 
 part 'posts_record.g.dart';
 
@@ -60,13 +55,3 @@ Map<String, dynamic> createPostsRecordData({
           ..imgUrl = imgUrl
           ..createdAt = createdAt
           ..salon = salon));
-
-PostsRecord get dummyPostsRecord {
-  final builder = PostsRecordBuilder()
-    ..imgUrl = dummyImagePath
-    ..createdAt = dummyTimestamp;
-  return builder.build();
-}
-
-List<PostsRecord> createDummyPostsRecord({int count}) =>
-    List.generate(count, (_) => dummyPostsRecord);

@@ -29,7 +29,7 @@ class _AddimgWidgetState extends State<AddimgWidget> {
         title: Text(
           'Загрузить выполненную работу',
           style: FlutterFlowTheme.bodyText1.override(
-            fontFamily: 'Poppins',
+            fontFamily: 'Playfair Display',
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),

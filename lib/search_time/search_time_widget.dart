@@ -31,7 +31,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
         title: Text(
           'Поиск',
           style: FlutterFlowTheme.bodyText1.override(
-            fontFamily: 'Poppins',
+            fontFamily: 'Playfair Display',
             fontSize: 18,
           ),
         ),
@@ -64,9 +64,12 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                       List<TimeRecord> tab1TimeRecordList = snapshot.data;
                       // Customize what your widget looks like with no query results.
                       if (snapshot.data.isEmpty) {
-                        // return Container();
-                        // For now, we'll just include some dummy data.
-                        tab1TimeRecordList = createDummyTimeRecord(count: 1);
+                        return Container(
+                          height: 100,
+                          child: Center(
+                            child: Text('No results.'),
+                          ),
+                        );
                       }
                       final tab1TimeRecord = tab1TimeRecordList.first;
                       return Tab(
@@ -88,9 +91,12 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                       List<TimeRecord> tab2TimeRecordList = snapshot.data;
                       // Customize what your widget looks like with no query results.
                       if (snapshot.data.isEmpty) {
-                        // return Container();
-                        // For now, we'll just include some dummy data.
-                        tab2TimeRecordList = createDummyTimeRecord(count: 1);
+                        return Container(
+                          height: 100,
+                          child: Center(
+                            child: Text('No results.'),
+                          ),
+                        );
                       }
                       final tab2TimeRecord = tab2TimeRecordList.first;
                       return Tab(
@@ -112,9 +118,12 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                       List<TimeRecord> tab3TimeRecordList = snapshot.data;
                       // Customize what your widget looks like with no query results.
                       if (snapshot.data.isEmpty) {
-                        // return Container();
-                        // For now, we'll just include some dummy data.
-                        tab3TimeRecordList = createDummyTimeRecord(count: 1);
+                        return Container(
+                          height: 100,
+                          child: Center(
+                            child: Text('No results.'),
+                          ),
+                        );
                       }
                       final tab3TimeRecord = tab3TimeRecordList.first;
                       return Tab(
@@ -136,9 +145,12 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                       List<TimeRecord> tab4TimeRecordList = snapshot.data;
                       // Customize what your widget looks like with no query results.
                       if (snapshot.data.isEmpty) {
-                        // return Container();
-                        // For now, we'll just include some dummy data.
-                        tab4TimeRecordList = createDummyTimeRecord(count: 1);
+                        return Container(
+                          height: 100,
+                          child: Center(
+                            child: Text('No results.'),
+                          ),
+                        );
                       }
                       final tab4TimeRecord = tab4TimeRecordList.first;
                       return Tab(
@@ -160,9 +172,12 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                       List<TimeRecord> tab5TimeRecordList = snapshot.data;
                       // Customize what your widget looks like with no query results.
                       if (snapshot.data.isEmpty) {
-                        // return Container();
-                        // For now, we'll just include some dummy data.
-                        tab5TimeRecordList = createDummyTimeRecord(count: 1);
+                        return Container(
+                          height: 100,
+                          child: Center(
+                            child: Text('No results.'),
+                          ),
+                        );
                       }
                       final tab5TimeRecord = tab5TimeRecordList.first;
                       return Tab(
@@ -186,10 +201,12 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                             snapshot.data;
                         // Customize what your widget looks like with no query results.
                         if (snapshot.data.isEmpty) {
-                          // return Container();
-                          // For now, we'll just include some dummy data.
-                          columnSalonsRecordList =
-                              createDummySalonsRecord(count: 4);
+                          return Container(
+                            height: 100,
+                            child: Center(
+                              child: Text('No results.'),
+                            ),
+                          );
                         }
                         return Column(
                           mainAxisSize: MainAxisSize.max,
@@ -258,7 +275,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                           columnSalonsRecord.salonName,
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                             fontSize: 16,
                                             fontWeight: FontWeight.w600,
                                           ),
@@ -271,7 +288,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                           columnSalonsRecord.salonStreet,
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       )
@@ -295,10 +312,12 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                             snapshot.data;
                         // Customize what your widget looks like with no query results.
                         if (snapshot.data.isEmpty) {
-                          // return Container();
-                          // For now, we'll just include some dummy data.
-                          columnSalonsRecordList =
-                              createDummySalonsRecord(count: 4);
+                          return Container(
+                            height: 100,
+                            child: Center(
+                              child: Text('No results.'),
+                            ),
+                          );
                         }
                         return Column(
                           mainAxisSize: MainAxisSize.max,
@@ -367,7 +386,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                           columnSalonsRecord.salonName,
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                             fontSize: 16,
                                             fontWeight: FontWeight.w600,
                                           ),
@@ -380,7 +399,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                           columnSalonsRecord.salonStreet,
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       )
@@ -404,10 +423,12 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                             snapshot.data;
                         // Customize what your widget looks like with no query results.
                         if (snapshot.data.isEmpty) {
-                          // return Container();
-                          // For now, we'll just include some dummy data.
-                          columnSalonsRecordList =
-                              createDummySalonsRecord(count: 4);
+                          return Container(
+                            height: 100,
+                            child: Center(
+                              child: Text('No results.'),
+                            ),
+                          );
                         }
                         return Column(
                           mainAxisSize: MainAxisSize.max,
@@ -476,7 +497,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                           columnSalonsRecord.salonName,
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                             fontSize: 16,
                                             fontWeight: FontWeight.w600,
                                           ),
@@ -489,7 +510,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                           columnSalonsRecord.salonStreet,
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       )
@@ -513,10 +534,12 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                             snapshot.data;
                         // Customize what your widget looks like with no query results.
                         if (snapshot.data.isEmpty) {
-                          // return Container();
-                          // For now, we'll just include some dummy data.
-                          columnSalonsRecordList =
-                              createDummySalonsRecord(count: 4);
+                          return Container(
+                            height: 100,
+                            child: Center(
+                              child: Text('No results.'),
+                            ),
+                          );
                         }
                         return Column(
                           mainAxisSize: MainAxisSize.max,
@@ -585,7 +608,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                           columnSalonsRecord.salonName,
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                             fontSize: 16,
                                             fontWeight: FontWeight.w600,
                                           ),
@@ -598,7 +621,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                           columnSalonsRecord.salonStreet,
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       )
@@ -622,10 +645,12 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                             snapshot.data;
                         // Customize what your widget looks like with no query results.
                         if (snapshot.data.isEmpty) {
-                          // return Container();
-                          // For now, we'll just include some dummy data.
-                          columnSalonsRecordList =
-                              createDummySalonsRecord(count: 4);
+                          return Container(
+                            height: 100,
+                            child: Center(
+                              child: Text('No results.'),
+                            ),
+                          );
                         }
                         return Column(
                           mainAxisSize: MainAxisSize.max,
@@ -694,7 +719,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                           columnSalonsRecord.salonName,
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                             fontSize: 16,
                                             fontWeight: FontWeight.w600,
                                           ),
@@ -707,7 +732,7 @@ class _SearchTimeWidgetState extends State<SearchTimeWidget> {
                                           columnSalonsRecord.salonStreet,
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       )

@@ -2,6 +2,7 @@ import '../flutter_flow/flutter_flow_drop_down_template.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AsdasdasWidget extends StatefulWidget {
   AsdasdasWidget({Key key}) : super(key: key);
@@ -29,7 +30,7 @@ class _AsdasdasWidgetState extends State<AsdasdasWidget> {
         width: 130,
         height: 40,
         textStyle: FlutterFlowTheme.bodyText1.override(
-          fontFamily: 'Poppins',
+          fontFamily: 'Playfair Display',
           color: Colors.black,
         ),
         fillColor: Colors.white,

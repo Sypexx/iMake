@@ -44,7 +44,7 @@ class _EditclientWidgetState extends State<EditclientWidget> {
             title: Text(
               'Редактировать профиль',
               style: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
+                fontFamily: 'Playfair Display',
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
@@ -121,7 +121,7 @@ class _EditclientWidgetState extends State<EditclientWidget> {
                       decoration: InputDecoration(
                         hintText: editclientUsersRecord.displayName,
                         hintStyle: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Playfair Display',
                         ),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
@@ -145,7 +145,7 @@ class _EditclientWidgetState extends State<EditclientWidget> {
                         ),
                       ),
                       style: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Poppins',
+                        fontFamily: 'Playfair Display',
                       ),
                     ),
                   ),
@@ -159,13 +159,13 @@ class _EditclientWidgetState extends State<EditclientWidget> {
                         Text(
                           'Почта',
                           style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Playfair Display',
                           ),
                         ),
                         Text(
                           currentUserEmail,
                           style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Playfair Display',
                           ),
                         )
                       ],
@@ -183,14 +183,14 @@ class _EditclientWidgetState extends State<EditclientWidget> {
                           child: Text(
                             'Роль',
                             style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Poppins',
+                              fontFamily: 'Playfair Display',
                             ),
                           ),
                         ),
                         Text(
                           editclientUsersRecord.role,
                           style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Playfair Display',
                           ),
                         )
                       ],

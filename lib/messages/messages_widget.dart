@@ -27,7 +27,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
         title: Text(
           'All Chats',
           style: FlutterFlowTheme.bodyText1.override(
-            fontFamily: 'Poppins',
+            fontFamily: 'Playfair Display',
             color: Colors.black,
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -52,9 +52,12 @@ class _MessagesWidgetState extends State<MessagesWidget> {
             List<ChatsRecord> listViewChatsRecordList = snapshot.data;
             // Customize what your widget looks like with no query results.
             if (snapshot.data.isEmpty) {
-              // return Container();
-              // For now, we'll just include some dummy data.
-              listViewChatsRecordList = createDummyChatsRecord(count: 4);
+              return Container(
+                height: 100,
+                child: Center(
+                  child: Text('No results.'),
+                ),
+              );
             }
             return Padding(
               padding: EdgeInsets.fromLTRB(0, 2, 0, 0),

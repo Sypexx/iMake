@@ -23,7 +23,7 @@ class _GrafikWidgetState extends State<GrafikWidget> {
         title: Text(
           'График',
           style: FlutterFlowTheme.bodyText1.override(
-            fontFamily: 'Poppins',
+            fontFamily: 'Playfair Display',
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),

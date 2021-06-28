@@ -30,7 +30,7 @@ class _ChatWidgetState extends State<ChatWidget> {
         title: Text(
           widget.chatUser.displayName,
           style: FlutterFlowTheme.bodyText1.override(
-            fontFamily: 'Poppins',
+            fontFamily: 'Playfair Display',
             color: Colors.black,
             fontSize: 16,
             fontWeight: FontWeight.bold,

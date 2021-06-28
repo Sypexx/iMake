@@ -79,7 +79,7 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                       Text(
                         accountPageUsersRecord.email,
                         style: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Playfair Display',
                         ),
                       )
                     ],
@@ -88,13 +88,13 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                 Text(
                   accountPageUsersRecord.displayName,
                   style: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Poppins',
+                    fontFamily: 'Playfair Display',
                   ),
                 ),
                 Text(
                   accountPageUsersRecord.role,
                   style: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Poppins',
+                    fontFamily: 'Playfair Display',
                   ),
                 ),
                 Padding(
@@ -116,12 +116,12 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                           },
                           text: 'Редактировать',
                           options: FFButtonOptions(
-                            width: 130,
+                            width: 160,
                             height: 40,
                             color: Colors.white,
-                            textStyle: FlutterFlowTheme.subtitle2.override(
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
+                            textStyle: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Playfair Display',
+                              fontWeight: FontWeight.w600,
                             ),
                             borderSide: BorderSide(
                               color: Color(0xFFBDBDBD),
@@ -148,9 +148,12 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                     List<SalonsRecord> rowSalonsRecordList = snapshot.data;
                     // Customize what your widget looks like with no query results.
                     if (snapshot.data.isEmpty) {
-                      // return Container();
-                      // For now, we'll just include some dummy data.
-                      rowSalonsRecordList = createDummySalonsRecord(count: 1);
+                      return Container(
+                        height: 100,
+                        child: Center(
+                          child: Text('No results.'),
+                        ),
+                      );
                     }
                     final rowSalonsRecord = rowSalonsRecordList.first;
                     return Padding(
@@ -176,10 +179,12 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                                   buttonSalonImagesRecordList = snapshot.data;
                               // Customize what your widget looks like with no query results.
                               if (snapshot.data.isEmpty) {
-                                // return Container();
-                                // For now, we'll just include some dummy data.
-                                buttonSalonImagesRecordList =
-                                    createDummySalonImagesRecord(count: 1);
+                                return Container(
+                                  height: 100,
+                                  child: Center(
+                                    child: Text('No results.'),
+                                  ),
+                                );
                               }
                               final buttonSalonImagesRecord =
                                   buttonSalonImagesRecordList.first;
@@ -198,16 +203,16 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                                 },
                                 text: 'Редактировать салон',
                                 options: FFButtonOptions(
-                                  width: 180,
+                                  width: 210,
                                   height: 40,
                                   color: Colors.white,
                                   textStyle:
-                                      FlutterFlowTheme.subtitle2.override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.black,
+                                      FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Playfair Display',
+                                    fontWeight: FontWeight.w600,
                                   ),
                                   borderSide: BorderSide(
-                                    color: Color(0xFFBDBDBD),
+                                    color: Color(0xFFBED0A8),
                                     width: 3,
                                   ),
                                   borderRadius: 15,
@@ -242,10 +247,12 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                               snapshot.data;
                           // Customize what your widget looks like with no query results.
                           if (snapshot.data.isEmpty) {
-                            // return Container();
-                            // For now, we'll just include some dummy data.
-                            buttonSalonsRecordList =
-                                createDummySalonsRecord(count: 1);
+                            return Container(
+                              height: 100,
+                              child: Center(
+                                child: Text('No results.'),
+                              ),
+                            );
                           }
                           final buttonSalonsRecord =
                               buttonSalonsRecordList.first;
@@ -262,12 +269,12 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                             },
                             text: 'Сотрудники',
                             options: FFButtonOptions(
-                              width: 180,
+                              width: 210,
                               height: 40,
                               color: Colors.white,
-                              textStyle: FlutterFlowTheme.subtitle2.override(
-                                fontFamily: 'Poppins',
-                                color: Colors.black,
+                              textStyle: FlutterFlowTheme.bodyText1.override(
+                                fontFamily: 'Playfair Display',
+                                fontWeight: FontWeight.w600,
                               ),
                               borderSide: BorderSide(
                                 color: Color(0xFFBDBDBD),
@@ -298,12 +305,12 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                         },
                         text: 'Статистика',
                         options: FFButtonOptions(
-                          width: 180,
+                          width: 210,
                           height: 40,
                           color: Colors.white,
-                          textStyle: FlutterFlowTheme.subtitle2.override(
-                            fontFamily: 'Poppins',
-                            color: Colors.black,
+                          textStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Playfair Display',
+                            fontWeight: FontWeight.w600,
                           ),
                           borderSide: BorderSide(
                             color: Color(0xFFBDBDBD),
@@ -332,12 +339,12 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                         },
                         text: 'График',
                         options: FFButtonOptions(
-                          width: 180,
+                          width: 210,
                           height: 40,
                           color: Colors.white,
-                          textStyle: FlutterFlowTheme.subtitle2.override(
-                            fontFamily: 'Poppins',
-                            color: Colors.black,
+                          textStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Playfair Display',
+                            fontWeight: FontWeight.w600,
                           ),
                           borderSide: BorderSide(
                             color: Color(0xFFBDBDBD),
@@ -371,9 +378,9 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                           width: 130,
                           height: 40,
                           color: Color(0xFFBDBDBD),
-                          textStyle: FlutterFlowTheme.subtitle2.override(
-                            fontFamily: 'Poppins',
-                            color: Colors.white,
+                          textStyle: FlutterFlowTheme.bodyText1.override(
+                            fontFamily: 'Playfair Display',
+                            fontWeight: FontWeight.w600,
                           ),
                           borderSide: BorderSide(
                             color: Color(0xFFBDBDBD),

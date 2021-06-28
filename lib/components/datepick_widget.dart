@@ -34,7 +34,7 @@ class _DatepickWidgetState extends State<DatepickWidget> {
                 Text(
                   'Выберите дату',
                   style: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Poppins',
+                    fontFamily: 'Playfair Display',
                   ),
                 )
               ],
@@ -49,9 +49,12 @@ class _DatepickWidgetState extends State<DatepickWidget> {
                 List<DateRecord> rowDateRecordList = snapshot.data;
                 // Customize what your widget looks like with no query results.
                 if (snapshot.data.isEmpty) {
-                  // return Container();
-                  // For now, we'll just include some dummy data.
-                  rowDateRecordList = createDummyDateRecord(count: 4);
+                  return Container(
+                    height: 100,
+                    child: Center(
+                      child: Text('No results.'),
+                    ),
+                  );
                 }
                 return SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
