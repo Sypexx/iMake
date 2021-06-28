@@ -31,7 +31,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
         title: Text(
           'Поиск',
           style: FlutterFlowTheme.bodyText1.override(
-            fontFamily: 'Poppins',
+            fontFamily: 'Playfair Display',
             fontSize: 18,
           ),
         ),
@@ -56,7 +56,9 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                     widget.text.text,
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Playfair Display',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -71,9 +73,12 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                   List<SalonsRecord> columnSalonsRecordList = snapshot.data;
                   // Customize what your widget looks like with no query results.
                   if (snapshot.data.isEmpty) {
-                    // return Container();
-                    // For now, we'll just include some dummy data.
-                    columnSalonsRecordList = createDummySalonsRecord(count: 4);
+                    return Container(
+                      height: 100,
+                      child: Center(
+                        child: Text('No results.'),
+                      ),
+                    );
                   }
                   return Column(
                     mainAxisSize: MainAxisSize.max,
@@ -124,7 +129,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                             child: Text(
                               columnSalonsRecord.salonName,
                               style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Poppins',
+                                fontFamily: 'Playfair Display',
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -135,7 +140,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                             child: Text(
                               columnSalonsRecord.salonStreet,
                               style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Poppins',
+                                fontFamily: 'Playfair Display',
                               ),
                             ),
                           )

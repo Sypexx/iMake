@@ -3,11 +3,9 @@ import '../backend/backend.dart';
 import '../components/datepick_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../salon_page/salon_page_widget.dart';
 import '../salon_page2/salon_page2_widget.dart';
 import '../search_page/search_page_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -40,7 +38,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             title: Text(
               'Якутск',
               style: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
+                fontFamily: 'Playfair Display',
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),
@@ -92,10 +90,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           List<AdRecord> pageViewAdRecordList = snapshot.data;
                           // Customize what your widget looks like with no query results.
                           if (snapshot.data.isEmpty) {
-                            // return Container();
-                            // For now, we'll just include some dummy data.
-                            pageViewAdRecordList =
-                                createDummyAdRecord(count: 4);
+                            return Container(
+                              height: 100,
+                              child: Center(
+                                child: Text('No results.'),
+                              ),
+                            );
                           }
                           return Padding(
                             padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
@@ -168,7 +168,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   child: Text(
                     'Категории',
                     style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Playfair Display',
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -185,10 +185,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         snapshot.data;
                     // Customize what your widget looks like with no query results.
                     if (snapshot.data.isEmpty) {
-                      // return Container();
-                      // For now, we'll just include some dummy data.
-                      rowCategoriesRecordList =
-                          createDummyCategoriesRecord(count: 4);
+                      return Container(
+                        height: 100,
+                        child: Center(
+                          child: Text('No results.'),
+                        ),
+                      );
                     }
                     return Padding(
                       padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
@@ -251,7 +253,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   child: Text(
                                     rowCategoriesRecord.text,
                                     style: FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'Playfair Display',
                                     ),
                                   ),
                                 )
@@ -268,7 +270,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   child: Text(
                     'Новинки',
                     style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Playfair Display',
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -284,9 +286,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     List<SalonsRecord> rowSalonsRecordList = snapshot.data;
                     // Customize what your widget looks like with no query results.
                     if (snapshot.data.isEmpty) {
-                      // return Container();
-                      // For now, we'll just include some dummy data.
-                      rowSalonsRecordList = createDummySalonsRecord(count: 4);
+                      return Container(
+                        height: 100,
+                        child: Center(
+                          child: Text('No results.'),
+                        ),
+                      );
                     }
                     return SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -342,7 +347,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 child: Text(
                                   rowSalonsRecord.salonName,
                                   style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: 'Playfair Display',
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -353,7 +358,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 child: Text(
                                   rowSalonsRecord.salonStreet,
                                   style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: 'Playfair Display',
                                   ),
                                 ),
                               )
@@ -369,7 +374,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   child: Text(
                     'Популярные',
                     style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Playfair Display',
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -385,9 +390,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     List<SalonsRecord> rowSalonsRecordList = snapshot.data;
                     // Customize what your widget looks like with no query results.
                     if (snapshot.data.isEmpty) {
-                      // return Container();
-                      // For now, we'll just include some dummy data.
-                      rowSalonsRecordList = createDummySalonsRecord(count: 4);
+                      return Container(
+                        height: 100,
+                        child: Center(
+                          child: Text('No results.'),
+                        ),
+                      );
                     }
                     return SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -443,7 +451,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 child: Text(
                                   rowSalonsRecord.salonName,
                                   style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: 'Playfair Display',
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -454,7 +462,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 child: Text(
                                   rowSalonsRecord.salonStreet,
                                   style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: 'Playfair Display',
                                   ),
                                 ),
                               )

@@ -1,13 +1,8 @@
 import 'dart:async';
 
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:latlong/latlong.dart';
-
-import 'schema_util.dart';
+import 'index.dart';
 import 'serializers.dart';
+import 'package:built_value/built_value.dart';
 
 part 'salon_images_record.g.dart';
 
@@ -56,11 +51,3 @@ Map<String, dynamic> createSalonImagesRecordData({
         SalonImagesRecord((s) => s
           ..salon = salon
           ..imgUrl = imgUrl));
-
-SalonImagesRecord get dummySalonImagesRecord {
-  final builder = SalonImagesRecordBuilder()..imgUrl = dummyImagePath;
-  return builder.build();
-}
-
-List<SalonImagesRecord> createDummySalonImagesRecord({int count}) =>
-    List.generate(count, (_) => dummySalonImagesRecord);

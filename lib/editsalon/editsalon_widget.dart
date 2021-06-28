@@ -55,7 +55,7 @@ class _EditsalonWidgetState extends State<EditsalonWidget> {
             title: Text(
               'Редактировать салон',
               style: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
+                fontFamily: 'Playfair Display',
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
@@ -137,11 +137,11 @@ class _EditsalonWidgetState extends State<EditsalonWidget> {
                         decoration: InputDecoration(
                           labelText: editsalonSalonsRecord.salonName,
                           labelStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Playfair Display',
                           ),
                           hintText: 'Display_name',
                           hintStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Playfair Display',
                           ),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
@@ -165,7 +165,7 @@ class _EditsalonWidgetState extends State<EditsalonWidget> {
                           ),
                         ),
                         style: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Playfair Display',
                         ),
                       ),
                     ),
@@ -177,11 +177,11 @@ class _EditsalonWidgetState extends State<EditsalonWidget> {
                         decoration: InputDecoration(
                           labelText: editsalonSalonsRecord.salonStreet,
                           labelStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Playfair Display',
                           ),
                           hintText: 'Display_name',
                           hintStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Playfair Display',
                           ),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
@@ -205,7 +205,7 @@ class _EditsalonWidgetState extends State<EditsalonWidget> {
                           ),
                         ),
                         style: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Playfair Display',
                         ),
                       ),
                     ),
@@ -229,10 +229,12 @@ class _EditsalonWidgetState extends State<EditsalonWidget> {
                               pageViewSalonImagesRecordList = snapshot.data;
                           // Customize what your widget looks like with no query results.
                           if (snapshot.data.isEmpty) {
-                            // return Container();
-                            // For now, we'll just include some dummy data.
-                            pageViewSalonImagesRecordList =
-                                createDummySalonImagesRecord(count: 4);
+                            return Container(
+                              height: 100,
+                              child: Center(
+                                child: Text('No results.'),
+                              ),
+                            );
                           }
                           return Container(
                             width: MediaQuery.of(context).size.width,

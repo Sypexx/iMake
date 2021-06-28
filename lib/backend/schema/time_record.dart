@@ -1,13 +1,8 @@
 import 'dart:async';
 
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:latlong/latlong.dart';
-
-import 'schema_util.dart';
+import 'index.dart';
 import 'serializers.dart';
+import 'package:built_value/built_value.dart';
 
 part 'time_record.g.dart';
 
@@ -45,11 +40,3 @@ Map<String, dynamic> createTimeRecordData({
 }) =>
     serializers.toFirestore(
         TimeRecord.serializer, TimeRecord((t) => t..text = text));
-
-TimeRecord get dummyTimeRecord {
-  final builder = TimeRecordBuilder()..text = dummyString;
-  return builder.build();
-}
-
-List<TimeRecord> createDummyTimeRecord({int count}) =>
-    List.generate(count, (_) => dummyTimeRecord);

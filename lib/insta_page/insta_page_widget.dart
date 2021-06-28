@@ -42,7 +42,7 @@ class _InstaPageWidgetState extends State<InstaPageWidget> {
             title: Text(
               'Пост',
               style: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
+                fontFamily: 'Playfair Display',
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
@@ -109,7 +109,7 @@ class _InstaPageWidgetState extends State<InstaPageWidget> {
                                         rowSalonsRecord.salonName,
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
-                                          fontFamily: 'Poppins',
+                                          fontFamily: 'Playfair Display',
                                           fontSize: 18,
                                         ),
                                       ),
@@ -120,7 +120,7 @@ class _InstaPageWidgetState extends State<InstaPageWidget> {
                                         instaPageUsersRecord.displayName,
                                         style:
                                             FlutterFlowTheme.bodyText1.override(
-                                          fontFamily: 'Poppins',
+                                          fontFamily: 'Playfair Display',
                                           fontSize: 18,
                                         ),
                                       ),

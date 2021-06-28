@@ -26,7 +26,7 @@ class _InstaWidgetState extends State<InstaWidget> {
         title: Text(
           'Работы мастеров',
           style: FlutterFlowTheme.bodyText1.override(
-            fontFamily: 'Poppins',
+            fontFamily: 'Playfair Display',
             fontSize: 24,
             fontWeight: FontWeight.w600,
           ),
@@ -68,9 +68,12 @@ class _InstaWidgetState extends State<InstaWidget> {
                   List<PostsRecord> gridViewPostsRecordList = snapshot.data;
                   // Customize what your widget looks like with no query results.
                   if (snapshot.data.isEmpty) {
-                    // return Container();
-                    // For now, we'll just include some dummy data.
-                    gridViewPostsRecordList = createDummyPostsRecord(count: 4);
+                    return Container(
+                      height: 100,
+                      child: Center(
+                        child: Text('No results.'),
+                      ),
+                    );
                   }
                   return Padding(
                     padding: EdgeInsets.fromLTRB(10, 10, 10, 0),

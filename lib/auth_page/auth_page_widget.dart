@@ -42,10 +42,10 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
               Align(
                 alignment: Alignment(0, -0.65),
                 child: Image.asset(
-                  'assets/images/IMG_3916.PNG',
-                  width: MediaQuery.of(context).size.width * 0.4,
+                  'assets/images/imake.png',
+                  width: MediaQuery.of(context).size.width * 0.7,
                   height: MediaQuery.of(context).size.height * 0.2,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 ),
               ),
               Align(
@@ -58,7 +58,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                     decoration: InputDecoration(
                       hintText: 'Почта',
                       hintStyle: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Poppins',
+                        fontFamily: 'Playfair Display',
                         color: Colors.black,
                         fontSize: 17,
                         fontWeight: FontWeight.normal,
@@ -90,7 +90,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                       contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                     ),
                     style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Playfair Display',
                       color: Colors.black,
                       fontSize: 17,
                       fontWeight: FontWeight.normal,
@@ -108,7 +108,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                     decoration: InputDecoration(
                       hintText: 'Пароль (от 8 символов)',
                       hintStyle: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Poppins',
+                        fontFamily: 'Playfair Display',
                         color: Colors.black,
                         fontSize: 17,
                         fontWeight: FontWeight.normal,
@@ -152,7 +152,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                       ),
                     ),
                     style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Playfair Display',
                       color: Colors.black,
                       fontSize: 17,
                       fontWeight: FontWeight.normal,

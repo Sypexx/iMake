@@ -49,7 +49,7 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
             title: Text(
               'Сотрудники',
               style: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
+                fontFamily: 'Playfair Display',
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
@@ -90,10 +90,12 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                       List<UsersRecord> columnUsersRecordList = snapshot.data;
                       // Customize what your widget looks like with no query results.
                       if (snapshot.data.isEmpty) {
-                        // return Container();
-                        // For now, we'll just include some dummy data.
-                        columnUsersRecordList =
-                            createDummyUsersRecord(count: 1);
+                        return Container(
+                          height: 100,
+                          child: Center(
+                            child: Text('No results.'),
+                          ),
+                        );
                       }
                       final columnUsersRecord = columnUsersRecordList.first;
                       return Column(
@@ -102,7 +104,7 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                           Text(
                             'Мастер',
                             style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Poppins',
+                              fontFamily: 'Playfair Display',
                             ),
                           ),
                           TextFormField(
@@ -111,7 +113,7 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                             decoration: InputDecoration(
                               hintText: 'Почта1',
                               hintStyle: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Poppins',
+                                fontFamily: 'Playfair Display',
                               ),
                               enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
@@ -135,7 +137,7 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                               ),
                             ),
                             style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Poppins',
+                              fontFamily: 'Playfair Display',
                             ),
                           ),
                           StreamBuilder<UsersRecord>(
@@ -190,7 +192,7 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                     child: Text(
                       'Администратор',
                       style: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Poppins',
+                        fontFamily: 'Playfair Display',
                       ),
                     ),
                   ),
@@ -200,7 +202,7 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                     decoration: InputDecoration(
                       hintText: 'Почта2',
                       hintStyle: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Poppins',
+                        fontFamily: 'Playfair Display',
                       ),
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
@@ -224,7 +226,7 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                       ),
                     ),
                     style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Playfair Display',
                     ),
                   ),
                   FFButtonWidget(
@@ -263,10 +265,12 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                             snapshot.data;
                         // Customize what your widget looks like with no query results.
                         if (snapshot.data.isEmpty) {
-                          // return Container();
-                          // For now, we'll just include some dummy data.
-                          gridViewUsersRecordList =
-                              createDummyUsersRecord(count: 4);
+                          return Container(
+                            height: 100,
+                            child: Center(
+                              child: Text('No results.'),
+                            ),
+                          );
                         }
                         return Padding(
                           padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
@@ -296,13 +300,13 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                                   Text(
                                     gridViewUsersRecord.displayName,
                                     style: FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'Playfair Display',
                                     ),
                                   ),
                                   Text(
                                     gridViewUsersRecord.role,
                                     style: FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'Playfair Display',
                                     ),
                                   )
                                 ],

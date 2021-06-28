@@ -56,10 +56,12 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                         snapshot.data;
                     // Customize what your widget looks like with no query results.
                     if (snapshot.data.isEmpty) {
-                      // return Container();
-                      // For now, we'll just include some dummy data.
-                      pageViewSalonImagesRecordList =
-                          createDummySalonImagesRecord(count: 4);
+                      return Container(
+                        height: 100,
+                        child: Center(
+                          child: Text('No results.'),
+                        ),
+                      );
                     }
                     return Container(
                       width: MediaQuery.of(context).size.width,
@@ -130,7 +132,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                           salonPage2SalonsRecord.salonName,
                           textAlign: TextAlign.start,
                           style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Playfair Display',
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
@@ -141,7 +143,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                         child: Text(
                           salonPage2SalonsRecord.salonStreet,
                           style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
+                            fontFamily: 'Playfair Display',
                           ),
                         ),
                       )
@@ -210,7 +212,8 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                                 style: FlutterFlowTheme
                                                     .bodyText1
                                                     .override(
-                                                  fontFamily: 'Poppins',
+                                                  fontFamily:
+                                                      'Playfair Display',
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -231,7 +234,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                           '2 ч. 20 мин.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       ),
@@ -242,7 +245,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                           '- 3500 руб. ',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       )
@@ -270,7 +273,8 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                                 style: FlutterFlowTheme
                                                     .bodyText1
                                                     .override(
-                                                  fontFamily: 'Poppins',
+                                                  fontFamily:
+                                                      'Playfair Display',
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -291,7 +295,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                           '50 мин.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       ),
@@ -302,7 +306,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                           '- 2000 руб.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       )
@@ -330,7 +334,8 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                                 style: FlutterFlowTheme
                                                     .bodyText1
                                                     .override(
-                                                  fontFamily: 'Poppins',
+                                                  fontFamily:
+                                                      'Playfair Display',
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -351,7 +356,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                           '2 ч. 40 мин.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       ),
@@ -362,7 +367,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                           '- 6000 руб.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       )
@@ -390,7 +395,8 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                                 style: FlutterFlowTheme
                                                     .bodyText1
                                                     .override(
-                                                  fontFamily: 'Poppins',
+                                                  fontFamily:
+                                                      'Playfair Display',
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -411,7 +417,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                           '1 ч. 40 мин.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       ),
@@ -422,7 +428,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                           '- 1200 руб.',
                                           style: FlutterFlowTheme.bodyText1
                                               .override(
-                                            fontFamily: 'Poppins',
+                                            fontFamily: 'Playfair Display',
                                           ),
                                         ),
                                       )
@@ -434,21 +440,21 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                               Text(
                                 'Tab View 3',
                                 style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: 'Playfair Display',
                                   fontSize: 32,
                                 ),
                               ),
                               Text(
                                 'Tab View 4',
                                 style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: 'Playfair Display',
                                   fontSize: 32,
                                 ),
                               ),
                               Text(
                                 'Tab View 5',
                                 style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
+                                  fontFamily: 'Playfair Display',
                                   fontSize: 32,
                                 ),
                               )

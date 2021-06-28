@@ -1,13 +1,8 @@
 import 'dart:async';
 
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:latlong/latlong.dart';
-
-import 'schema_util.dart';
+import 'index.dart';
 import 'serializers.dart';
+import 'package:built_value/built_value.dart';
 
 part 'categories_text_record.g.dart';
 
@@ -47,12 +42,3 @@ abstract class CategoriesTextRecord
 Map<String, dynamic> createCategoriesTextRecordData() =>
     serializers.toFirestore(CategoriesTextRecord.serializer,
         CategoriesTextRecord((c) => c..text = null));
-
-CategoriesTextRecord get dummyCategoriesTextRecord {
-  final builder = CategoriesTextRecordBuilder()
-    ..text = ListBuilder([dummyString, dummyString]);
-  return builder.build();
-}
-
-List<CategoriesTextRecord> createDummyCategoriesTextRecord({int count}) =>
-    List.generate(count, (_) => dummyCategoriesTextRecord);

@@ -43,7 +43,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                       Text(
                         'Card Title',
                         style: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Playfair Display',
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
                         ),
@@ -51,7 +51,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                       Text(
                         getCurrentTimestamp.toString(),
                         style: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Playfair Display',
                           color: FlutterFlowTheme.secondaryColor,
                         ),
                       )
@@ -63,7 +63,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   child: Text(
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum gravida mattis lorem, et posuere tortor rutrum vitae. Vivamus lacinia fringilla libero, at maximus quam imperdiet sed. Pellentesque egestas eget ex a consectetur.',
                     style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Playfair Display',
                     ),
                   ),
                 )

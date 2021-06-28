@@ -24,7 +24,7 @@ class _ZapisWidgetState extends State<ZapisWidget> {
         title: Text(
           'Записаться',
           style: FlutterFlowTheme.bodyText1.override(
-            fontFamily: 'Poppins',
+            fontFamily: 'Playfair Display',
             fontSize: 18,
           ),
         ),
