@@ -2,7 +2,7 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
+import '../zapis/zapis_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -471,36 +471,11 @@ class _SalonPageWidgetState extends State<SalonPageWidget> {
                     padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        await showDialog(
-                          context: context,
-                          builder: (alertDialogContext) {
-                            return AlertDialog(
-                              title: Text('Запись'),
-                              content: Text('Вы успешно записались на прием'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(alertDialogContext),
-                                  child: Text('Отмена'),
-                                ),
-                                TextButton(
-                                  onPressed: () async {
-                                    Navigator.pop(alertDialogContext);
-                                    await Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            NavBarPage(initialPage: 'HomePage'),
-                                      ),
-                                      (r) => false,
-                                    );
-                                    ;
-                                  },
-                                  child: Text('Ок'),
-                                ),
-                              ],
-                            );
-                          },
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ZapisWidget(),
+                          ),
                         );
                       },
                       text: 'Записаться',

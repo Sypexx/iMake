@@ -4,7 +4,6 @@ import '../components/datepick_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../salon_page/salon_page_widget.dart';
-import '../salon_page2/salon_page2_widget.dart';
 import '../search_page/search_page_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
