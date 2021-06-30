@@ -3,6 +3,7 @@ import '../backend/backend.dart';
 import '../components/datepick_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../salon_page/salon_page_widget.dart';
 import '../salon_page2/salon_page2_widget.dart';
 import '../search_page/search_page_widget.dart';
 import 'package:flutter/material.dart';
@@ -320,8 +321,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       await Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              SalonPage2Widget(
+                                          builder: (context) => SalonPageWidget(
                                             idsalon: rowSalonsRecord.reference,
                                           ),
                                         ),
@@ -424,8 +424,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       await Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              SalonPage2Widget(
+                                          builder: (context) => SalonPageWidget(
                                             idsalon: rowSalonsRecord.reference,
                                           ),
                                         ),
