@@ -32,7 +32,7 @@ class _ChatWidgetState extends State<ChatWidget> {
           style: FlutterFlowTheme.bodyText1.override(
             fontFamily: 'Playfair Display',
             color: Colors.black,
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),

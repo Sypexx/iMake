@@ -27,10 +27,10 @@ class _AddimgWidgetState extends State<AddimgWidget> {
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Text(
-          'Загрузить выполненную работу',
+          'Загрузить работу',
           style: FlutterFlowTheme.bodyText1.override(
             fontFamily: 'Playfair Display',
-            fontSize: 16,
+            fontSize: 24,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -38,12 +38,9 @@ class _AddimgWidgetState extends State<AddimgWidget> {
           IconButton(
             onPressed: () async {
               Navigator.pop(context);
-              final createdAt = getCurrentTimestamp;
-
               final postsRecordData = createPostsRecordData(
-                createdAt: createdAt,
+                createdAt: getCurrentTimestamp,
               );
-
               await PostsRecord.collection.doc().set(postsRecordData);
             },
             icon: Icon(

@@ -21,10 +21,10 @@ class _CrmpageWidgetState extends State<CrmpageWidget> {
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Text(
-          'Статистика салона',
+          'Статистика',
           style: FlutterFlowTheme.bodyText1.override(
             fontFamily: 'Playfair Display',
-            fontSize: 16,
+            fontSize: 24,
             fontWeight: FontWeight.w600,
           ),
         ),
