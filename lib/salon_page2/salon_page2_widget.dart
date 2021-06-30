@@ -214,7 +214,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                                     .override(
                                                   fontFamily:
                                                       'Playfair Display',
-                                                  fontSize: 13,
+                                                  fontSize: 18,
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),
@@ -275,7 +275,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                                     .override(
                                                   fontFamily:
                                                       'Playfair Display',
-                                                  fontSize: 13,
+                                                  fontSize: 18,
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),
@@ -336,7 +336,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                                     .override(
                                                   fontFamily:
                                                       'Playfair Display',
-                                                  fontSize: 13,
+                                                  fontSize: 18,
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),
@@ -397,7 +397,7 @@ class _SalonPage2WidgetState extends State<SalonPage2Widget> {
                                                     .override(
                                                   fontFamily:
                                                       'Playfair Display',
-                                                  fontSize: 13,
+                                                  fontSize: 18,
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),

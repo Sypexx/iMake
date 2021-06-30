@@ -25,11 +25,11 @@ class _MessagesWidgetState extends State<MessagesWidget> {
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         title: Text(
-          'All Chats',
+          'Чат',
           style: FlutterFlowTheme.bodyText1.override(
             fontFamily: 'Playfair Display',
             color: Colors.black,
-            fontSize: 18,
+            fontSize: 25,
             fontWeight: FontWeight.bold,
           ),
         ),

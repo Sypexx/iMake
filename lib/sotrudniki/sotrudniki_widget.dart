@@ -50,7 +50,7 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
               'Сотрудники',
               style: FlutterFlowTheme.bodyText1.override(
                 fontFamily: 'Playfair Display',
-                fontSize: 16,
+                fontSize: 24,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -105,6 +105,8 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                             'Мастер',
                             style: FlutterFlowTheme.bodyText1.override(
                               fontFamily: 'Playfair Display',
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           TextFormField(
@@ -152,15 +154,10 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                               final buttonUsersRecord = snapshot.data;
                               return FFButtonWidget(
                                 onPressed: () async {
-                                  final role = 'Мастер';
-                                  final salon =
-                                      sotrudnikiSalonsRecord.reference;
-
                                   final usersRecordData = createUsersRecordData(
-                                    role: role,
-                                    salon: salon,
+                                    role: 'Мастер',
+                                    salon: sotrudnikiSalonsRecord.reference,
                                   );
-
                                   await buttonUsersRecord.reference
                                       .update(usersRecordData);
                                 },
@@ -193,6 +190,8 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                       'Администратор',
                       style: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Playfair Display',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),

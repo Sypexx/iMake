@@ -42,10 +42,10 @@ class _EditclientWidgetState extends State<EditclientWidget> {
             backgroundColor: Colors.white,
             automaticallyImplyLeading: false,
             title: Text(
-              'Редактировать профиль',
+              'Профиль',
               style: FlutterFlowTheme.bodyText1.override(
                 fontFamily: 'Playfair Display',
-                fontSize: 16,
+                fontSize: 24,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -53,14 +53,10 @@ class _EditclientWidgetState extends State<EditclientWidget> {
               IconButton(
                 onPressed: () async {
                   Navigator.pop(context);
-                  final displayName = textController.text;
-                  final photoUrl = uploadedFileUrl;
-
                   final usersRecordData = createUsersRecordData(
-                    displayName: displayName,
-                    photoUrl: photoUrl,
+                    displayName: textController.text,
+                    photoUrl: uploadedFileUrl,
                   );
-
                   await editclientUsersRecord.reference.update(usersRecordData);
                 },
                 icon: Icon(

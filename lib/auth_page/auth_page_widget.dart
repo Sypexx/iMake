@@ -230,18 +230,13 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                       return;
                                     }
 
-                                    final displayName = 'Имя';
-                                    final photoUrl =
-                                        'https://firebasestorage.googleapis.com/v0/b/imake-b18ed.appspot.com/o/Profile%20avatars%2Favatar1.png?alt=media&token=15a3c1a3-fa40-4dcc-88bf-3544b4f3563e';
-                                    final role = 'Клиент';
-
                                     final usersRecordData =
                                         createUsersRecordData(
-                                      displayName: displayName,
-                                      photoUrl: photoUrl,
-                                      role: role,
+                                      displayName: 'Имя',
+                                      photoUrl:
+                                          'https://firebasestorage.googleapis.com/v0/b/imake-b18ed.appspot.com/o/Profile%20avatars%2Favatar1.png?alt=media&token=15a3c1a3-fa40-4dcc-88bf-3544b4f3563e',
+                                      role: 'Клиент',
                                     );
-
                                     await UsersRecord.collection
                                         .doc(user.uid)
                                         .update(usersRecordData);

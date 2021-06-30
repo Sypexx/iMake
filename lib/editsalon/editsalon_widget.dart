@@ -53,10 +53,10 @@ class _EditsalonWidgetState extends State<EditsalonWidget> {
             backgroundColor: Colors.white,
             automaticallyImplyLeading: false,
             title: Text(
-              'Редактировать салон',
+              'Салон',
               style: FlutterFlowTheme.bodyText1.override(
                 fontFamily: 'Playfair Display',
-                fontSize: 16,
+                fontSize: 24,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -64,16 +64,11 @@ class _EditsalonWidgetState extends State<EditsalonWidget> {
               IconButton(
                 onPressed: () async {
                   Navigator.pop(context);
-                  final frontImage = uploadedFileUrl;
-                  final salonName = textController1.text;
-                  final salonStreet = textController2.text;
-
                   final salonsRecordData = createSalonsRecordData(
-                    frontImage: frontImage,
-                    salonName: salonName,
-                    salonStreet: salonStreet,
+                    frontImage: uploadedFileUrl,
+                    salonName: textController1.text,
+                    salonStreet: textController2.text,
                   );
-
                   await widget.salon.update(salonsRecordData);
                 },
                 icon: Icon(
