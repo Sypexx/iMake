@@ -66,15 +66,8 @@ class _DatepickWidgetState extends State<DatepickWidget> {
                       return Padding(
                         padding: EdgeInsets.fromLTRB(0, 0, 20, 2),
                         child: FFButtonWidget(
-                          onPressed: () async {
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SearchTimeWidget(
-                                  date: rowDateRecord,
-                                ),
-                              ),
-                            );
+                          onPressed: () {
+                            print('Button pressed ...');
                           },
                           text: rowDateRecord.text,
                           options: FFButtonOptions(

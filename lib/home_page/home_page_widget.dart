@@ -315,29 +315,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     color: Color(0xFFEEEEEE),
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  child: InkWell(
-                                    onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              SalonPage2Widget(
-                                            idsalon: rowSalonsRecord.reference,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.network(
-                                        rowSalonsRecord.frontImage,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                1,
-                                        fit: BoxFit.cover,
-                                      ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image.network(
+                                      rowSalonsRecord.frontImage,
+                                      width: MediaQuery.of(context).size.width,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              1,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
@@ -419,29 +405,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     color: Color(0xFFEEEEEE),
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  child: InkWell(
-                                    onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              SalonPage2Widget(
-                                            idsalon: rowSalonsRecord.reference,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.network(
-                                        rowSalonsRecord.frontImage,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                1,
-                                        fit: BoxFit.cover,
-                                      ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image.network(
+                                      rowSalonsRecord.frontImage,
+                                      width: MediaQuery.of(context).size.width,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              1,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
