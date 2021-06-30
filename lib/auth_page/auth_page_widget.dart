@@ -42,7 +42,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
               Align(
                 alignment: Alignment(0, -0.65),
                 child: Image.asset(
-                  'assets/images/imake.png',
+                  'assets/images/imake1.png',
                   width: MediaQuery.of(context).size.width * 0.7,
                   height: MediaQuery.of(context).size.height * 0.2,
                   fit: BoxFit.contain,

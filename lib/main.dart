@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
           ? Center(
               child: Builder(
                 builder: (context) => Image.asset(
-                  'assets/images/imake.png',
+                  'assets/images/imake1.png',
                   width: MediaQuery.of(context).size.width / 2,
                   fit: BoxFit.fitWidth,
                 ),

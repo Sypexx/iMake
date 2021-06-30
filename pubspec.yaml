@@ -64,7 +64,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: 'assets/images/imake.png'
+  image_path: 'assets/images/imake1.png'
 
 
 # For information on the generic Dart part of this file, see the
