@@ -288,35 +288,36 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                     ],
                   ),
                 ),
-                StreamBuilder<List<UsersRecord>>(
-                  stream: queryUsersRecord(
-                    queryBuilder: (usersRecord) =>
-                        usersRecord.where('role', isEqualTo: 'Директор'),
-                    singleRecord: true,
-                  ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(child: CircularProgressIndicator());
-                    }
-                    List<UsersRecord> rowUsersRecordList = snapshot.data;
-                    // Customize what your widget looks like with no query results.
-                    if (snapshot.data.isEmpty) {
-                      return Container(
-                        height: 100,
-                        child: Center(
-                          child: Text('No results.'),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      StreamBuilder<List<UsersRecord>>(
+                        stream: queryUsersRecord(
+                          queryBuilder: (usersRecord) =>
+                              usersRecord.where('role', isEqualTo: 'Директор'),
+                          singleRecord: true,
                         ),
-                      );
-                    }
-                    final rowUsersRecord = rowUsersRecordList.first;
-                    return Padding(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          FFButtonWidget(
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                          List<UsersRecord> buttonUsersRecordList =
+                              snapshot.data;
+                          // Customize what your widget looks like with no query results.
+                          if (snapshot.data.isEmpty) {
+                            return Container(
+                              height: 100,
+                              child: Center(
+                                child: Text('No results.'),
+                              ),
+                            );
+                          }
+                          final buttonUsersRecord = buttonUsersRecordList.first;
+                          return FFButtonWidget(
                             onPressed: () async {
                               await Navigator.push(
                                 context,
@@ -340,11 +341,11 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                               ),
                               borderRadius: 15,
                             ),
-                          )
-                        ],
-                      ),
-                    );
-                  },
+                          );
+                        },
+                      )
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
