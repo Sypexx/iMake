@@ -288,39 +288,63 @@ class _AccountPageWidgetState extends State<AccountPageWidget> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FFButtonWidget(
-                        onPressed: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CrmpageWidget(),
-                            ),
-                          );
-                        },
-                        text: 'Статистика',
-                        options: FFButtonOptions(
-                          width: 210,
-                          height: 40,
-                          color: Colors.white,
-                          textStyle: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Playfair Display',
-                            fontWeight: FontWeight.w600,
-                          ),
-                          borderSide: BorderSide(
-                            color: Color(0xFFBDBDBD),
-                            width: 3,
-                          ),
-                          borderRadius: 15,
-                        ),
-                      )
-                    ],
+                StreamBuilder<List<UsersRecord>>(
+                  stream: queryUsersRecord(
+                    queryBuilder: (usersRecord) =>
+                        usersRecord.where('role', isEqualTo: 'Директор'),
+                    singleRecord: true,
                   ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    List<UsersRecord> rowUsersRecordList = snapshot.data;
+                    // Customize what your widget looks like with no query results.
+                    if (snapshot.data.isEmpty) {
+                      return Container(
+                        height: 100,
+                        child: Center(
+                          child: Text('No results.'),
+                        ),
+                      );
+                    }
+                    final rowUsersRecord = rowUsersRecordList.first;
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FFButtonWidget(
+                            onPressed: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CrmpageWidget(),
+                                ),
+                              );
+                            },
+                            text: 'Статистика',
+                            options: FFButtonOptions(
+                              width: 210,
+                              height: 40,
+                              color: Colors.white,
+                              textStyle: FlutterFlowTheme.bodyText1.override(
+                                fontFamily: 'Playfair Display',
+                                fontWeight: FontWeight.w600,
+                              ),
+                              borderSide: BorderSide(
+                                color: Color(0xFFBDBDBD),
+                                width: 3,
+                              ),
+                              borderRadius: 15,
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  },
                 ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 10, 0, 0),

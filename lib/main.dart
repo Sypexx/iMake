@@ -4,6 +4,7 @@ import 'auth/firebase_user_provider.dart';
 import 'package:imake/auth_page/auth_page_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'home_page/home_page_widget.dart';
+import 'search_page/search_page_widget.dart';
 import 'insta/insta_widget.dart';
 import 'messages/messages_widget.dart';
 import 'account_page/account_page_widget.dart';
@@ -64,7 +65,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPage = 'AccountPage';
+  String _currentPage = 'HomePage';
 
   @override
   void initState() {
@@ -76,6 +77,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': HomePageWidget(),
+      'SearchPage': SearchPageWidget(),
       'Insta': InstaWidget(),
       'Messages': MessagesWidget(),
       'AccountPage': AccountPageWidget(),
@@ -87,6 +89,14 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
+              size: 24,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.search,
+              color: Color(0xFF9E9E9E),
               size: 24,
             ),
             label: 'Home',

@@ -192,8 +192,8 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     await Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => NavBarPage(
-                                            initialPage: 'AccountPage'),
+                                        builder: (context) =>
+                                            NavBarPage(initialPage: 'HomePage'),
                                       ),
                                       (r) => false,
                                     );
@@ -244,8 +244,8 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                     await Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => NavBarPage(
-                                            initialPage: 'AccountPage'),
+                                        builder: (context) =>
+                                            NavBarPage(initialPage: 'HomePage'),
                                       ),
                                       (r) => false,
                                     );

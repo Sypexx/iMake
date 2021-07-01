@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../components/datepick_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../salon_page/salon_page_widget.dart';
@@ -47,15 +46,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
                 child: IconButton(
-                  onPressed: () async {
-                    await showModalBottomSheet(
-                        context: context,
-                        builder: (context) {
-                          return Container(
-                            height: MediaQuery.of(context).size.height * 0.15,
-                            child: DatepickWidget(),
-                          );
-                        });
+                  onPressed: () {
+                    print('IconButton pressed ...');
                   },
                   icon: Icon(
                     Icons.calendar_today,
