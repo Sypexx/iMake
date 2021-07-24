@@ -39,6 +39,7 @@ dependencies:
   image_picker: ^0.6.7+22
   intl:
   json_serializable: ^3.5.1
+  syncfusion_flutter_calendar: ^19.2.46
   mime_type: ^1.0.0
   page_transition:
   rxdart: ^0.25.0

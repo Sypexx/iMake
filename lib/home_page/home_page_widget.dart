@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -18,6 +20,22 @@ class HomePageWidget extends StatefulWidget {
 class _HomePageWidgetState extends State<HomePageWidget> {
   final pageViewController = PageController();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  int i = 2;
+  int curri = 0;
+  @override
+  void initState() {
+    super.initState();
+    if (curri >= i) {
+      curri = 0;
+    } else
+      Timer.periodic(Duration(seconds: 5), (Timer timer) {
+        pageViewController.animateToPage(
+          curri++,
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeIn,
+        );
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
