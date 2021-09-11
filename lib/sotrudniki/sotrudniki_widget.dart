@@ -3,17 +3,15 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SotrudnikiWidget extends StatefulWidget {
   SotrudnikiWidget({
     Key key,
-    this.salon,
+    //this.salon,
   }) : super(key: key);
 
-  final DocumentReference salon;
+  //final DocumentReference salon;
 
   @override
   _SotrudnikiWidgetState createState() => _SotrudnikiWidgetState();
@@ -33,8 +31,8 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<SalonsRecord>(
-      stream: SalonsRecord.getDocument(widget.salon),
+    return StreamBuilder(  //<SalonsRecord>
+     // stream: SalonsRecord.getDocument(widget.salon),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -76,19 +74,18 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  StreamBuilder<List<UsersRecord>>(
-                    stream: queryUsersRecord(
-                      queryBuilder: (usersRecord) => usersRecord.where('email',
-                          isEqualTo: textController1.text),
-                      singleRecord: true,
-                    ),
+                  StreamBuilder<List>(     //<UsersRecord>
+                    // stream: queryUsersRecord(
+                    //   queryBuilder: (usersRecord) => usersRecord.where('email',
+                    //       isEqualTo: textController1.text),
+                    //   singleRecord: true,
+                    // ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
                         return Center(child: CircularProgressIndicator());
                       }
-                      List<UsersRecord> columnUsersRecordList = snapshot.data;
-                      // Customize what your widget looks like with no query results.
+                     // List<UsersRecord> columnUsersRecordList = snapshot.data;
                       if (snapshot.data.isEmpty) {
                         return Container(
                           height: 100,
@@ -97,7 +94,7 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                           ),
                         );
                       }
-                      final columnUsersRecord = columnUsersRecordList.first;
+                      // final columnUsersRecord = columnUsersRecordList.first;
                       return Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -142,25 +139,24 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                               fontFamily: 'Playfair Display',
                             ),
                           ),
-                          StreamBuilder<UsersRecord>(
-                            stream: UsersRecord.getDocument(
-                                columnUsersRecord.reference),
+                          StreamBuilder(    //<UsersRecord>
+                           // stream: UsersRecord.getDocument(
+                             //   columnUsersRecord.reference),
                             builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
                                 return Center(
                                     child: CircularProgressIndicator());
                               }
                               final buttonUsersRecord = snapshot.data;
                               return FFButtonWidget(
-                                onPressed: () async {
-                                  final usersRecordData = createUsersRecordData(
-                                    role: 'Мастер',
-                                    salon: sotrudnikiSalonsRecord.reference,
-                                  );
-                                  await buttonUsersRecord.reference
-                                      .update(usersRecordData);
-                                },
+                                // onPressed: () async {
+                                //   final usersRecordData = createUsersRecordData(
+                                //     role: 'Мастер',
+                                //     salon: sotrudnikiSalonsRecord.reference,
+                                //   );
+                                //   await buttonUsersRecord.reference
+                                //       .update(usersRecordData);
+                                // },
                                 text: 'Добавить',
                                 options: FFButtonOptions(
                                   width: 130,
@@ -249,20 +245,19 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                     ),
                   ),
                   Expanded(
-                    child: StreamBuilder<List<UsersRecord>>(
-                      stream: queryUsersRecord(
-                        queryBuilder: (usersRecord) => usersRecord.where(
-                            'salon',
-                            isEqualTo: sotrudnikiSalonsRecord.reference),
-                      ),
+                    child: StreamBuilder<List>(   //<UsersRecord>
+                      // stream: queryUsersRecord(
+                      //   queryBuilder: (usersRecord) => usersRecord.where(
+                      //       'salon',
+                      //       isEqualTo: sotrudnikiSalonsRecord.reference),
+                      // ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
                           return Center(child: CircularProgressIndicator());
                         }
-                        List<UsersRecord> gridViewUsersRecordList =
-                            snapshot.data;
-                        // Customize what your widget looks like with no query results.
+                      //  List<UsersRecord> gridViewUsersRecordList =
+                         //   snapshot.data;
                         if (snapshot.data.isEmpty) {
                           return Container(
                             height: 100,
@@ -283,31 +278,31 @@ class _SotrudnikiWidgetState extends State<SotrudnikiWidget> {
                               childAspectRatio: 1,
                             ),
                             scrollDirection: Axis.vertical,
-                            itemCount: gridViewUsersRecordList.length,
+                            //itemCount: gridViewUsersRecordList.length,
                             itemBuilder: (context, gridViewIndex) {
-                              final gridViewUsersRecord =
-                                  gridViewUsersRecordList[gridViewIndex];
+                             // final gridViewUsersRecord =
+                                 // gridViewUsersRecordList[gridViewIndex];
                               return Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Image.network(
-                                    gridViewUsersRecord.photoUrl,
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  Text(
-                                    gridViewUsersRecord.displayName,
-                                    style: FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Playfair Display',
-                                    ),
-                                  ),
-                                  Text(
-                                    gridViewUsersRecord.role,
-                                    style: FlutterFlowTheme.bodyText1.override(
-                                      fontFamily: 'Playfair Display',
-                                    ),
-                                  )
+                                  // Image.network(
+                                  //   gridViewUsersRecord.photoUrl,
+                                  //   width: 100,
+                                  //   height: 100,
+                                  //   fit: BoxFit.cover,
+                                  // ),
+                                  // Text(
+                                  //   gridViewUsersRecord.displayName,
+                                  //   style: FlutterFlowTheme.bodyText1.override(
+                                  //     fontFamily: 'Playfair Display',
+                                  //   ),
+                                  // ),
+                                  // Text(
+                                  //   gridViewUsersRecord.role,
+                                  //   style: FlutterFlowTheme.bodyText1.override(
+                                  //     fontFamily: 'Playfair Display',
+                                  //   ),
+                                  // )
                                 ],
                               );
                             },

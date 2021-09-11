@@ -1,57 +1,57 @@
-import 'dart:async';
+// import 'dart:async';
 
-import 'index.dart';
-import 'serializers.dart';
-import 'package:built_value/built_value.dart';
+// import 'index.dart';
+// import 'serializers.dart';
+// import 'package:built_value/built_value.dart';
 
-part 'posts_record.g.dart';
+// part 'posts_record.g.dart';
 
-abstract class PostsRecord implements Built<PostsRecord, PostsRecordBuilder> {
-  static Serializer<PostsRecord> get serializer => _$postsRecordSerializer;
+// abstract class PostsRecord implements Built<PostsRecord, PostsRecordBuilder> {
+//   static Serializer<PostsRecord> get serializer => _$postsRecordSerializer;
 
-  @nullable
-  @BuiltValueField(wireName: 'img_url')
-  String get imgUrl;
+//   @nullable
+//   @BuiltValueField(wireName: 'img_url')
+//   String get imgUrl;
 
-  @nullable
-  @BuiltValueField(wireName: 'created_at')
-  DateTime get createdAt;
+//   @nullable
+//   @BuiltValueField(wireName: 'created_at')
+//   DateTime get createdAt;
 
-  @nullable
-  DocumentReference get salon;
+//   @nullable
+//   DocumentReference get salon;
 
-  @nullable
-  @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+//   @nullable
+//   @BuiltValueField(wireName: kDocumentReferenceField)
+//   DocumentReference get reference;
 
-  static void _initializeBuilder(PostsRecordBuilder builder) =>
-      builder..imgUrl = '';
+//   static void _initializeBuilder(PostsRecordBuilder builder) =>
+//       builder..imgUrl = '';
 
-  static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('posts');
+//   static CollectionReference get collection =>
+//       FirebaseFirestore.instance.collection('posts');
 
-  static Stream<PostsRecord> getDocument(DocumentReference ref) => ref
-      .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+//   static Stream<PostsRecord> getDocument(DocumentReference ref) => ref
+//       .snapshots()
+//       .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
 
-  PostsRecord._();
-  factory PostsRecord([void Function(PostsRecordBuilder) updates]) =
-      _$PostsRecord;
+//   PostsRecord._();
+//   factory PostsRecord([void Function(PostsRecordBuilder) updates]) =
+//       _$PostsRecord;
 
-  static PostsRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
-      serializers.deserializeWith(
-          serializer, {...data, kDocumentReferenceField: reference});
-}
+//   static PostsRecord getDocumentFromData(
+//           Map<String, dynamic> data, DocumentReference reference) =>
+//       serializers.deserializeWith(
+//           serializer, {...data, kDocumentReferenceField: reference});
+// }
 
-Map<String, dynamic> createPostsRecordData({
-  String imgUrl,
-  DateTime createdAt,
-  DocumentReference salon,
-}) =>
-    serializers.toFirestore(
-        PostsRecord.serializer,
-        PostsRecord((p) => p
-          ..imgUrl = imgUrl
-          ..createdAt = createdAt
-          ..salon = salon));
+// Map<String, dynamic> createPostsRecordData({
+//   String imgUrl,
+//   DateTime createdAt,
+//   DocumentReference salon,
+// }) =>
+//     serializers.toFirestore(
+//         PostsRecord.serializer,
+//         PostsRecord((p) => p
+//           ..imgUrl = imgUrl
+//           ..createdAt = createdAt
+//           ..salon = salon));

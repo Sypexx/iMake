@@ -2,15 +2,14 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SearchPageWidget extends StatefulWidget {
   SearchPageWidget({
     Key key,
-    this.text,
+    //this.text,
   }) : super(key: key);
 
-  final CategoriesRecord text;
+  //final CategoriesRecord text;
 
   @override
   _SearchPageWidgetState createState() => _SearchPageWidgetState();

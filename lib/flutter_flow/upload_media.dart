@@ -31,8 +31,8 @@ Future<SelectedMedia> selectMedia({
   if (mediaBytes == null) {
     return null;
   }
-  final path = storagePath(currentUserUid, pickedMedia.path, isVideo);
-  return SelectedMedia(path, mediaBytes);
+ // final path = storagePath(currentUserUid, pickedMedia.path, isVideo);
+ // return SelectedMedia(path, mediaBytes);
 }
 
 bool validateFileFormat(String filePath, BuildContext context) {

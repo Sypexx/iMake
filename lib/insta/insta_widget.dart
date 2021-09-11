@@ -58,15 +58,14 @@ class _InstaWidgetState extends State<InstaWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Expanded(
-              child: StreamBuilder<List<PostsRecord>>(
-                stream: queryPostsRecord(),
+              child: StreamBuilder<List>(
+                //<PostsRecord>
+                //stream: queryPostsRecord(),
                 builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
                     return Center(child: CircularProgressIndicator());
                   }
-                  List<PostsRecord> gridViewPostsRecordList = snapshot.data;
-                  // Customize what your widget looks like with no query results.
+                  List gridViewPostsRecordList = snapshot.data; //<PostsRecord>
                   if (snapshot.data.isEmpty) {
                     return Container(
                       height: 100,
@@ -91,11 +90,11 @@ class _InstaWidgetState extends State<InstaWidget> {
                       itemBuilder: (context, gridViewIndex) {
                         final gridViewPostsRecord =
                             gridViewPostsRecordList[gridViewIndex];
-                        return StreamBuilder<SalonsRecord>(
-                          stream: SalonsRecord.getDocument(
-                              gridViewPostsRecord.salon),
+                        return StreamBuilder(
+                          //<SalonsRecord>
+                          //stream: SalonsRecord.getDocument(
+                          //    gridViewPostsRecord.salon),
                           builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
                               return Center(child: CircularProgressIndicator());
                             }
@@ -108,7 +107,7 @@ class _InstaWidgetState extends State<InstaWidget> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => InstaPageWidget(
-                                        idInsta: gridViewPostsRecord.reference,
+                                        //idInsta: gridViewPostsRecord.reference,
                                         img: gridViewPostsRecord.imgUrl,
                                       ),
                                     ),

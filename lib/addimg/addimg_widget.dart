@@ -1,10 +1,8 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/upload_media.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -36,13 +34,13 @@ class _AddimgWidgetState extends State<AddimgWidget> {
         ),
         actions: [
           IconButton(
-            onPressed: () async {
-              Navigator.pop(context);
-              final postsRecordData = createPostsRecordData(
-                createdAt: getCurrentTimestamp,
-              );
-              await PostsRecord.collection.doc().set(postsRecordData);
-            },
+           // onPressed: () async {
+           //   Navigator.pop(context);
+            //  final postsRecordData = createPostsRecordData(
+            //    createdAt: getCurrentTimestamp,
+          //    );
+             // await PostsRecord.collection.doc().set(postsRecordData);
+           // },
             icon: Icon(
               Icons.add_box_outlined,
               color: Colors.black,
@@ -71,23 +69,23 @@ class _AddimgWidgetState extends State<AddimgWidget> {
                       validateFileFormat(selectedMedia.storagePath, context)) {
                     showUploadMessage(context, 'Uploading file...',
                         showLoading: true);
-                    final downloadUrl = await uploadData(
-                        selectedMedia.storagePath, selectedMedia.bytes);
+                  //  final downloadUrl = await uploadData(
+                    //    selectedMedia.storagePath, selectedMedia.bytes);
                     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                    if (downloadUrl != null) {
-                      setState(() => uploadedFileUrl = downloadUrl);
+                  //  if (downloadUrl != null) {
+                    //  setState(() => uploadedFileUrl = downloadUrl);
                       showUploadMessage(context, 'Success!');
                     } else {
                       showUploadMessage(context, 'Failed to upload media');
                     }
                   }
-                },
-                child: Image.network(
-                  'https://picsum.photos/seed/121/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
+               // },
+               // child: Image.network(
+                //  'https://picsum.photos/seed/121/600',
+                //  width: 100,
+                //  height: 100,
+                //  fit: BoxFit.cover,
+               // ),
               )
             ],
           ),

@@ -3,18 +3,17 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../salon_page/salon_page_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class InstaPageWidget extends StatefulWidget {
   InstaPageWidget({
     Key key,
-    this.idInsta,
+    //this.idInsta,
     this.img,
   }) : super(key: key);
 
-  final DocumentReference idInsta;
+  //final DocumentReference idInsta;
   final String img;
 
   @override
@@ -26,8 +25,8 @@ class _InstaPageWidgetState extends State<InstaPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(currentUserReference),
+    return StreamBuilder(   //<UsersRecord>
+      //stream: UsersRecord.getDocument(currentUserReference),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -54,8 +53,8 @@ class _InstaPageWidgetState extends State<InstaPageWidget> {
           body: SafeArea(
             child: Align(
               alignment: Alignment(0, 0),
-              child: StreamBuilder<PostsRecord>(
-                stream: PostsRecord.getDocument(widget.idInsta),
+              child: StreamBuilder(     //<PostsRecord>
+                //stream: PostsRecord.getDocument(widget.idInsta),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
@@ -65,11 +64,10 @@ class _InstaPageWidgetState extends State<InstaPageWidget> {
                   return Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      StreamBuilder<SalonsRecord>(
-                        stream:
-                            SalonsRecord.getDocument(columnPostsRecord.salon),
+                      StreamBuilder(     //<SalonsRecord>
+                        // stream:
+                        //     SalonsRecord.getDocument(columnPostsRecord.salon),
                         builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
                             return Center(child: CircularProgressIndicator());
                           }
@@ -85,7 +83,7 @@ class _InstaPageWidgetState extends State<InstaPageWidget> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => SalonPageWidget(
-                                          idsalon: rowSalonsRecord.reference,
+                                          //idsalon: rowSalonsRecord.reference,
                                         ),
                                       ),
                                     );

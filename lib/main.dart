@@ -1,55 +1,51 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'auth/firebase_user_provider.dart';
+import 'package:flutter/services.dart';
+import 'package:imake/grafik/grafik_widget.dart';
 import 'package:imake/auth_page/auth_page_widget.dart';
+import 'package:imake/widgets/time_select.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'home_page/home_page_widget.dart';
 import 'search_page/search_page_widget.dart';
 import 'insta/insta_widget.dart';
-import 'messages/messages_widget.dart';
-import 'account_page/account_page_widget.dart';
 
-void main() async {
+void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+  ));
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  // This widget is the root of your application.
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  Stream<ImakeFirebaseUser> userStream;
-  ImakeFirebaseUser initialUser;
-
-  @override
-  void initState() {
-    super.initState();
-    userStream = imakeFirebaseUserStream()
-      ..listen((user) => initialUser ?? setState(() => initialUser = user));
-  }
+class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    //final textTheme = Theme.of(context).textTheme;
     return MaterialApp(
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          backwardsCompatibility: true, // 1
+          systemOverlayStyle: SystemUiOverlayStyle.dark, // 2
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
       title: 'Imake',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: initialUser == null
-          ? Center(
-              child: Builder(
-                builder: (context) => Image.asset(
-                  'assets/images/image.PNG',
-                  width: MediaQuery.of(context).size.width / 2,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-            )
-          : currentUser.loggedIn
-              ? NavBarPage()
-              : AuthPageWidget(),
+      //theme: ThemeData(primarySwatch: Colors.blue),
+      // home: initialUser == null
+      // ? Center(
+      //     child: Builder(
+      //       builder: (context) => Image.asset(
+      //         'assets/images/image.PNG',
+      //        width: MediaQuery.of(context).size.width / 2,
+      //       fit: BoxFit.fitW0idth,
+      //     ),
+      //   ),
+      // )
+      //: currentUser.loggedIn
+      //   ? NavBarPage()
+      //    : AuthPageWidget(),
+      home: AuthPageWidget(),
     );
   }
 }
@@ -79,8 +75,8 @@ class _NavBarPageState extends State<NavBarPage> {
       'HomePage': HomePageWidget(),
       'SearchPage': SearchPageWidget(),
       'Insta': InstaWidget(),
-      'Messages': MessagesWidget(),
-      'AccountPage': AccountPageWidget(),
+      //'Messages': MessagesWidget(),
+      //'AccountPage': AccountPageWidget(),
     };
     return Scaffold(
       body: tabs[_currentPage],
