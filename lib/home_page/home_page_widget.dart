@@ -38,6 +38,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       });
   }
 
+  List pageViewAdRecordList  = [
+    Uri.http("picsum.photos", "/200/300"),
+  ];
 // showPickerDialog(BuildContext context) {
 //     Picker(
 //         adapter: PickerDataAdapter<String>(pickerdata: JsonDecoder().convert(PickerData)),
@@ -116,19 +119,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     //<AdRecord>
                     //stream: queryAdRecord(),
                     builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(child: CircularProgressIndicator());
-                      }
+                        //  if (!snapshot.hasData) {
+                        //     return Center(child: CircularProgressIndicator());
+                        //   }
                       // List<AdRecord> pageViewAdRecordList = snapshot.data;
-                      if (snapshot.data.isEmpty) {
-                        return Container(
-                          height: 100,
-                          child: Center(
-                            child: Text('No results.'),
-                          ),
-                        );
-                      }
+                         // if (snapshot.data.isEmpty) {
+                          //   return Container(
+                         //     height: 100,
+                           //     child: Center(
+                          //       child: Text('No results.'),
+                          //     ),
+                          //   );
+                          // }
                       return Padding(
                         padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                         child: Container(
@@ -139,24 +141,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               PageView.builder(
                                 controller: pageViewController,
                                 scrollDirection: Axis.horizontal,
-                                // itemCount: pageViewAdRecordList.length,
-                                // itemBuilder: (context, pageViewIndex) {
-                                //   final pageViewAdRecord =
-                                //       pageViewAdRecordList[pageViewIndex];
-                                //   return ClipRRect(
-                                //     borderRadius: BorderRadius.circular(20),
-                                //     child: Image.network(
-                                //       pageViewAdRecord.imgUrl,
-                                //       width:
-                                //           MediaQuery.of(context).size.width,
-                                //       height: MediaQuery.of(context)
-                                //               .size
-                                //               .height *
-                                //           1,
-                                //       fit: BoxFit.cover,
-                                //     ),
-                                //   );
-                                // },
+                                itemCount: pageViewAdRecordList.length,
+                                itemBuilder: (context, pageViewIndex) {
+                                  final pageViewAdRecord =
+                                      pageViewAdRecordList[pageViewIndex];
+                                  return ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image.network(
+                                      pageViewAdRecord.imgUrl,
+                                      width:
+                                          MediaQuery.of(context).size.width,
+                                      height: MediaQuery.of(context)
+                                              .size
+                                              .height *
+                                          1,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  );
+                                },
                               ),
                               Align(
                                 alignment: Alignment(0, 1),

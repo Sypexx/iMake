@@ -24,7 +24,7 @@ class _CalendarPageState extends State<CalendarPage> {
         body: Stack(
           children: [
             Container(
-              color: Colors.yellow,
+              color: Colors.grey,
               width: MediaQuery.of(context).size.width * 1,
               height: MediaQuery.of(context).size.height * 0.125,
               child: Center(
@@ -232,7 +232,7 @@ class _CalendarPageState extends State<CalendarPage> {
                     child: Container(
                         height: 75,
                         width: 400,
-                        color: Colors.yellow,
+                        color: Colors.grey,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

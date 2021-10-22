@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:imake/grafik/grafik_widget.dart';
 import 'package:imake/auth_page/auth_page_widget.dart';
 import 'package:imake/widgets/time_select.dart';
+import 'account_page/account_page_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'home_page/home_page_widget.dart';
 import 'search_page/search_page_widget.dart';
@@ -76,7 +77,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'SearchPage': SearchPageWidget(),
       'Insta': InstaWidget(),
       //'Messages': MessagesWidget(),
-      //'AccountPage': AccountPageWidget(),
+      'AccountPage': AccountPageWidget(),
     };
     return Scaffold(
       body: tabs[_currentPage],
@@ -104,13 +105,13 @@ class _NavBarPageState extends State<NavBarPage> {
             ),
             label: 'PhotoPage',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.chat_bubble,
-              size: 24,
-            ),
-            label: 'Chats',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(
+          //     Icons.chat_bubble,
+          //     size: 24,
+          //   ),
+          //   label: 'Chats',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.account_box,
